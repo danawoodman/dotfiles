@@ -5,7 +5,7 @@ set mark-symlinked-directories on
 set mark-symlinked-directories on
 
 # List all matches in case multiple possible completions are possible
-set show-all-if-ambiguous on
+# set show-all-if-ambiguous on
 
 # Be more intelligent when autocompleting by also looking at the text after
 # the cursor. For example, when the current line is "cd ~/src/mozil", and

@@ -1,5 +1,5 @@
 # Make nano as the default editor.
-export EDITOR='nano'
+export EDITOR='mate'
 
 # Give django-admin.py output a nice color scheme.
 export DJANGO_COLORS="dark"
