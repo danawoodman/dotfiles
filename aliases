@@ -1,0 +1,40 @@
+#-------------------------------------------------------------------------------
+# Aliases
+#-------------------------------------------------------------------------------
+
+# GIT aliases.
+alias g='git'
+alias gh='git help'
+alias ga='git add'
+alias gp='git push'
+alias gl='git log --pretty=oneline'
+alias gs='git status'
+alias gd='git diff'
+alias gc='git commit -m'
+alias gca='git commit -am'
+alias gb='git branch'
+alias gco='git co'
+alias gra='git remote add'
+alias grr='git remote rm'
+alias gpl='git pull'
+alias gcl='git clone'
+alias gm='git merge'
+alias gmv='git mv'
+alias grm='git rm'
+alias gst='git stash'
+alias gf='git fetch'
+alias gbt='git checkout -t -b'
+alias grp='git rev-parse'
+alias grb='git rebase'
+alias gsh='git show'
+
+# Create aliases for listing of files.
+alias ll="ls -Glha"
+alias la="ls -a"
+alias lsd='ls -l | grep "^d"'
+
+# Pretty print JSON output from things like curl 
+alias json='python -m json.tool'
+
+# Shorthand SASS.
+alias sassy="sass -t compressed --watch ."
