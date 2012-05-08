@@ -27,6 +27,7 @@ alias gbt='git checkout -t -b'
 alias grp='git rev-parse'
 alias grb='git rebase'
 alias gsh='git show'
+alias gcp='git cherry-pick'
 
 # Create aliases for listing of files.
 alias ll="ls -Glha"
