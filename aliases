@@ -28,6 +28,7 @@ alias grp='git rev-parse'
 alias grb='git rebase'
 alias gsh='git show'
 alias gcp='git cherry-pick'
+alias gsub='git submodule'
 
 # Create aliases for listing of files.
 alias ll="ls -Glha"
