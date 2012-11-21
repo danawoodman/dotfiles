@@ -87,3 +87,5 @@ _pip_completion()
                    PIP_AUTO_COMPLETE=1 $1 ) )
 }
 complete -o default -F _pip_completion pip
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
