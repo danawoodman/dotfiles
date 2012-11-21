@@ -45,7 +45,8 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 # Make nano as the default editor.
-export EDITOR='nano'
+# export EDITOR='nano'
+export EDITOR='subl -w'
 
 # Give django-admin.py output a nice color scheme.
 export DJANGO_COLORS="dark"
