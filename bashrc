@@ -40,6 +40,18 @@ fi
 # Shell settings
 #-------------------------------------------------------------------------------
 
+# http://henrik.nyh.se/2008/12/git-dirty-prompt
+# http://www.simplisticcomplexity.com/2008/03/13/show-your-git-branch-name-in-your-prompt/
+#   username@Machine ~/dev/dir[master]$   # clean working directory
+#   username@Machine ~/dev/dir[master*]$  # dirty working directory
+ 
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+}
+
 # Import Ruby stuff.
 # export PATH="$HOME/.rbenv/bin:$PATH"
 # eval "$(rbenv init -)"
@@ -68,7 +80,7 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 export CLICOLOR=1
 export LSCOLORS=Gxfxcxdxbxegedabagacad
 export LS_COLORS='di=01;33'
-export PS1="${BRIGHT_YELLOW}[\@] ${BRIGHT_BLUE}\u@macbook-pro${WHITE}: ${BRIGHT_GREEN}\w ${BRIGHT_YELLOW} \$ ${RESET}  "
+export PS1="${YELLOW}[\@]${WHITE}: ${BRIGHT_GREEN}\w ${BRIGHT_YELLOW} \$(parse_git_branch):${RESET} "
 
 # Tell virtualenvwrapper where all virtual environments should go.
 export WORKON_HOME="$HOME/Dropbox/Code/virtualenvs"
