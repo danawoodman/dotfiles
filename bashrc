@@ -53,7 +53,16 @@ export DJANGO_COLORS="dark"
 
 # Set paths to bin scripts.
 # Homebrew's version of easy_install to the PATH: /usr/local/share/python
-export PATH="$HOME/bin:/usr/local/share/python:/Users/dana/lib/get-shit-done/:/Users/dana/.gem/ruby/1.8/bin:/user/bin/:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+# export PATH="$HOME/bin:/usr/local/share/python:/Users/dana/lib/get-shit-done/:/Users/dana/.gem/ruby/1.8/bin:PA:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
+
+# Add Python packages to PATH
+export PATH="$PATH:/usr/local/share/python"
+
+# Homebrew and others...
+export PATH="/usr/local/bin:$PATH"
+
+# Add npm global bin directory to path.
+export PATH="/usr/local/share/npm/bin:$PATH"
 
 # Style terminal.
 export CLICOLOR=1
