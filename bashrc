@@ -41,8 +41,8 @@ fi
 #-------------------------------------------------------------------------------
 
 # Import Ruby stuff.
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
 
 # Make nano as the default editor.
 # export EDITOR='nano'
