@@ -63,18 +63,17 @@ export EDITOR='subl -w'
 # Give django-admin.py output a nice color scheme.
 export DJANGO_COLORS="dark"
 
-# Set paths to bin scripts.
-# Homebrew's version of easy_install to the PATH: /usr/local/share/python
-# export PATH="$HOME/bin:/usr/local/share/python:/Users/dana/lib/get-shit-done/:/Users/dana/.gem/ruby/1.8/bin:PA:/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:$PATH"
-
 # Add Python packages to PATH
 export PATH="$PATH:/usr/local/share/python"
 
 # Homebrew and others...
-export PATH="/usr/local/bin:$PATH"
+export PATH="$PATH:/usr/local/bin"
 
 # Add npm global bin directory to path.
-export PATH="/usr/local/share/npm/bin:$PATH"
+export PATH="$PATH:/usr/local/share/npm/bin"
+
+# Add user bins to path
+export PATH="$PATH:$HOME/.bin"
 
 # Style terminal.
 export CLICOLOR=1
@@ -110,3 +109,6 @@ _pip_completion()
 complete -o default -F _pip_completion pip
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
