@@ -78,6 +78,9 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 # Add user bins to path
 export PATH="$HOME/.bin:$PATH"
 
+# PostgresApp bins
+export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+
 # Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
@@ -102,7 +105,6 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 # export EC2_PRIVATE_KEY=`ls $EC2_HOME/pk-*.pem`
 # export EC2_CERT=`ls $EC2_HOME/cert-*.pem`
 export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Home/
-
 
 #-------------------------------------------------------------------------------
 # Etc...
