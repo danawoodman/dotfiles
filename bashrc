@@ -67,16 +67,16 @@ export HISTSIZE=10000
 export DJANGO_COLORS="dark"
 
 # Add Python packages to PATH
-export PATH="$PATH:/usr/local/share/python"
+export PATH="/usr/local/share/python:$PATH"
 
 # Homebrew and others...
-export PATH="$PATH:/usr/local/bin"
+export PATH="/usr/local/bin:$PATH"
 
 # Add npm global bin directory to path.
-export PATH="$PATH:/usr/local/share/npm/bin"
+export PATH="/usr/local/share/npm/bin:$PATH"
 
 # Add user bins to path
-export PATH="$PATH:$HOME/.bin"
+export PATH="$HOME/.bin:$PATH"
 
 # Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
