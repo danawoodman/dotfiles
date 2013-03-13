@@ -75,6 +75,12 @@ export PATH="$PATH:/usr/local/share/npm/bin"
 # Add user bins to path
 export PATH="$PATH:$HOME/.bin"
 
+# Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# RVM
+export PATH="$HOME/.rvm/bin:$PATH"
+
 # Style terminal.
 export CLICOLOR=1
 export LSCOLORS=Gxfxcxdxbxegedabagacad
@@ -107,8 +113,3 @@ _pip_completion()
                    PIP_AUTO_COMPLETE=1 $1 ) )
 }
 complete -o default -F _pip_completion pip
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
