@@ -60,6 +60,9 @@ function parse_git_branch {
 # export EDITOR='nano'
 export EDITOR='subl -w'
 
+# Update bash scroll buffer
+export HISTSIZE=10000
+
 # Give django-admin.py output a nice color scheme.
 export DJANGO_COLORS="dark"
 
