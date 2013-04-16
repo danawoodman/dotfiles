@@ -1,19 +1,28 @@
 # MacOSX Dotfiles
 
-Contains dotfiles used in my local development environment.
+Contains dotfiles used in my local development environment. Portable enough to use in your own setup, if you're brave.
 
 ## Setup
 
-First, checkout this project on a new machine.
+First, checkout this project on a new machine:
+
+```bash
+git checkout https://github.com/danawoodman/dotfiles.git ~/dotfiles
+```
+
+Next, create a configuration file:
+
+```bash
+cp ~/dotfiles/bash_config.example ~/bash_config
+```
+
+Modify the contents of the `bash_config` file to suite.
 
 Then run:
 
-    ln -sf ~/Dropbox/Code/dotfiles/profile ~/.profile
-    ln -sf ~/Dropbox/Code/dotfiles/inputrc ~/.inputrc
-    ln -sf ~/Dropbox/Code/dotfiles/colors ~/.colors
-    ln -sf ~/Dropbox/Code/dotfiles/aliases ~/.aliases
-    ln -sf ~/Dropbox/Code/dotfiles/screenrc ~/.screenrc
-    ln -sf ~/Dropbox/Code/dotfiles/osx ~/.osx
-    ln -sf ~/Dropbox/Code/dotfiles/gitconfig ~/.gitconfig
-    ln -sf ~/Dropbox/Code/dotfiles/gitignore ~/.gitignore
+    ln -sf ~/dotfiles/profile ~/.profile
+    ln -sf ~/dotfiles/inputrc ~/.inputrc
+    ln -sf ~/dotfiles/osx ~/.osx
+    ln -sf ~/dotfiles/gitconfig ~/.gitconfig
+    ln -sf ~/dotfiles/gitignore ~/.gitignore
     source ~/.profile
