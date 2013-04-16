@@ -1,32 +1,32 @@
 [user]
-	name = Dana Woodman
-	email = dana@danawoodman.com
+name = $GITHUB_NAME
+email = $GITHUB_EMAIL
  
 [color]
-  ui = auto
+ui = auto
 
 [color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
+current = yellow reverse
+local = yellow
+remote = green
 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
+meta = yellow bold
+frag = magenta bold
+old = red bold
+new = green bold
+whitespace = red reverse
 
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+added = yellow
+changed = green
+untracked = cyan
 
 [alias]
-  co = checkout
+co = checkout
 
 [credential]
-	helper = osxkeychain
+helper = osxkeychain
 
 [push]
-	default = upstream
+default = upstream
