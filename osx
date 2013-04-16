@@ -3,6 +3,3 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable the dashboard
 defaults write com.apple.dashboard mcx-disabled -boolean YES
-
-# Enable Dashboard dev mode (allows keeping widgets on the desktop)
-#defaults write com.apple.dashboard devmode YES
