@@ -26,3 +26,5 @@ Then run:
     ln -sf ~/dotfiles/gitconfig ~/.gitconfig
     ln -sf ~/dotfiles/gitignore ~/.gitignore
     source ~/.profile
+
+Go into `.githconfig` and set your name and your Github email address.
