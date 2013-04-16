@@ -1,3 +1,5 @@
-export DOTFILES_PATH="$HOME/Dropbox/Code/dotfiles"
-export GITHUB_EMAIL="you@example.com"
-export GITHUB_NAME="John Smith"
+export DOTFILES_PATH="$HOME/dotfiles"
+export GIT_AUTHOR_EMAIL="you@example.com"
+export GIT_AUTHOR_NAME="John Smith"
+export GIT_COMMITER_EMAIL="$GIT_AUTHOR_EMAIL"
+export GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
