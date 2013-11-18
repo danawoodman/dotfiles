@@ -7,9 +7,9 @@ if [ -f $HOME/.bash_config ]; then
   source $HOME/.bash_config
 fi
 
-# Import terminal colors
-if [ -f $DOTFILES_PATH/colors ]; then
-  source $DOTFILES_PATH/colors
+# Import bash prompt
+if [ -f $DOTFILES_PATH/bash_prompt ]; then
+  source $DOTFILES_PATH/bash_prompt
 fi
 
 # Import aliases
