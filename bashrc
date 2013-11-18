@@ -55,7 +55,7 @@ export EDITOR='subl -w'
 export HISTSIZE=10000
 
 # Add Python packages to PATH
-export PATH="/usr/local/share/python:$PATH"
+# export PATH="/usr/local/share/python:$PATH"
 
 # Homebrew and others...
 export PATH="/usr/local/bin:$PATH"
@@ -70,7 +70,7 @@ export PATH="$HOME/.bin:$PATH"
 export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 
 # Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# export PATH="/usr/local/heroku/bin:$PATH"
 
 # RVM
 export PATH="$HOME/.rvm/bin:$PATH"
