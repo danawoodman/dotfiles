@@ -2,6 +2,8 @@
 # Aliases
 #-------------------------------------------------------------------------------
 
+# Some content borrow from Paul Irish's .aliases file <https://github.com/paulirish/dotfiles/blob/master/.aliases>
+
 # GIT aliases.
 alias g='git'
 alias gh='git help'
@@ -35,8 +37,31 @@ alias ll="ls -Glha"
 alias la="ls -a"
 alias lsd='ls -l | grep "^d"'
 
+# Easier navigation
+alias cl='clear'
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias -- -="cd -" # return to last directory
+alias ..-="cd .. && cd -" # backup and return to dir (good for reloading rvmrc file)
+
+# Programs
+alias st='open -a "Sublime Text"'
+
+# `cat` with beautiful colors. requires Pygments installed (sudo easy_install Pygments)
+alias c='pygmentize -O style=monokai -f console256 -g'
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
+
 # Pretty print JSON output from things like curl 
 alias json='python -m json.tool'
 
 # Shorthand SASS.
 alias sassy="sass -t compressed --watch ."
+
+# Functions
+function md() {
+  mkdir -p "$@" && cd "$@"
+}
