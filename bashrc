@@ -67,8 +67,3 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # RVM
 export PATH="$HOME/.rvm/bin:$PATH"
 
-# Style terminal.
-export CLICOLOR=1
-export LSCOLORS=Gxfxcxdxbxegedabagacad
-export LS_COLORS='di=01;33'
-export PS1="${YELLOW}[\@]${WHITE}: ${BRIGHT_GREEN}\w ${BRIGHT_YELLOW} \$(parse_git_branch):${RESET} "
