@@ -1,1 +1,2 @@
+# The location of your checkout of this repo.
 export DOTFILES_PATH="$HOME/dotfiles"
