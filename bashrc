@@ -67,3 +67,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # RVM
 export PATH="$HOME/.rvm/bin:$PATH"
 
+# Golang
+export PATH="$HOME/.go:$PATH"
