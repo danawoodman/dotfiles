@@ -76,4 +76,4 @@ export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 export PATH="$HOME/.rvm/bin:$PATH"
 
 # Golang
-export PATH="$HOME/.go:$PATH"
+export GOPATH="$HOME/.go"
