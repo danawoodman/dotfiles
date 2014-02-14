@@ -10,14 +10,6 @@ First, checkout this project on a new machine:
 git checkout https://github.com/danawoodman/dotfiles.git ~/dotfiles
 ```
 
-Next, create a configuration file:
-
-```bash
-cp ~/dotfiles/bash_config.example ~/.bash_config
-```
-
-Modify the contents of the new `.bash_config` file to suite.
-
 Then run:
 
 ```bash
@@ -25,9 +17,10 @@ ln -sf ~/dotfiles/profile ~/.profile
 ln -sf ~/dotfiles/bashrc ~/.bashrc
 ln -sf ~/dotfiles/inputrc ~/.inputrc
 ln -sf ~/dotfiles/osx ~/.osx
+ln -sf ~/dotfiles/git_template ~/.git_template
 ln -sf ~/dotfiles/gitconfig ~/.gitconfig
 ln -sf ~/dotfiles/gitignore ~/.gitignore
-source ~/.profile
+ln -sf ~/dotfiles/vimrc ~/.vimrc
+source ~/.bashrc
 ```
 
-Go into `.githconfig` and set your name and your Github email address.
