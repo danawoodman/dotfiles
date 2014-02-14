@@ -48,8 +48,7 @@ function parse_git_branch {
 }
 
 # Make nano as the default editor.
-# export EDITOR='nano'
-export EDITOR='subl -w'
+export EDITOR="mvim -f"
 
 # Update bash scroll buffer
 export HISTSIZE=10000
