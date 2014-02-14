@@ -3,3 +3,6 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable the dashboard
 defaults write com.apple.dashboard mcx-disabled -boolean YES
+
+# Disable context menu when pressing and holding a key.
+defaults write -g ApplePressAndHoldEnabled -bool false
