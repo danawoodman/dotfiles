@@ -77,3 +77,10 @@ export PATH="$HOME/.rvm/bin:$PATH"
 # Golang
 export GOPATH="$HOME/code/go"
 export PATH="$GOPATH:$GOPATH/bin:$PATH"
+
+# Add sbin binaries.
+export PATH="/usr/local/sbin/:$PATH"
+
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
