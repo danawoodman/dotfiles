@@ -63,6 +63,9 @@ alias json='python -m json.tool'
 # Shorthand SASS.
 alias sassy="sass -t compressed --watch ."
 
+# Flush OSX DNS cache
+alias flush="dscacheutil -flushcache && sudo killall -HUP mDNSResponder"
+
 # Functions
 function md() {
   mkdir -p "$@" && cd "$@"
