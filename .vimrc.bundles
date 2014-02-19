@@ -1,0 +1,93 @@
+set nocompatible " Must be the first line
+set background=dark
+
+" Setup Bundle support
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Add an UnBundle command {
+function! UnBundle(arg, ...)
+  let bundle = vundle#config#init_bundle(a:arg, a:000)
+  call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
+endfunction
+
+com! -nargs=+         UnBundle
+\ call UnBundle(<args>)
+                             
+" General
+Bundle 'gmarik/vundle'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'spf13/vim-preview'
+
+" General programming
+Bundle 'scrooloose/syntastic'
+
+" Manipulation
+Bundle 'mbbill/undotree'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tpope/vim-surround'
+Bundle 'spf13/vim-autoclose'
+Bundle 'tpope/vim-abolish'
+Bundle 'scrooloose/nerdcommenter'
+
+" Movement
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'godlygeek/csapprox'
+Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'vim-scripts/restore_view.vim'
+
+" Visual / Interface
+Bundle 'mhinz/vim-signify'
+Bundle 'bling/vim-bufferline'
+Bundle 'godlygeek/tabular'
+Bundle 'flazz/vim-colorschemes'
+
+if (has("python") || has("python3"))
+  Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
+  Bundle 'Lokaltog/powerline-fonts'
+else
+  Bundle 'bling/vim-airline'
+endif
+
+if executable('ag')
+  Bundle 'mileszs/ack.vim'
+  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+elseif executable('ack-grep')
+  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+  Bundle 'mileszs/ack.vim'
+elseif executable('ack')
+  Bundle 'mileszs/ack.vim'
+endif
+ 
+" Version Control
+Bundle 'tpope/vim-fugitive'
+Bundle 'mattn/gist-vim'
+
+" Markdown
+Bundle 'plasticboy/vim-markdown'
+
+" Ruby / Rails
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-rails'
+let g:rubycomplete_buffer_loading = 1
+Bundle 'tpope/vim-bundler'
+Bundle 'tpope/vim-haml'
+
+" HTML
+Bundle 'amirh/HTML-AutoCloseTag'
+
+" CSS / Sass / Less
+Bundle 'groenewege/vim-less'
+Bundle 'gorodinskiy/vim-coloresque'
+Bundle 'hail2u/vim-css3-syntax'
+
+" JavaScript
+Bundle 'elzr/vim-json'
+Bundle 'pangloss/vim-javascript'
+Bundle 'briancollins/vim-jst'
+Bundle 'kchmck/vim-coffee-script'
+
+" Go lang
+Bundle 'Blackrush/vim-gocode'

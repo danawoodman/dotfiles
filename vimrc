@@ -39,6 +39,10 @@
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Load bundle config
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -48,6 +52,8 @@ set history=1000
 
 " Enable filetype plugins
 filetype plugin indent on
+set nocompatible              " be iMproved
+filetype off                  " required!
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -65,6 +71,7 @@ nmap <leader>W :wq<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -141,18 +148,20 @@ set foldcolumn=1
 " set it to the first line when editing a git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Enable syntax highlighting
 syntax enable 
 
 try
-    colorscheme desert
+  colorscheme Monokai 
 catch
 endtry
 
-set background=dark
+" set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -352,6 +361,7 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
+au BufRead *.(markdown|mdown|md) setlocal spell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
@@ -448,27 +458,3 @@ vmap <Leader>a,, :Tabularize /,\zs<CR>
 nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vundle 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-set nocompatible              " be iMproved
-filetype off                  " required!
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'godlygeek/tabular'
-
-filetype plugin indent on     " required!
-
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install (update) bundles
-" :BundleSearch(!) foo - search (or refresh cache first) for foo
-" :BundleClean(!)      - confirm (or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle commands are not allowed.
