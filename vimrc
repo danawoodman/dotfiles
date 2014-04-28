@@ -1,62 +1,23 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
-"       Amir Salihefendic
-"       http://amix.dk - amix@amix.dk
-"
-" Version: 
-"       5.0 - 29/05/12 15:43:36
-"
-" Blog_post: 
-"       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
-"
-" Awesome_version:
-"       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome version from:
-"
-"           https://github.com/amix/vimrc
-"
-" Syntax_highlighted:
-"       http://amix.dk/vim/vimrc.html
-"
-" Raw_version: 
-"       http://amix.dk/vim/vimrc.txt
-"
-" Sections:
-"    -> General
-"    -> VIM user interface
-"    -> Colors and Fonts
-"    -> Files and backups
-"    -> Text, tab and indent related
-"    -> Visual mode related
-"    -> Moving around, tabs and buffers
-"    -> Status line
-"    -> Editing mappings
-"    -> vimgrep searching and cope displaying
-"    -> Spell checking
-"    -> Misc
-"    -> Helper functions
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General
+"--------------------------------------------------------------
 
 " Load bundle config
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=1000
 
-" Enable filetype plugins
-filetype plugin indent on
-set nocompatible              " be iMproved
-filetype off                  " required!
-
 " Set to auto read when a file is changed from the outside
 set autoread
+
+" Enable mouse usage and hide it when typing
+"set mouse=a
+"set mousehide
+
+" Shorten message
+set shortmess+=filmnrxoOtT
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
@@ -65,12 +26,11 @@ let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
-nmap <leader>W :wq<cr>
+nmap <leader>q :wq<cr>
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM user interface
+"--------------------------------------------------------------
 
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
@@ -91,77 +51,41 @@ else
     set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
-"Always show current position
-set ruler
-
-" Height of the command bar
-set cmdheight=2
-
-" A buffer becomes hidden when it is abandoned
-set hid
-
-" Set line numbers
-set number
-
-" Highlight the current line
-set cursorline
-hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
-
-" Configure backspace so it acts as it should act
-set backspace=eol,start,indent
+set ruler                       " Always show current position
+set cmdheight=2                 " Height of the command bar
+set hid                         " A buffer becomes hidden when it is abandoned
+set number                      " Set line numbers
+set cursorline                  " Set line numbers
+set backspace=eol,start,indent  " Configure backspace so it acts as it should act
 set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases 
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch 
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw 
-
-" For regular expressions turn magic on
-set magic
-
-" Show matching brackets when text indicator is over them
-set showmatch 
-" How many tenths of a second to blink when matching brackets
-set mat=2
-
-" No annoying sound on errors
-set noerrorbells
+set ignorecase                  " Ignore case when searching
+set smartcase                   " When searching try to be smart about cases
+set hlsearch                    " Highlight search results
+set incsearch                   " Makes search act like search in modern browsers
+set lazyredraw                  " Don't redraw while executing macros (good performance config)
+set magic                       " For regular expressions turn magic on
+set showmatch                   " Show matching brackets when text indicator is over them
+set mat=2                       " How many tenths of a second to blink when matching brackets
+set noerrorbells                " No annoying sound on rrors
 set novisualbell
 set t_vb=
 set tm=500
-
-" Add a bit extra margin to the left
-set foldcolumn=1
+set foldcolumn=1                " Add a bit extra margin to the left
+set foldenable                  " Auto fold code
 
 " Instead of reverting the cursor to the last position in the buffer, we
 " set it to the first line when editing a git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Enable syntax highlighting
-syntax enable 
+" Colors and Fonts
+"--------------------------------------------------------------
 
 try
-  colorscheme Monokai 
+  let g:hybrid_use_iTerm_colors = 1
+  colorscheme hybrid
 catch
 endtry
-
-" set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -177,19 +101,37 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+" Let vim know that the background is dark.
+set background=dark
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set the color of highlighted lines.
+hi CursorLine ctermbg=236 guibg=236
+
+" Set the highlight color for search matches.
+hi Search ctermbg=246 guibg=246 
+
+" Only show highlighted line when in active pane.
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
+" Set the color of folded text.
+hi Folded ctermfg=242 ctermbg=232 guifg=242 guibg=232
+
+
+" Files, backups and undo
+"--------------------------------------------------------------
+"
 " Turn backup off, since most stuff is in SVN, git etc. anyway...
 set nobackup
 set nowb
 set noswapfile
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Text, tab and indent related
+"--------------------------------------------------------------
+
 set expandtab        " Use spaces instead of tabs
 set smarttab         " Be smart when using tabs ;)
 set shiftwidth=2     " 1 tab == 4 spaces
@@ -211,25 +153,40 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 nnoremap <silent><leader><o> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><leader><O> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
-""""""""""""""""""""""""""""""
-" => Visual mode related
-""""""""""""""""""""""""""""""
+
+" Visual mode related
+"--------------------------------------------------------------
+"
 " Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
+" Shortcut for copying to clipboard.
+vmap <leader>g :w !pbcopy<cr><cr>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Moving around, tabs, windows and buffers
+"--------------------------------------------------------------
+
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-map <space> /
-map <c-space> ?
+" map <space> /
+" map <c-space> ?
+
+" CtrlP fuzzy search mapping
+let g:ctrlp_map = '<Leader>f'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_show_hidden = 1
+
+" Have NERDtree show hidden files
+let NERDTreeShowHidden = 1
+
+" CtrP ignores
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
@@ -275,10 +232,33 @@ autocmd BufReadPost *
 " Remember info about open buffers on close
 set viminfo^=%
 
+" Folding
+set foldmethod=syntax
+set foldlevelstart=1
 
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
+let javaScript_fold=1    " JavaScript
+let perl_fold=1          " Perl
+let php_folding=1        " PHP
+let r_syntax_folding=1   " R
+let ruby_fold=1          " Ruby
+let sh_fold_enabled=1    " sh
+let vimsyn_folding='af'  " Vim script
+let xml_syntax_folding=1 " XML
+
+" Remap Space to toggle folding on and off
+nnoremap <Space> za
+
+" Create split panes
+map <leader>v :vs<cr><C-l><cr>
+map <leader>h :sp<cr><C-j><cr>
+
+" Clear the CtrlP cache
+map <leader>C :CtrlPClearCache<cr>
+
+
+" Status line
+"--------------------------------------------------------------
+
 " Always show the status line
 set laststatus=2
 
@@ -286,9 +266,9 @@ set laststatus=2
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Editing mappings
+"--------------------------------------------------------------
+
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
@@ -317,14 +297,41 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 " Exit inert mode with jj
 imap jj <Esc>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vimgrep searching and cope displaying
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Shortcut for Multiple Cursors
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+" Tabularize
+nmap <Leader>a& :Tabularize /&<CR>
+vmap <Leader>a& :Tabularize /&<CR>
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a:: :Tabularize /:\zs<CR>
+vmap <Leader>a:: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,<CR>
+vmap <Leader>a, :Tabularize /,<CR>
+nmap <Leader>a,, :Tabularize /,\zs<CR>
+vmap <Leader>a,, :Tabularize /,\zs<CR>
+nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+
+" Git mappings"
+nmap <Leader>gd :Gdiff<cr>
+nmap <Leader>gb :Gblame<cr>
+
+
+" vimgrep searching and cope displaying
+"--------------------------------------------------------------
+
 " When you press gv you vimgrep after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " Open vimgrep and put the cursor in the right position
-map <leader>g :vimgrep // **/*.<left><left><left><left><left><left><left>
+map <leader>G :vimgrep // **/*.<left><left><left><left><left><left><left>
 
 " Vimgreps in the current file
 map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
@@ -343,15 +350,15 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " To go to the previous search results do:
 "   <leader>p
 "
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+"map <leader>cc :botright cope<cr>
+"map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+"map <leader>n :cn<cr>
+"map <leader>p :cp<cr>
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Spell checking
+"--------------------------------------------------------------
+
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
@@ -363,28 +370,35 @@ map <leader>s? z=
 
 au BufRead *.(markdown|mdown|md) setlocal spell
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Misc
+"--------------------------------------------------------------
+
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scripbble
-map <leader>q :e ~/buffer<cr>
+"map <leader>q :e ~/buffer<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
 " RSpec.vim mappings
-map <Leader>T :call RunCurrentSpecFile()<CR>
+map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+map <Leader>A :call RunAllSpecs()<CR>
+
+" Run arbitrary shell commands.
+map <leader>r :!
+
+" Configure ack.vim to use ag: the silver searcher instead
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Helper functions
+"--------------------------------------------------------------
+
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
@@ -411,7 +425,6 @@ function! VisualSelection(direction, extra_filter) range
     let @/ = l:pattern
     let @" = l:saved_reg
 endfunction
-
 
 " Returns true if paste mode is enabled
 function! HasPaste()
@@ -442,19 +455,16 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-" Tabularize
-nmap <Leader>a& :Tabularize /&<CR>
-vmap <Leader>a& :Tabularize /&<CR>
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:<CR>
-vmap <Leader>a: :Tabularize /:<CR>
-nmap <Leader>a:: :Tabularize /:\zs<CR>
-vmap <Leader>a:: :Tabularize /:\zs<CR>
-nmap <Leader>a, :Tabularize /,<CR>
-vmap <Leader>a, :Tabularize /,<CR>
-nmap <Leader>a,, :Tabularize /,\zs<CR>
-vmap <Leader>a,, :Tabularize /,\zs<CR>
-nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+
+" JavaScript
+"--------------------------------------------------------------
+
+" au FileType javascript call JavaScriptFold()
+
+
+" Markup
+"--------------------------------------------------------------
+
+" Treat .cshtml files as .html files.
+au BufRead,BufNewFile *.cshtml set filetype=html
 
