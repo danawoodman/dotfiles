@@ -102,5 +102,4 @@ Bundle 'Blackrush/vim-gocode'
 
 syntax enable
 filetype plugin indent on
-au BufRead,BufNewFile *.cshtml set filetype=html
 

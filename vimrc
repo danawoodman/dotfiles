@@ -465,6 +465,3 @@ endfunction
 " Markup
 "--------------------------------------------------------------
 
-" Treat .cshtml files as .html files.
-au BufRead,BufNewFile *.cshtml set filetype=html
-
