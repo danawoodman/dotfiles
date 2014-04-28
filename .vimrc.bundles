@@ -1,8 +1,8 @@
 set nocompatible " Must be the first line
 set background=dark
+filetype off
 
 " Setup Bundle support
-filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -20,29 +20,33 @@ Bundle 'gmarik/vundle'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'spf13/vim-preview'
+Bundle 'kien/ctrlp.vim'
+Bundle 'terryma/vim-multiple-cursors'
 
 " General programming
 Bundle 'scrooloose/syntastic'
+Bundle 'editorconfig/editorconfig-vim'
 
 " Manipulation
 Bundle 'mbbill/undotree'
-Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-surround'
-Bundle 'spf13/vim-autoclose'
 Bundle 'tpope/vim-abolish'
 Bundle 'scrooloose/nerdcommenter'
 
 " Movement
 Bundle 'Lokaltog/vim-easymotion'
-Bundle 'godlygeek/csapprox'
 Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'vim-scripts/restore_view.vim'
 
 " Visual / Interface
 Bundle 'mhinz/vim-signify'
+Bundle 'godlygeek/csapprox'
 Bundle 'bling/vim-bufferline'
 Bundle 'godlygeek/tabular'
 Bundle 'flazz/vim-colorschemes'
+Bundle 'w0ng/vim-hybrid'
+Bundle 'scrooloose/nerdtree'
+Bundle 'tpope/vim-unimpaired'
 
 if (has("python") || has("python3"))
   Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
@@ -62,7 +66,7 @@ elseif executable('ack')
 endif
  
 " Version Control
-Bundle 'tpope/vim-fugitive'
+"Bundle 'tpope/vim-fugitive'
 Bundle 'mattn/gist-vim'
 
 " Markdown
@@ -73,21 +77,30 @@ Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-rails'
 let g:rubycomplete_buffer_loading = 1
 Bundle 'tpope/vim-bundler'
-Bundle 'tpope/vim-haml'
 
-" HTML
+" Markup
 Bundle 'amirh/HTML-AutoCloseTag'
+Bundle 'slim-template/vim-slim.git'
+Bundle 'tpope/vim-haml'
+Bundle 'othree/html5.vim'
+Bundle 'mustache/vim-mustache-handlebars'
 
-" CSS / Sass / Less
+" Stylesheets
 Bundle 'groenewege/vim-less'
-Bundle 'gorodinskiy/vim-coloresque'
 Bundle 'hail2u/vim-css3-syntax'
+Bundle 'cakebaker/scss-syntax.vim'
 
 " JavaScript
 Bundle 'elzr/vim-json'
 Bundle 'pangloss/vim-javascript'
+Bundle 'jelera/vim-javascript-syntax'
 Bundle 'briancollins/vim-jst'
 Bundle 'kchmck/vim-coffee-script'
 
 " Go lang
 Bundle 'Blackrush/vim-gocode'
+
+syntax enable
+filetype plugin indent on
+au BufRead,BufNewFile *.cshtml set filetype=html
+
