@@ -215,12 +215,12 @@ function git_info() {
         # check if it's dirty (via github.com/sindresorhus/pure)
         dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null; [ $? -eq 1 ]&& echo -e "*")
 
-        echo $WHITE" on "$PURPLE$branch$dirty
+        echo $RESET" on "$PURPLE$branch$dirty
 }
 
 # Only show username/host if not default
 function usernamehost() {
-        if [ $USER != $default_username ]; then echo "${MAGENTA}$USER ${WHITE}at ${ORANGE}$HOSTNAME $WHITEin "; fi
+        if [ $USER != $default_username ]; then echo "${MAGENTA}$USER ${RESET}at ${ORANGE}$HOSTNAME $WHITEin "; fi
 }
 
 # iTerm Tab and Title Customization and prompt customization
@@ -234,7 +234,7 @@ function usernamehost() {
 # in the iterm tab
 # \[\e]1;\]$(basename $(dirname $PWD))/\W\[\a\]
 
-PS1="$ORANGE\@: \[\e]2;$PWD\[\a\]\[\e]1;\]$(basename "$(dirname "$PWD")")/\W\[\a\]${BOLD}\$(usernamehost)\[$GREEN\]\w\$(git_info)\[$WHITE\]\n\$ \[$RESET\]"
+PS1="$ORANGE\@: \[\e]2;$PWD\[\a\]\[\e]1;\]$(basename "$(dirname "$PWD")")/\W\[\a\]${BOLD}\$(usernamehost)\[$GREEN\]\w\$(git_info)\[$RESET\]\n\$ "
 
 
 #-------------------------------------------------------------------------------
@@ -267,9 +267,6 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 
 # Add user bins to path
 export PATH="$HOME/.bin:$PATH"
-
-# PostgresApp bins
-export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 
 # Heroku Toolbelt
 # export PATH="/usr/local/heroku/bin:$PATH"
