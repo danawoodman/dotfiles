@@ -72,6 +72,7 @@ set t_vb=
 set tm=500
 set foldcolumn=1                " Add a bit extra margin to the left
 set foldenable                  " Auto fold code
+set foldmethod=indent
 
 " Instead of reverting the cursor to the last position in the buffer, we
 " set it to the first line when editing a git commit message
@@ -132,12 +133,11 @@ set noswapfile
 " Text, tab and indent related
 "--------------------------------------------------------------
 
-set expandtab        " Use spaces instead of tabs
 set smarttab         " Be smart when using tabs ;)
-set shiftwidth=2     " 1 tab == 4 spaces
-set tabstop=2
-set list
-set listchars=tab:»· " Show extra whitespace
+
+" Show extra whitespace
+set list listchars=trail:·,tab:➪·
+
 set lbr              " Linebreak on 500 characters
 set tw=500
 set autoindent       " Auto indent
@@ -152,6 +152,9 @@ autocmd FileType go autocmd BufWritePre <buffer> Fmt
 " nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
 nnoremap <silent><leader><o> :set paste<CR>m`o<Esc>``:set nopaste<CR>
 nnoremap <silent><leader><O> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
+" Configure editor config:
+let g:EditorConfig_core_mode = 'external_command'
 
 
 " Visual mode related
@@ -178,9 +181,25 @@ map k gk
 " map <c-space> ?
 
 " CtrlP fuzzy search mapping
-let g:ctrlp_map = '<Leader>f'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_show_hidden = 1
+
+" Run a given vim command on the results of fuzzy selecting from a given shell
+" command. See usage below.
+function! SelectaCommand(choice_command, selecta_args, vim_command)
+  try
+    silent let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+  catch /Vim:Interrupt/
+    " Swallow the ^C so that the redraw below happens; otherwise there will be
+    " leftovers from selecta on the screen
+    redraw!
+    return
+  endtry
+  redraw!
+  exec a:vim_command . " " . selection
+endfunction
+
+" Find all files in all non-dot directories starting in the working directory.
+" Fuzzy select one of those. Open the selected file with :e.
+nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
 
 " Have NERDtree show hidden files
 let NERDTreeShowHidden = 1
@@ -255,6 +274,9 @@ map <leader>h :sp<cr><C-j><cr>
 " Clear the CtrlP cache
 map <leader>C :CtrlPClearCache<cr>
 
+" Shortcut for search and replace.
+map <leader>l :%s/
+
 
 " Status line
 "--------------------------------------------------------------
@@ -320,8 +342,10 @@ nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
 " Git mappings"
-nmap <Leader>gd :Gdiff<cr>
-nmap <Leader>gb :Gblame<cr>
+
+" Custom NERDcommenter binding
+nmap <leader><space> :call NERDComment("n","toggle")<CR>
+vmap <leader><space> :call NERDComment("x","toggle")<CR>
 
 
 " vimgrep searching and cope displaying
@@ -334,7 +358,6 @@ vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 map <leader>G :vimgrep // **/*.<left><left><left><left><left><left><left>
 
 " Vimgreps in the current file
-map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
@@ -366,9 +389,11 @@ map <leader>ss :setlocal spell!<cr>
 map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
+map <leader>sr zw
 map <leader>s? z=
 
-au BufRead *.(markdown|mdown|md) setlocal spell
+" Enable spellcheck on markdown files.
+autocmd BufNewFile,BufRead *.md set spell
 
 
 " Misc
@@ -386,7 +411,6 @@ map <leader>pp :setlocal paste!<cr>
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
 map <Leader>A :call RunAllSpecs()<CR>
 
 " Run arbitrary shell commands.
