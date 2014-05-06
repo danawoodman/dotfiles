@@ -20,7 +20,6 @@ Bundle 'gmarik/vundle'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'spf13/vim-preview'
-Bundle 'kien/ctrlp.vim'
 Bundle 'terryma/vim-multiple-cursors'
 
 " General programming
@@ -45,7 +44,6 @@ Bundle 'bling/vim-bufferline'
 Bundle 'godlygeek/tabular'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'w0ng/vim-hybrid'
-Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-unimpaired'
 
 if (has("python") || has("python3"))
@@ -55,15 +53,6 @@ else
   Bundle 'bling/vim-airline'
 endif
 
-if executable('ag')
-  Bundle 'mileszs/ack.vim'
-  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-elseif executable('ack-grep')
-  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-  Bundle 'mileszs/ack.vim'
-elseif executable('ack')
-  Bundle 'mileszs/ack.vim'
-endif
  
 " Version Control
 "Bundle 'tpope/vim-fugitive'
