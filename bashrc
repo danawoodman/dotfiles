@@ -161,6 +161,10 @@ function md() {
   mkdir -p "$@" && cd "$@"
 }
 
+function proj() {
+    cd $(find ~/code -maxdepth 1 -type d | selecta)
+}
+
 
 #-------------------------------------------------------------------------------
 # Bash prompt
@@ -250,8 +254,8 @@ function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 }
 
-# Make nano as the default editor.
-export EDITOR="mvim -f"
+# Make vim as the default editor.
+export EDITOR="vim -f"
 
 # Update bash scroll buffer
 export HISTSIZE=10000
@@ -279,7 +283,7 @@ export GOPATH="$HOME/code/go"
 export PATH="$GOPATH:$GOPATH/bin:$PATH"
 
 # Add sbin binaries.
-export PATH="/usr/local/sbin/:$PATH"
+export PATH="/usr/local/sbin:$PATH"
 
 
 ### Added by the Heroku Toolbelt

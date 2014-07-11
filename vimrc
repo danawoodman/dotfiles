@@ -70,9 +70,6 @@ set noerrorbells                " No annoying sound on rrors
 set novisualbell
 set t_vb=
 set tm=500
-set foldcolumn=1                " Add a bit extra margin to the left
-set foldenable                  " Auto fold code
-set foldmethod=indent
 
 " Instead of reverting the cursor to the last position in the buffer, we
 " set it to the first line when editing a git commit message
@@ -133,7 +130,10 @@ set noswapfile
 " Text, tab and indent related
 "--------------------------------------------------------------
 
+"set expandtab        " Use spaces instead of tabs
 set smarttab         " Be smart when using tabs ;)
+"set shiftwidth=4     " 1 tab == 4 spaces
+"set tabstop=2
 
 " Show extra whitespace
 set list listchars=trail:·,tab:➪·
@@ -145,7 +145,7 @@ set si               " Smart indent
 set wrap             " wrap lines
 
 " Run go-fmt on Go sournce code on save.
-autocmd FileType go autocmd BufWritePre <buffer> Fmt
+"autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 " Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
 " nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
@@ -155,6 +155,7 @@ nnoremap <silent><leader><O> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 " Configure editor config:
 let g:EditorConfig_core_mode = 'external_command'
+let g:EditorConfig_verbose=1
 
 
 " Visual mode related
@@ -181,6 +182,9 @@ map k gk
 " map <c-space> ?
 
 " CtrlP fuzzy search mapping
+"let g:ctrlp_map = '<Leader>f'
+"let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_show_hidden = 1
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
@@ -252,7 +256,11 @@ autocmd BufReadPost *
 set viminfo^=%
 
 " Folding
-set foldmethod=syntax
+" Add a bit extra margin to the left
+set foldcolumn=1 
+" Auto fold code
+set foldenable
+set foldmethod=syntax "indent
 set foldlevelstart=1
 
 let javaScript_fold=1    " JavaScript
@@ -263,6 +271,9 @@ let ruby_fold=1          " Ruby
 let sh_fold_enabled=1    " sh
 let vimsyn_folding='af'  " Vim script
 let xml_syntax_folding=1 " XML
+
+" Less/CSS/SCSS folding
+autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
 
 " Remap Space to toggle folding on and off
 nnoremap <Space> za
@@ -342,6 +353,8 @@ nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
 " Git mappings"
+"nmap <Leader>gd :Gdiff<cr>
+"nmap <Leader>gb :Gblame<cr>
 
 " Custom NERDcommenter binding
 nmap <leader><space> :call NERDComment("n","toggle")<CR>
@@ -358,9 +371,13 @@ vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 map <leader>G :vimgrep // **/*.<left><left><left><left><left><left><left>
 
 " Vimgreps in the current file
+"map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
 
 " When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
+
+" Ultisnip
+let g:UltiSnipsExpandTrigger="<tab>"
 
 " Do :help cope if you are unsure what cope is. It's super useful!
 "
@@ -411,6 +428,7 @@ map <leader>pp :setlocal paste!<cr>
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
+"map <Leader>l :call RunLastSpec()<CR>
 map <Leader>A :call RunAllSpecs()<CR>
 
 " Run arbitrary shell commands.
@@ -459,25 +477,25 @@ function! HasPaste()
 endfunction
 
 " Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
+"command! Bclose call <SID>BufcloseCloseIt()
+"function! <SID>BufcloseCloseIt()
+   "let l:currentBufNum = bufnr("%")
+   "let l:alternateBufNum = bufnr("#")
 
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
+   "if buflisted(l:alternateBufNum)
+     "buffer #
+   "else
+     "bnext
+   "endif
 
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
+   "if bufnr("%") == l:currentBufNum
+     "new
+   "endif
 
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
+   "if buflisted(l:currentBufNum)
+     "execute("bdelete! ".l:currentBufNum)
+   "endif
+"endfunction
 
 
 " JavaScript
