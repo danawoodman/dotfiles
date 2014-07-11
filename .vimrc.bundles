@@ -20,11 +20,17 @@ Bundle 'gmarik/vundle'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'spf13/vim-preview'
+"Bundle 'kien/ctrlp.vim'
 Bundle 'terryma/vim-multiple-cursors'
 
 " General programming
 Bundle 'scrooloose/syntastic'
 Bundle 'editorconfig/editorconfig-vim'
+"Bundle 'SirVer/ultisnips'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+"Bundle 'ervandew/supertab'
+Bundle 'mattn/emmet-vim'
 
 " Manipulation
 Bundle 'mbbill/undotree'
@@ -53,6 +59,15 @@ else
   Bundle 'bling/vim-airline'
 endif
 
+"if executable('ag')
+"  Bundle 'mileszs/ack.vim'
+"  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+"elseif executable('ack-grep')
+"  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+"  Bundle 'mileszs/ack.vim'
+"elseif executable('ack')
+"  Bundle 'mileszs/ack.vim'
+"endif
  
 " Version Control
 "Bundle 'tpope/vim-fugitive'
@@ -73,6 +88,7 @@ Bundle 'slim-template/vim-slim.git'
 Bundle 'tpope/vim-haml'
 Bundle 'othree/html5.vim'
 Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'digitaltoad/vim-jade'
 
 " Stylesheets
 Bundle 'groenewege/vim-less'
@@ -85,10 +101,16 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'jelera/vim-javascript-syntax'
 Bundle 'briancollins/vim-jst'
 Bundle 'kchmck/vim-coffee-script'
+"Bundle 'mxw/vim-jsx'
 
 " Go lang
-Bundle 'Blackrush/vim-gocode'
+Bundle 'fatih/vim-go'
 
-syntax enable
+" Clojure
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-fireplace'
+Bundle 'vim-scripts/paredit.vim'
+
+syntax on
 filetype plugin indent on
-
+set omnifunc=syntaxcomplete#Complete
