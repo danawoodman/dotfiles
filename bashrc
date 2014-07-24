@@ -288,3 +288,6 @@ export PATH="/usr/local/sbin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Virtualenv
+export WORKON_HOME=~/code/virtualenvs
