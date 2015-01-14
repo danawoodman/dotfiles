@@ -75,6 +75,10 @@ set tm=500
 " set it to the first line when editing a git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
+"Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+
 
 " Colors and Fonts
 "--------------------------------------------------------------
@@ -95,15 +99,6 @@ set ffs=unix,dos,mac
 
 " Let vim know that the background is dark.
 set background=dark
-
-" Set the color of highlighted lines.
-"hi CursorLine ctermbg=236 guibg=236
-
-" Set the line number color.
-"hi LineNr ctermfg=236
-
-" Set the highlight color for search matches.
-"hi Search ctermbg=246 guibg=246 
 
 " Only show highlighted line when in active pane.
 augroup CursorLine
@@ -128,10 +123,7 @@ set noswapfile
 " Text, tab and indent related
 "--------------------------------------------------------------
 
-"set expandtab        " Use spaces instead of tabs
 set smarttab         " Be smart when using tabs ;)
-"set shiftwidth=4     " 1 tab == 4 spaces
-"set tabstop=2
 
 " Show extra whitespace
 set list listchars=trail:·,tab:➪·
@@ -174,15 +166,6 @@ vmap <leader>g :w !pbcopy<cr><cr>
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
-
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-" map <space> /
-" map <c-space> ?
-
-" CtrlP fuzzy search mapping
-"let g:ctrlp_map = '<Leader>f'
-"let g:ctrlp_cmd = 'CtrlP'
-"let g:ctrlp_show_hidden = 1
 
 " Run a given vim command on the results of fuzzy selecting from a given shell
 " command. See usage below.
@@ -431,12 +414,6 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-"map <Leader>l :call RunLastSpec()<CR>
-map <Leader>A :call RunAllSpecs()<CR>
 
 " Run arbitrary shell commands.
 map <leader>r :!
