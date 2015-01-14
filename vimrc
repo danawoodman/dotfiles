@@ -79,12 +79,6 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 " Colors and Fonts
 "--------------------------------------------------------------
 
-try
-  let g:hybrid_use_iTerm_colors = 1
-  colorscheme hybrid
-catch
-endtry
-
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
@@ -103,10 +97,13 @@ set ffs=unix,dos,mac
 set background=dark
 
 " Set the color of highlighted lines.
-hi CursorLine ctermbg=236 guibg=236
+"hi CursorLine ctermbg=236 guibg=236
+
+" Set the line number color.
+"hi LineNr ctermfg=236
 
 " Set the highlight color for search matches.
-hi Search ctermbg=246 guibg=246 
+"hi Search ctermbg=246 guibg=246 
 
 " Only show highlighted line when in active pane.
 augroup CursorLine
@@ -114,6 +111,7 @@ augroup CursorLine
   au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
   au WinLeave * setlocal nocursorline
 augroup END
+
 " Set the color of folded text.
 hi Folded ctermfg=242 ctermbg=232 guifg=242 guibg=232
 
