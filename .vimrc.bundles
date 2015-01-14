@@ -14,23 +14,21 @@ endfunction
 
 com! -nargs=+         UnBundle
 \ call UnBundle(<args>)
-                             
+
 " General
 Bundle 'gmarik/vundle'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
-Bundle 'spf13/vim-preview'
-"Bundle 'kien/ctrlp.vim'
 Bundle 'terryma/vim-multiple-cursors'
 
 " General programming
 Bundle 'scrooloose/syntastic'
 Bundle 'editorconfig/editorconfig-vim'
-"Bundle 'SirVer/ultisnips'
-Bundle 'garbas/vim-snipmate'
-Bundle 'honza/vim-snippets'
-"Bundle 'ervandew/supertab'
 Bundle 'mattn/emmet-vim'
+Bundle 'ervandew/supertab'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 
 " Manipulation
 Bundle 'mbbill/undotree'
@@ -49,45 +47,19 @@ Bundle 'godlygeek/csapprox'
 Bundle 'bling/vim-bufferline'
 Bundle 'godlygeek/tabular'
 Bundle 'flazz/vim-colorschemes'
-Bundle 'w0ng/vim-hybrid'
 Bundle 'tpope/vim-unimpaired'
-
-if (has("python") || has("python3"))
-  Bundle 'Lokaltog/powerline', {'rtp':'/powerline/bindings/vim'}
-  Bundle 'Lokaltog/powerline-fonts'
-else
-  Bundle 'bling/vim-airline'
-endif
-
-"if executable('ag')
-"  Bundle 'mileszs/ack.vim'
-"  let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-"elseif executable('ack-grep')
-"  let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-"  Bundle 'mileszs/ack.vim'
-"elseif executable('ack')
-"  Bundle 'mileszs/ack.vim'
-"endif
  
 " Version Control
-"Bundle 'tpope/vim-fugitive'
 Bundle 'mattn/gist-vim'
 
 " Markdown
 Bundle 'plasticboy/vim-markdown'
-
-" Ruby / Rails
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-rails'
-let g:rubycomplete_buffer_loading = 1
-Bundle 'tpope/vim-bundler'
 
 " Markup
 Bundle 'amirh/HTML-AutoCloseTag'
 Bundle 'slim-template/vim-slim.git'
 Bundle 'tpope/vim-haml'
 Bundle 'othree/html5.vim'
-Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'digitaltoad/vim-jade'
 
 " Stylesheets
@@ -99,18 +71,15 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'elzr/vim-json'
 Bundle 'pangloss/vim-javascript'
 Bundle 'jelera/vim-javascript-syntax'
+Bundle 'Shutnik/jshint2.vim'
 Bundle 'briancollins/vim-jst'
-Bundle 'kchmck/vim-coffee-script'
-"Bundle 'mxw/vim-jsx'
+Bundle 'mxw/vim-jsx'
 
 " Go lang
 Bundle 'fatih/vim-go'
 
-" Clojure
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-fireplace'
-Bundle 'vim-scripts/paredit.vim'
+" OpenSCAD
+Bundle 'vim-scripts/openscad.vim'
 
 syntax on
 filetype plugin indent on
-set omnifunc=syntaxcomplete#Complete
