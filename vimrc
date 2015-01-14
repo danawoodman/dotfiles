@@ -188,7 +188,7 @@ map k gk
 " command. See usage below.
 function! SelectaCommand(choice_command, selecta_args, vim_command)
   try
-    silent let selection = system(a:choice_command . " | selecta " . a:selecta_args)
+    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
   catch /Vim:Interrupt/
     " Swallow the ^C so that the redraw below happens; otherwise there will be
     " leftovers from selecta on the screen
@@ -201,7 +201,7 @@ endfunction
 
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>f :call SelectaCommand("find * -type f", "", ":e")<cr>
+nnoremap <leader>f :call SelectaCommand("find . -type f -not \\( -ipath '*/node_modules/*' -prune \\) -not \\( -ipath './.*/*' -prune \\) -not \\( -iname '*.log' \\) -not \\( -iname '*.DS_Store' \\)", "", ":e")<cr>
 
 " Have NERDtree show hidden files
 let NERDTreeShowHidden = 1
