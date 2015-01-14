@@ -507,10 +507,14 @@ endfunction
 
 " JavaScript
 "--------------------------------------------------------------
-
+nnoremap <leader>j :JSHint<cr>
+vnoremap <leader>j :JSHint<cr>
 " au FileType javascript call JavaScriptFold()
 
 
 " Markup
 "--------------------------------------------------------------
 
+autocmd BufNewFile,BufRead *.html set foldmethod=indent
+
+colorscheme hybrid
