@@ -259,7 +259,9 @@ set foldcolumn=1
 " Auto fold code
 set foldenable
 set foldmethod=syntax "indent
-set foldlevelstart=1
+
+" Default to all folds open
+set foldlevelstart=20
 
 let javaScript_fold=1    " JavaScript
 let perl_fold=1          " Perl
