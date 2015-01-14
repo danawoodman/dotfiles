@@ -29,9 +29,10 @@ email = dana@danawoodman.com
   default = upstream
 
 [filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
 [core]
-	editor = /usr/bin/vim
+  editor = /usr/bin/vim
 [init]
-	templatedir = ~/.git_template
+  templatedir = ~/.git_template
