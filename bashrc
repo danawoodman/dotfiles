@@ -9,6 +9,10 @@ if [ -f $HOME/.git-completion.bash ]; then
   source $HOME/.git-completion.bash
 fi
 
+# NVM bash completion.
+source ~/.nvm/nvm.sh
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
 # For Ruby rvm...
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
 
@@ -103,6 +107,7 @@ alias gc='git commit'
 alias gca='git commit -am'
 alias gb='git branch'
 alias gco='git checkout'
+alias gcob='git branch | cut -c 3- | selecta | xargs git checkout'
 alias gra='git remote add'
 alias grr='git remote rm'
 alias grst='git reset'
@@ -266,11 +271,8 @@ export HISTSIZE=10000
 # Homebrew and others...
 export PATH="/usr/local/bin:$PATH"
 
-# Add npm global bin directory to path.
-export PATH="/usr/local/share/npm/bin:$PATH"
-
 # Add user bins to path
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.bin:$HOME/bin:$PATH"
 
 # Heroku Toolbelt
 # export PATH="/usr/local/heroku/bin:$PATH"
