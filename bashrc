@@ -187,77 +187,83 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
 fi
 
 if tput setaf 1 &> /dev/null; then
-        tput sgr0
-        if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-                MAGENTA=$(tput setaf 9)
-                ORANGE=$(tput setaf 172)
-                GREEN=$(tput setaf 190)
-                PURPLE=$(tput setaf 141)
-                WHITE=$(tput setaf 256)
-        else
-                MAGENTA=$(tput setaf 5)
-                ORANGE=$(tput setaf 4)
-                GREEN=$(tput setaf 2)
-                PURPLE=$(tput setaf 1)
-                WHITE=$(tput setaf 7)
-        fi
-        BOLD=$(tput bold)
-        RESET=$(tput sgr0)
+  tput sgr0
+  if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
+    RED=$(tput setaf 1)
+    GREEN=$(tput setaf 2)
+    YELLOW=$(tput setaf 3)
+    BLUE=$(tput setaf 4)
+    PURPLE=$(tput setaf 5)
+    LIGHT_BLUE=$(tput setaf 6)
+    ORANGE=$(tput setaf 9)
+    GRAY=$(tput setaf 8)
+    WHITE=$(tput setaf 256)
+  else
+    MAGENTA=$(tput setaf 5)
+    ORANGE=$(tput setaf 4)
+    GREEN=$(tput setaf 2)
+    PURPLE=$(tput setaf 1)
+    WHITE=$(tput setaf 7)
+  fi
+  BOLD=$(tput bold)
+  RESET=$(tput sgr0)
 else
-        MAGENTA="\033[1;31m"
-        ORANGE="\033[1;33m"
-        GREEN="\033[1;32m"
-        PURPLE="\033[1;35m"
-        WHITE="\033[1;37m"
-        BOLD=""
-        RESET="\033[m"
+  MAGENTA="\033[1;31m"
+  ORANGE="\033[1;33m"
+  GREEN="\033[32m"
+  GREEN_LIGHT="\033[1;32m"
+  PURPLE="\033[1;35m"
+  WHITE="\033[1;37m"
+  BOLD=""
+  RESET="\033[m"
 fi
 
 
-function git_info() {
-        # check if we're in a git repo
-        git rev-parse --is-inside-work-tree &>/dev/null || return
+# Get the ahead/behind status of the branch, if available (e.g. [ahead 3, behind 5])
+function parse_git_sync_status {
+  git status -sb | # Get the status message that contains the ahead/behind count
+    head -n1 | # Get the first line of the message
+    grep -o '\[.*\]' | # Get just the ahead/behind count
+    sed -E "s/ahead ([0-9]+)/ahead $(printf $GREEN)\1$(printf $RESET)/" | # Highlight the ahead count
+    sed -E "s/behind ([0-9]+)/behind $(printf $RED)\1$(printf $RESET)/" # Highlight the behind count
+}
 
-        # quickest check for what branch we're on
-        branch=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
+}
 
-        # check if it's dirty (via github.com/sindresorhus/pure)
-        dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null; [ $? -eq 1 ]&& echo -e "*")
+function parse_git_branch {
+  git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
+}
 
-        echo $RESET" on "$PURPLE$branch$dirty
+function git_info {
+  # Check if we're in a git repo
+  git rev-parse --is-inside-work-tree &>/dev/null || return
+
+  # Quickest check for what branch we're on
+  branch=$(parse_git_branch)
+
+  # Check if it's dirty (via github.com/sindresorhus/pure)
+  dirty=$(parse_git_dirty)
+
+  # Get the sync status of the repo (how far ahead/behind we are from remote):
+  status=$(parse_git_sync_status)
+
+  echo ${GRAY}" on "${RESET}${PURPLE}$branch$dirty" "${RESET}$status${RESET}
 }
 
 # Only show username/host if not default
-function usernamehost() {
-        if [ $USER != $default_username ]; then echo "${MAGENTA}$USER ${RESET}at ${ORANGE}$HOSTNAME $WHITEin "; fi
+function usernamehost {
+  if [ $USER != $default_username ]; then echo "${RED}$USER ${RESET}at ${ORANGE}$HOSTNAME ${RESET}in "; fi
 }
 
-# iTerm Tab and Title Customization and prompt customization
-# http://sage.ucsc.edu/xtal/iterm_tab_customization.html
-
-# Put the string " [bash]   hostname::/full/directory/path"
-# in the title bar using the command sequence
-# \[\e]2;[bash]   \h::\]$PWD\[\a\]
-
-# Put the penultimate and current directory
-# in the iterm tab
-# \[\e]1;\]$(basename $(dirname $PWD))/\W\[\a\]
-
-PS1="$ORANGE\@: \[\e]2;$PWD\[\a\]\[\e]1;\]$(basename "$(dirname "$PWD")")/\W\[\a\]${BOLD}\$(usernamehost)\[$GREEN\]\w\$(git_info)\[$RESET\]\n\$ "
+# Display a stylized command line prompt:
+PS1="${ORANGE}\@: \[\e]2;$PWD\[\a\]\[\e]1;\]$(basename "$(dirname "$PWD")")/\W\[\a\]${BOLD}\$(usernamehost)\[${GREEN}\]\w\$(git_info)\[${RESET}\]\n\$ "
 
 
 #-------------------------------------------------------------------------------
 # Shell settings
 #-------------------------------------------------------------------------------
-
-# http://henrik.nyh.se/2008/12/git-dirty-prompt
-# http://www.simplisticcomplexity.com/2008/03/13/show-your-git-branch-name-in-your-prompt/
-function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
-}
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
-}
 
 # Make vim as the default editor.
 export EDITOR="vim -f"
