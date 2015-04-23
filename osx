@@ -10,3 +10,6 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 # Set keyboard repeat to it's fastest setting
 defaults write NSGlobalDomain KeyRepeat -int 0
 defaults write NSGlobalDomain InitialKeyRepeat -int 12
+
+# Show dotfiles in finder
+defaults write com.apple.finder AppleShowAllFiles -bool YES
