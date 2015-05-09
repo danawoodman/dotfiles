@@ -23,6 +23,11 @@ for f in $(command ls ~/.node-completion); do
   test -f "$f" && . "$f"
 done
 
+# Setup bash-completions
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  source $(brew --prefix)/etc/bash_completion
+fi
+
 
 #-------------------------------------------------------------------------------
 # Aliases

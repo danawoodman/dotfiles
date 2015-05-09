@@ -3,6 +3,7 @@
 
 # Git repos
 tap 'caskroom/cask'
+tap 'homebrew/completions'
 
 # OSX Applications and binaries
 #cask 'alfred'
