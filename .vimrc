@@ -45,7 +45,6 @@ Plugin 'vim-scripts/restore_view.vim'
 Plugin 'mhinz/vim-signify'
 Plugin 'godlygeek/csapprox'
 Plugin 'bling/vim-bufferline'
-Plugin 'godlygeek/tabular'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'tpope/vim-unimpaired'
  
@@ -268,7 +267,7 @@ endfunction
 
 " Find all files in all non-dot directories starting in the working directory.
 " Fuzzy select one of those. Open the selected file with :e.
-nnoremap <leader>f :call SelectaCommand("find . -type f -not \\( -ipath '*/node_modules/*' -prune \\) -not \\( -ipath './.*/*' -prune \\) -not \\( -iname '*.log' \\) -not \\( -iname '*/bower_components' \\) -not \\( -iname '*.DS_Store' \\)", "", ":e")<cr>
+nnoremap <leader>f :call SelectaCommand("find . -type f -not \\( -ipath '*/node_modules/*' -prune \\) -not \\( -ipath './.*/*' -prune \\) -not \\( -iname '*.log' \\) -not \\( -iname '*/bower_components' \\) -not \\( -iname '*.DS_Store' \\) -not \\( -ipath '*/tmp/*' -prune \\)", "", ":e")<cr>
 
 " Have NERDtree show hidden files
 let NERDTreeShowHidden = 1
@@ -369,6 +368,9 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 " Editing mappings
 "--------------------------------------------------------------
 
+" Emmet shortcut
+let g:user_emmet_leader_key='<C-z>'
+
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
@@ -403,42 +405,13 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" Tabularize
-nmap <Leader>a& :Tabularize /&<CR>
-vmap <Leader>a& :Tabularize /&<CR>
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:<CR>
-vmap <Leader>a: :Tabularize /:<CR>
-nmap <Leader>a:: :Tabularize /:\zs<CR>
-vmap <Leader>a:: :Tabularize /:\zs<CR>
-nmap <Leader>a, :Tabularize /,<CR>
-vmap <Leader>a, :Tabularize /,<CR>
-nmap <Leader>a,, :Tabularize /,\zs<CR>
-vmap <Leader>a,, :Tabularize /,\zs<CR>
-nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-
-" Git mappings"
-"nmap <Leader>gd :Gdiff<cr>
-"nmap <Leader>gb :Gblame<cr>
-
 " Custom NERDcommenter binding
 nmap <leader><space> :call NERDComment("n","toggle")<CR>
 vmap <leader><space> :call NERDComment("x","toggle")<CR>
 
 
-" vimgrep searching and code displaying
+" code displaying
 "--------------------------------------------------------------
-
-" When you press gv you vimgrep after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-
-" Open vimgrep and put the cursor in the right position
-map <leader>G :vimgrep // **/*.<left><left><left><left><left><left><left>
-
-" Vimgreps in the current file
-"map <leader><space> :vimgrep // <C-R>%<C-A><right><right><right><right><right><right><right><right><right>
 
 " When you press <leader>r you can search and replace the selected text
 "vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
@@ -466,8 +439,11 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+" With JavaScript, if .eslintrc is available, use that, otherwise default to standard.
+autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard']
+
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_checkers = ['standard']
