@@ -33,6 +33,50 @@ brew bundle
 ```
 
 
+## Reference
+
+
+### VIM
+
+Combination of general vim snippets and custom ones in `.vimrc`:
+
+
+#### Expand Emmet Snippets
+
+- <kbd>Control</kbd> + <kbd>z</kbd> + <kbd>,</kbd>
+
+
+#### Spelling suggestions
+
+- Look up spelling suggestions for selection: <kbd>z</kbd> + <kbd>=</kbd>
+
+#### Bookmarking
+
+1. Create bookmark: <kbd>m</kbd> + <kbd>ANY_LETTER</kbd>
+2. Go to bookmark: <kbd>\`</kbd> + <kbd>ANY_LETTER</kbd>
+
+
+#### Record a Macro
+
+1. Start recording macro (replace ANY_LETTER): <kbd>q</kbd> + <kbd>ANY_LETTER</kbd>
+2. Type your commands...
+3. Stop recording: <kbd>q</kbd>
+4. Replay your recording: <kbd>@</kbd> + <kbd>ANY_LETTER</kbd>
+
+
+#### Surrounding Text
+
+Surround choices: `'`, `"`, `{`, `[`, `(`, etc
+
+- Change surrounding characters: <kbd>c</kbd> + <kbd>s</kbd> + <kbd>FROM_CHARACTER</kbd> + <kbd>TO_CHARACTER</kbd>
+    - FROM_CHARACTER is the current surround character
+    - TO_CHARACTER is the surround character you want to replace it with
+    - Example: `c+s+"'` changes `"Foobar"` to `'Foobar'`
+- Delete surround character: <kbd>d</kbd> + <kbd>s</kbd> + <kbd>CHARACTER</kbd>
+    - CHARACTER can be any supported surrounding character
+- Surround selected text/line in visual mode: <kbd>Shift</kbd> + <kbd>S</kbd> + <kbd>CHARACTER</kbd>
+
+
 ## TODO:
 
-- Script to auto symlink files
+- [ ] Script to auto symlink files
