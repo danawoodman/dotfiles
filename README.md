@@ -36,13 +36,26 @@ brew bundle
 ## Reference
 
 
+### Bash
+
+- Search bash history: <kbd>Control</kbd>
+
+
 ### VIM
 
 Combination of general vim snippets and custom ones in `.vimrc`:
 
 
+#### Various Commands
+
+- Jump back to last location: <kbd>Control</kbd> + <kbd>o</kbd>
+- Copy (or "yank") entire line: <kbd>Shift</kbd> + <kbd>y</kbd>
+- Copy select to clipboard: <kbd>Shift</kbd> + <kbd>"</kbd> + <kbd>\*</kbd> + <kbd>y</kbd>
+
+
 #### Expand Emmet Snippets
 
+- <kbd>Control</kbd> + <kbd>z</kbd> + <kbd>,</kbd>
 - <kbd>Control</kbd> + <kbd>z</kbd> + <kbd>,</kbd>
 
 
