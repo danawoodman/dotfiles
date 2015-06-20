@@ -46,6 +46,14 @@ brew bundle
 Combination of general vim snippets and custom ones in `.vimrc`:
 
 
+### Buffer List
+
+- Open buffer list via Buffer Gator: <kbd>,</kbd> + <kbd>b</kbd>
+    - Enter to open in current buffer
+    - Open in new vertical split: <kbd>Control</kbd> + <kbd>v</kbd> 
+    - Open in new horizontal split: <kbd>Control</kbd> + <kbd>h</kbd> 
+
+
 #### Various Commands
 
 - Jump back to last location: <kbd>Control</kbd> + <kbd>o</kbd>
@@ -55,7 +63,6 @@ Combination of general vim snippets and custom ones in `.vimrc`:
 
 #### Expand Emmet Snippets
 
-- <kbd>Control</kbd> + <kbd>z</kbd> + <kbd>,</kbd>
 - <kbd>Control</kbd> + <kbd>z</kbd> + <kbd>,</kbd>
 
 
