@@ -48,7 +48,7 @@ Combination of general vim snippets and custom ones in `.vimrc`:
 
 ### Buffer List
 
-- Open buffer list via Buffer Gator: <kbd>,</kbd> + <kbd>b</kbd>
+- Open buffer list via [Buffer Gator](https://github.com/jeetsukumaran/vim-buffergator): <kbd>,</kbd> + <kbd>b</kbd>
     - Enter to open in current buffer
     - Open in new vertical split: <kbd>Control</kbd> + <kbd>v</kbd> 
     - Open in new horizontal split: <kbd>Control</kbd> + <kbd>h</kbd> 
