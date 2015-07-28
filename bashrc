@@ -13,9 +13,6 @@ fi
 source ~/.nvm/nvm.sh
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
-# For Ruby rvm...
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-
 # Node Completion - Auto-generated, do not touch.
 shopt -s progcomp
 for f in $(command ls ~/.node-completion); do
@@ -145,26 +142,11 @@ alias .....="cd ../../../.."
 alias -- -="cd -" # return to last directory
 alias ..-="cd .. && cd -" # backup and return to dir (good for reloading rvmrc file)
 
-# Programs
-alias st='open -a "Sublime Text"'
-
-# `cat` with beautiful colors. requires Pygments installed (sudo easy_install Pygments)
-alias c='pygmentize -O style=monokai -f console256 -g'
-
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 
-# Pretty print JSON output from things like curl 
-alias json='python -m json.tool'
-
-# Shorthand SASS.
-alias sassy="sass -t compressed --watch ."
-
 # Flush OSX DNS cache
 alias flush="dscacheutil -flushcache && sudo killall -HUP mDNSResponder && echo  'Flushed DNS cache.'"
-
-# Clean up Aventail stuck process
-alias aventail-clean="rm ~/Library/Application\ Support/Aventail/run/SEM.*"
 
 # Functions
 function md() {
@@ -276,20 +258,11 @@ export EDITOR="vim -f"
 # Update bash scroll buffer
 export HISTSIZE=10000
 
-# Add Python packages to PATH
-# export PATH="/usr/local/share/python:$PATH"
-
 # Homebrew and others...
 export PATH="/usr/local/bin:$PATH"
 
 # Add user bins to path
 export PATH="$HOME/.bin:$HOME/bin:$PATH"
-
-# Heroku Toolbelt
-# export PATH="/usr/local/heroku/bin:$PATH"
-
-# RVM
-export PATH="$HOME/.rvm/bin:$PATH"
 
 # Golang
 export GOPATH="$HOME/code/go"
@@ -298,8 +271,7 @@ export PATH="$GOPATH:$GOPATH/bin:$PATH"
 # Add sbin binaries.
 export PATH="/usr/local/sbin:$PATH"
 
-
-### Added by the Heroku Toolbelt
+# Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # Virtualenv
