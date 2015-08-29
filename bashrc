@@ -261,6 +261,10 @@ export HISTSIZE=10000
 # Homebrew and others...
 export PATH="/usr/local/bin:$PATH"
 
+# Tell Homebrew Cask to symlink apps in the root directory
+# instead of ~/Applications
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 # Add user bins to path
 export PATH="$HOME/.bin:$HOME/bin:$PATH"
 
