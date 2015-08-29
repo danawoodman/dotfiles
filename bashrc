@@ -13,6 +13,9 @@ fi
 source ~/.nvm/nvm.sh
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
+# load avn
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh"
+
 # Node Completion - Auto-generated, do not touch.
 shopt -s progcomp
 for f in $(command ls ~/.node-completion); do
@@ -132,6 +135,10 @@ alias gsvn='git svn'
 alias ll="ls -GFlha"
 alias la="ls -Gpha"
 alias lsd='ls -Glh | grep "^d"'
+
+# Kill processes easier
+
+alias ka='killall -kill'
 
 # Easier navigation
 alias cl='clear'
@@ -253,7 +260,7 @@ PS1="${ORANGE}\@: \[\e]2;$PWD\[\a\]\[\e]1;\]$(basename "$(dirname "$PWD")")/\W\[
 #-------------------------------------------------------------------------------
 
 # Make vim as the default editor.
-export EDITOR="vim -f"
+export EDITOR="nvim"
 
 # Update bash scroll buffer
 export HISTSIZE=10000
