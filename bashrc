@@ -155,6 +155,37 @@ alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 # Flush OSX DNS cache
 alias flush="dscacheutil -flushcache && sudo killall -HUP mDNSResponder && echo  'Flushed DNS cache.'"
 
+# Docker shortcut
+alias d="docker"
+
+# Docker quick start
+alias dstart=". '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
+
+# Shortcut for compose
+alias dc='docker-compose'
+
+# Shortcut for machine
+alias dm='docker-machine'
+
+# List all running containers by id.
+alias dl='docker ps -l -q'
+
+# Remove all non-running containers.
+alias drc='docker rm $(docker ps -a -q -f "status=exited" -f "status=created")'
+
+# Remove all unused docker images
+alias dri='docker rmi $(docker images -f "dangling=true" -q)'
+
+# Kill all docker containers
+alias dkill='docker kill $(docker ps -a -q)'
+
+# Rails aliases
+alias be='bundle exec'
+alias r='bundle exec rails'
+
+# Prettyprint JSON
+alias prettyjson='python -m json.tool'
+
 # Functions
 function md() {
   mkdir -p "$@" && cd "$@"
@@ -252,7 +283,7 @@ function usernamehost {
 }
 
 # Display a stylized command line prompt:
-PS1="${ORANGE}\@: \[\e]2;$PWD\[\a\]\[\e]1;\]$(basename "$(dirname "$PWD")")/\W\[\a\]${BOLD}\$(usernamehost)\[${GREEN}\]\w\$(git_info)\[${RESET}\]\n\$ "
+PS1="${ORANGE}\@: \[\e]2;$PWD\[\a\]\[\e]1;\]$(basename "$(dirname "$PWD")")/\W\[\a\]${BOLD}\$(usernamehost)\[${GREEN}\]\w\$(git_info)\[${RESET}\]\n🦄 💨  "
 
 
 #-------------------------------------------------------------------------------
@@ -285,5 +316,74 @@ export PATH="/usr/local/sbin:$PATH"
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# Virtualenv
-export WORKON_HOME=~/code/virtualenvs
+# Remember where my APP repos are for http-tier
+export APP_ROOT=/Users/dana/code/cyan
+
+# Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Add Postgres.app
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+
+# Tutum username
+export TUTUM_USER='contactly'
+
+
+###-begin-npm-completion-###
+#
+# npm command completion script
+#
+# Installation: npm completion >> ~/.bashrc  (or ~/.zshrc)
+# Or, maybe: npm completion > /usr/local/etc/bash_completion.d/npm
+#
+
+if type complete &>/dev/null; then
+  _npm_completion () {
+    local words cword
+    if type _get_comp_words_by_ref &>/dev/null; then
+      _get_comp_words_by_ref -n = -n @ -w words -i cword
+    else
+      cword="$COMP_CWORD"
+      words=("${COMP_WORDS[@]}")
+    fi
+
+    local si="$IFS"
+    IFS=$'\n' COMPREPLY=($(COMP_CWORD="$cword" \
+                           COMP_LINE="$COMP_LINE" \
+                           COMP_POINT="$COMP_POINT" \
+                           npm completion -- "${words[@]}" \
+                           2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  complete -o default -F _npm_completion npm
+elif type compdef &>/dev/null; then
+  _npm_completion() {
+    local si=$IFS
+    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
+                 COMP_LINE=$BUFFER \
+                 COMP_POINT=0 \
+                 npm completion -- "${words[@]}" \
+                 2>/dev/null)
+    IFS=$si
+  }
+  compdef _npm_completion npm
+elif type compctl &>/dev/null; then
+  _npm_completion () {
+    local cword line point words si
+    read -Ac words
+    read -cn cword
+    let cword-=1
+    read -l line
+    read -ln point
+    si="$IFS"
+    IFS=$'\n' reply=($(COMP_CWORD="$cword" \
+                       COMP_LINE="$line" \
+                       COMP_POINT="$point" \
+                       npm completion -- "${words[@]}" \
+                       2>/dev/null)) || return $?
+    IFS="$si"
+  }
+  compctl -K _npm_completion npm
+fi
+###-end-npm-completion-###
