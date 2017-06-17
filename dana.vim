@@ -2,6 +2,7 @@
 " Default GUI Colours
 let s:foreground = "c5c8c6"
 let s:background = "1d1f21"
+let s:white = "ffffff"
 let s:selection = "373b41"
 let s:line = "282a2e"
 let s:comment = "969896"
@@ -11,6 +12,7 @@ let s:orange = "ef8e45"
 let s:yellow = "edd81c"
 let s:muted_yellow = "ccbc33"
 let s:green = "8dba46"
+let s:dark_green = "6b8e48"
 let s:aqua = "5dd7dd"
 let s:cyan = "38d8a8"
 let s:blue = "61afd3"
@@ -255,7 +257,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("ModeMsg", s:green, "", "")
   call <SID>X("MoreMsg", s:green, "", "")
   call <SID>X("Question", s:green, "", "")
-  call <SID>X("WarningMsg", s:foreground, s:red, "")
+  call <SID>X("WarningMsg", s:white, s:red, "")
   call <SID>X("MatchParen", "", s:selection, "")
   call <SID>X("Folded", s:comment, s:background, "")
   call <SID>X("FoldColumn", "", s:background, "")
@@ -284,8 +286,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("Conditional", s:yellow, "", "")
   call <SID>X("String", s:green, "", "")
   call <SID>X("Boolean", s:magenta, "", "")
-  call <SID>X("Number", s:aqua, "", "")
-  call <SID>X("Special", s:yellow, "", "")
+  call <SID>X("Number", s:magenta, "", "")
+  call <SID>X("Special", s:yellow, "", "bold")
   call <SID>X("PreProc", s:purple, "", "")
   call <SID>X("Operator", s:cyan, "", "none")
   call <SID>X("Delimiter", s:yellow, "", "none")
@@ -302,20 +304,39 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("jsParensIfElse", s:gray, "", "")
   call <SID>X("jsFuncParens", s:gray, "", "")
   call <SID>X("jsVariableDef", s:orange, "", "")
+  call <SID>X("jsTemplateBraces", s:gray, "", "")
+  call <SID>X("jsObjectBraces", s:gray, "", "")
+  "call <SID>X("jsTemplateExpression", s:yellow, "", "")
   call <SID>X("jsFuncCall", s:muted_yellow, "", "")
-  call <SID>X("jsFuncName", s:red, "", "bold")
-  call <SID>X("jsGlobalObjects", s:magenta, "", "")
+  call <SID>X("jsObjectFuncName", s:yellow, "", "")
+  call <SID>X("jsObjectProp", s:blue, "", "")
+  call <SID>X("jsFuncName", s:red, "", "bold,underline")
+  "call <SID>X("jsFuncArgs", s:aqua, "", "")
+  call <SID>X("jsGlobalObjects", s:orange, "", "")
   call <SID>X("jsStorageClass", s:purple, "", "")
   call <SID>X("jsFunction", s:orange, "", "")
-  call <SID>X("javaScriptBraces", s:foreground, "", "")
-  call <SID>X("javaScriptFunction", s:purple, "", "")
-  call <SID>X("javaScriptConditional", s:purple, "", "")
-  call <SID>X("javaScriptRepeat", s:purple, "", "")
-  call <SID>X("javaScriptNumber", s:orange, "", "")
-  call <SID>X("javaScriptMember", s:orange, "", "")
-  call <SID>X("javascriptNull", s:orange, "", "")
-  call <SID>X("javascriptGlobal", s:blue, "", "")
-  call <SID>X("javascriptStatement", s:red, "", "")
+  call <SID>X("jsTaggedTemplate", s:green, "", "")
+  call <SID>X("jsTemplateString", s:green, "", "")
+  call <SID>X("jsReturn", s:magenta, "", "underline,bold")
+  "call <SID>X("javaScriptBraces", s:foreground, "", "")
+  "call <SID>X("javaScriptFunction", s:purple, "", "")
+  "call <SID>X("javaScriptConditional", s:purple, "", "")
+  "call <SID>X("javaScriptRepeat", s:purple, "", "")
+  "call <SID>X("javaScriptNumber", s:orange, "", "")
+  "call <SID>X("javaScriptMember", s:orange, "", "")
+  "call <SID>X("javascriptNull", s:orange, "", "")
+  "call <SID>X("javascriptGlobal", s:blue, "", "")
+  "call <SID>X("javascriptStatement", s:red, "", "")
+
+  " XML/JSX/HTML
+  call <SID>X("xmlTag", s:yellow, "", "")
+  call <SID>X("xmlEndTag", s:yellow, "", "")
+  call <SID>X("xmlTagName", s:yellow, "", "")
+  call <SID>X("htmlTag", s:gray, "", "")
+  call <SID>X("htmlEndTag", s:gray, "", "")
+  call <SID>X("htmlTagName", s:yellow, "", "")
+  call <SID>X("htmlArg", s:blue, "", "")
+  call <SID>X("htmlScriptTag", s:red, "", "")
 
   " CSS/Sass
   call <SID>X("cssColor", s:orange, "", "")
@@ -326,6 +347,20 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
   " Vim Highlighting
   call <SID>X("vimCommand", s:red, "", "none")
+
+  " Vim Highlighting
+  call <SID>X("markdownHeadingDelimiter", s:gray, "", "")
+  call <SID>X("markdownH1", s:red, "", "bold")
+  call <SID>X("markdownH2", s:red, "", "bold")
+  call <SID>X("markdownH3", s:red, "", "bold")
+  call <SID>X("markdownItalic", s:orange, "", "italic")
+  call <SID>X("markdownBold", s:green, "", "bold")
+  call <SID>X("markdownCode", s:yellow, "", "")
+  call <SID>X("markdownCodeDelimiter", s:gray, "", "")
+  call <SID>X("markdownUrl", s:blue, "", "underline")
+  call <SID>X("markdownLinkTextDelimiter", s:gray, "", "")
+  call <SID>X("markdownLinkDelimiter", s:gray, "", "")
+  call <SID>X("githubFlavoredMarkdownCode", s:yellow, "", "")
 
   " C Highlighting
   "call <SID>X("cType", s:yellow, "", "")
@@ -388,24 +423,21 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   "call <SID>X("coffeeKeyword", s:purple, "", "")
   "call <SID>X("coffeeObject", s:yellow, "", "")
 
-  " HTML Highlighting
-  call <SID>X("htmlTag", s:purple, "", "")
-  call <SID>X("htmlEndTag", s:purple, "", "")
-  call <SID>X("htmlTagName", s:red, "", "")
-  call <SID>X("htmlArg", s:red, "", "")
-  call <SID>X("htmlScriptTag", s:red, "", "")
-
   " Diff Highlighting
-  call <SID>X("diffAdd", "", "4c4e39", "")
-  call <SID>X("diffDelete", s:background, s:red, "")
-  call <SID>X("diffChange", "", "2B5B77", "")
+  call <SID>X("diffAdd", s:white, s:dark_green, "")
+  call <SID>X("diffDelete", s:white, s:red, "")
+  call <SID>X("diffChange", s:white, "2B5B77", "")
   call <SID>X("diffText", s:line, s:blue, "")
 
+  " vim-indent-guides
+  call <SID>X("IndentGuidesOdd", "", s:blue, "")
+  call <SID>X("IndentGuidesEven", "", s:blue, "")
+
   " ShowMarks Highlighting
-  call <SID>X("ShowMarksHLl", s:orange, s:background, "none")
-  call <SID>X("ShowMarksHLo", s:purple, s:background, "none")
-  call <SID>X("ShowMarksHLu", s:yellow, s:background, "none")
-  call <SID>X("ShowMarksHLm", s:aqua, s:background, "none")
+  "call <SID>X("ShowMarksHLl", s:orange, s:background, "none")
+  "call <SID>X("ShowMarksHLo", s:purple, s:background, "none")
+  "call <SID>X("ShowMarksHLu", s:yellow, s:background, "none")
+  "call <SID>X("ShowMarksHLm", s:aqua, s:background, "none")
 
   " Lua Highlighting
   "call <SID>X("luaStatement", s:purple, "", "")
@@ -416,8 +448,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   "call <SID>X("luaCondEnd", s:purple, "", "")
 
   " Cucumber Highlighting
-  call <SID>X("cucumberGiven", s:blue, "", "")
-  call <SID>X("cucumberGivenAnd", s:blue, "", "")
+  "call <SID>X("cucumberGiven", s:blue, "", "")
+  "call <SID>X("cucumberGivenAnd", s:blue, "", "")
 
   " Go Highlighting
   call <SID>X("goDirective", s:purple, "", "")
