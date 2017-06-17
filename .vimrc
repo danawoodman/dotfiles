@@ -1,116 +1,148 @@
 set nocompatible " Must be the first line
+set nospell
 filetype off
 
 " Setup Bundle support
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+"set rtp+=~/.vim/bundle/vundle/
+"call vundle#rc()
+
+"set autoread
 
 " Add an UnBundle command {
-function! UnBundle(arg, ...)
-  let bundle = vundle#config#init_bundle(a:arg, a:000)
-  call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
-endfunction
+"function! UnBundle(arg, ...)
+  "let bundle = vundle#config#init_bundle(a:arg, a:000)
+  "call filter(g:bundles, 'v:val["name_spec"] != "' . a:arg . '"')
+"endfunction
 
-com! -nargs=+         UnBundle
-\ call UnBundle(<args>)
+"com! -nargs=+         UnBundle
+"\ call UnBundle(<args>)
+
+call plug#begin()
 
 " General
-Plugin 'gmarik/vundle'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'jeetsukumaran/vim-buffergator'
+"Plug 'gmarik/vundle'
+"Plug 'MarcWeber/vim-addon-mw-utils'     " Interpret a file by function and cache file automatically
+"Plug 'tomtom/tlib_vim'
+Plug 'terryma/vim-multiple-cursors'
+"Plug 'jeetsukumaran/vim-buffergator'
+Plug 'airblade/vim-rooter'                " Change current working directory automatically
+
+" Theming
+Plug 'vim-scripts/SyntaxAttr.vim'         " Display syntax highlighting attributes under cursor
 
 " Collaboration
-Plugin 'floobits/floobits-neovim'
+"Plug 'floobits/floobits-neovim'
 
 " General programming
-Plugin 'scrooloose/syntastic'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'ervandew/supertab'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'cohama/lexima.vim'
-"Plugin 'honza/vim-snippets'
+"Plug 'scrooloose/syntastic'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'mattn/emmet-vim'
+
+" Snippets
+Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
+
+"Plug 'marijnh/tern_for_vim'
+Plug 'cohama/lexima.vim'        " auto-close parens
+"Plug 'honza/vim-snippets'
+
+" Code auto completition
+"Plug 'ervandew/supertab'
+"Plug 'Valloric/YouCompleteMe'
+Plug 'roxma/nvim-completion-manager' " async code completion
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 
 " Manipulation
-Plugin 'mbbill/undotree'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-abolish'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'kien/ctrlp.vim'
+"Plug 'mbbill/undotree'
+Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-abolish'
+Plug 'scrooloose/nerdcommenter'
+Plug 'kien/ctrlp.vim'
 
 " Movement
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'vim-scripts/restore_view.vim'
+"Plug 'godlygeek/tabular'
+Plug 'easymotion/vim-easymotion'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'vim-scripts/restore_view.vim'
 
 " Visual / Interface
-Plugin 'mhinz/vim-signify'
-Plugin 'godlygeek/csapprox'
-Plugin 'bling/vim-bufferline'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'tpope/vim-unimpaired'
- 
+Plug 'mhinz/vim-signify'
+Plug 'godlygeek/csapprox'     " make gvim-only oclorschemes workin in terminal vim
+Plug 'bling/vim-bufferline'   " show list of buffers in status line
+"Plug 'flazz/vim-colorschemes' " vim colorschemes
+Plug 'tpope/vim-unimpaired'   " handy bracket mappings
+
 " Version Control
-Plugin 'mattn/gist-vim'
+"Plug 'mattn/gist-vim'
 
 " Markdown
-Plugin 'plasticboy/vim-markdown'
+"Plug 'plasticboy/vim-markdown'
+"Plug 'tpope/vim-markdown'
+"Plug 'jtratner/vim-flavored-markdown'
+Plug 'rhysd/vim-gfm-syntax'
 
 " Markup
-Plugin 'amirh/HTML-AutoCloseTag'
-Plugin 'slim-template/vim-slim.git'
-Plugin 'tpope/vim-haml'
-Plugin 'othree/html5.vim'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'mustache/vim-mustache-handlebars'
+Plug 'vim-scripts/HTML-AutoCloseTag'
+Plug 'slim-template/vim-slim'
+Plug 'digitaltoad/vim-jade'
+Plug 'digitaltoad/vim-pug'
+Plug 'tpope/vim-haml'
+Plug 'othree/html5.vim'
+Plug 'mustache/vim-mustache-handlebars'
 
 " Stylesheets
-Plugin 'groenewege/vim-less'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'cakebaker/scss-syntax.vim'
+Plug 'groenewege/vim-less'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'cakebaker/scss-syntax.vim'
 
 " JavaScript
-Plugin 'elzr/vim-json'
-Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
-"Plugin 'Shutnik/jshint2.vim'
-"Plugin "wookiehangover/jshint.vim"
-Plugin 'briancollins/vim-jst'
-Plugin 'mxw/vim-jsx'
+Plug 'elzr/vim-json'
+Plug 'pangloss/vim-javascript'
+"Plug 'othree/yajs.vim'
+Plug 'mxw/vim-jsx'
+"Plug 'Shutnik/jshint2.vim'
+"Plug 'wookiehangover/jshint.vim'
+Plug 'briancollins/vim-jst'
+Plug 'posva/vim-vue'
+Plug 'sbdchd/neoformat'
+"Plug 'flowtype/vim-flow'
+Plug 'nikvdp/ejs-syntax'
 
-" Go lang
-Plugin 'fatih/vim-go'
+" Other syntax highlighting/language support
+Plug 'fatih/vim-go'
+Plug 'vim-scripts/openscad.vim'
+Plug 'gregjurman/vim-nc'
+Plug 'elixir-lang/vim-elixir'
 
-" OpenSCAD
-Plugin 'vim-scripts/openscad.vim'
-
+call plug#end()
 
 " Settings
 "--------------------------------------------------------------
 
-syntax on
-filetype plugin indent on
+"filetype plugin indent on
+"syntax on
 
 " Set extra options when running in GUI mode
 if has("gui_running")
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
+  set guioptions-=T
+  set guioptions-=e
+  set t_Co=256
+  set guitablabel=%M\ %t
 endif
 
+" Color scheme
 set background=dark                     " Let vim know that the background is dark.
-colorscheme hybrid                      " Set color scheme (needs to be after background setting)
+colorscheme dana                        " Set color scheme (needs to be after background setting)
+
+set ttyfast
+set lazyredraw
 set history=1000                        " Sets how many lines of history VIM has to remember
 set autoread                            " Set to auto read when a file is changed from the outside
 set mouse=a                             " Enable mouse usage and hide it when typing
 set mousehide
+"set autochdir                           " Automatically change CWD
 set shortmess+=filmnrxoOtT              " Shorten message
-set list listchars=trail:·,tab:➪·       " Show extra whitespace
+set list listchars=trail:·,tab:··       " Show extra whitespace
 set smarttab                            " Be smart when using tabs ;)
 set lbr                                 " Linebreak on 500 characters
 set tw=500
@@ -136,7 +168,7 @@ set lazyredraw                          " Don't redraw while executing macros (g
 set magic                               " For regular expressions turn magic on
 set showmatch                           " Show matching brackets when text indicator is over them
 set mat=2                               " How many tenths of a second to blink when matching brackets
-set noerrorbells                        " No annoying sound on rrors
+set noerrorbells                        " No annoying sound on errors
 set novisualbell                        " No visual bell
 set t_vb=
 set tm=500
@@ -151,7 +183,9 @@ set foldcolumn=0                        " No folding column
 set foldenable                          " Auto fold code
 set foldmethod=syntax
 set foldlevelstart=20                   " Default to all folds open
-set wildignore+=*/dist/*,*/tmp/*,*.zip  " CtrlP custom ignores
+set expandtab
+set shiftwidth=2
+set softtabstop=2
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -176,7 +210,7 @@ endfunction
 
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l " Format the status line
 
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set stal=2
@@ -204,7 +238,7 @@ let g:acp_enableAtStartup = 0
 
 " Configure editor config:
 let g:EditorConfig_core_mode = 'external_command'
-let g:EditorConfig_verbose=1
+let g:EditorConfig_verbose=0
 
 " CtrlP open shortcut
 let g:ctrlp_map = '<leader>f'
@@ -212,39 +246,41 @@ let g:ctrlp_map = '<leader>f'
 " Have NERDtree show hidden files
 let NERDTreeShowHidden = 1
 
+" vim-jsx configuration
+let g:jsx_ext_required = 0
+
+" vim-javascript configuration
+let g:javascript_plugin_flow = 1
+
+" Facebook Flow type checking
+let g:flow#enable = 0
+
 " Configure ack.vim to use ag: the silver searcher instead
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " CtrP ignores
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+let g:ctrlp_custom_ignore = '\v[\/](build|coverage|dist|tmp|log|node_modules)$|(\.(DS_Store|git))$'
+let g:ctrlp_working_path_mode = 0
+
+" nvim-completition-manager
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" UltiSnips configuration
+let g:UltiSnipsExpandTrigger        = "<tab>"
+let g:UltiSnipsJumpForwardTrigger   = "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpBackwardTrigger  = "<Plug>(ultisnips_backward)"
+let g:UltiSnipsListSnippets         = "<Plug>(ultisnips_list)"
+let g:UltiSnipsRemoveSelectModeMappings = 0
+
+" This is optional if you're using NCM
+inoremap <silent> <c-u> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+inoremap <c-n> <c-r>=UltiSnips#ExpandSnippet()<cr>
 
 " Shortcut for Multiple Cursors
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
-
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-let g:ycm_seed_identifiers_with_syntax = 1 " Load keywords from given language
-
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = '<tab>' " '<enter>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-"let g:UltiSnipsAddFiletypes jsx.js
-"let g:UltiSnipsAddFiletypes jsx.html
-
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['standard']
-let g:syntastic_mode_map={ 'mode': 'active',
-            \ 'active_filetypes': [],
-            \ 'passive_filetypes': ['html'] }
 
 " Configure vim-mustache-handlebars
 let g:mustache_abbreviations = 1
@@ -257,10 +293,11 @@ let r_syntax_folding=1   " R
 let ruby_fold=1          " Ruby
 let sh_fold_enabled=1    " sh
 let vimsyn_folding='af'  " Vim script
-let xml_syntax_folding=1 " XML
+"let xml_syntax_folding=1 " XML
 
-" Emmet shortcut
+" Emmet configuration
 let g:user_emmet_leader_key='<C-z>'
+let g:user_emmet_settings = {'html':{'quote_char':"'",},}
 
 " Only show highlighted line when in active pane.
 augroup CursorLine
@@ -272,11 +309,13 @@ augroup END
 " Set the color of folded text.
 hi Folded ctermfg=242 ctermbg=232 guifg=242 guibg=232
 
-" Syntastic error highlighting colors
+" Spelling colors
 hi SpellBad ctermfg=015 ctermbg=160 guifg=#ffffff guibg=#d70000
 hi SpellCap ctermfg=015 ctermbg=160 guifg=#ffffff guibg=#d70000
-highlight link SyntasticError SpellBad
-highlight link SyntasticWarning SpellCap
+
+" Syntastic error highlighting colors
+"highlight link SyntasticError SpellBad
+"highlight link SyntasticWarning SpellCap
 
 
 "--------------------------------------------------------------
@@ -292,14 +331,12 @@ nmap <leader>q :wq<cr>
 " Ctrl-j/k deletes blank line below/above, and Alt-j/k inserts.
 " nnoremap <silent><C-j> m`:silent +g/\m^\s*$/d<CR>``:noh<CR>
 " nnoremap <silent><C-k> m`:silent -g/\m^\s*$/d<CR>``:noh<CR>
-nnoremap <silent><leader><o> :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent><leader><O> :set paste<CR>m`O<Esc>``:set nopaste<CR>
 
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
-endfunction 
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
@@ -330,10 +367,6 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 " When you press <leader>r you can search and replace the selected text
 "vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
-" Shortcut for copying to clipboard.
-vmap <leader>g :w !pbcopy<cr><cr>
-vmap <leader>y "*y
-
 " Treat long lines as break lines (useful when moving around in them)
 map j gj
 map k gk
@@ -357,18 +390,28 @@ map <leader>ba :1,1000 bd!<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+"map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Shortcut for copying to clipboard.
+vmap <leader>g :w !pbcopy<cr><cr>
+vmap <leader>y "*y
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
+
+nnoremap <silent><leader><o> :set paste<CR>m`o<Esc>``:set nopaste<CR>
+nnoremap <silent><leader><O> :set paste<CR>m`O<Esc>``:set nopaste<CR>
+
+" Paste from clipboard
+map <leader>p "*P"<cr>
 
 " Run arbitrary shell commands.
 map <leader>r :!
@@ -376,11 +419,13 @@ map <leader>r :!
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
-" Shortcuts using <leader>
+" Navigate around to mispelled words
 map <leader>sn ]s
 map <leader>sp [s
+" Add to dictionary
 map <leader>sa zg
 map <leader>sr zw
+" Show spelling options
 map <leader>s? z=
 
 " Remap Space to toggle folding on and off
@@ -388,6 +433,7 @@ nnoremap <space> za
 
 " Fold everything but current fold
 map <leader>m zMzvzazO
+map <leader>M zR
 
 " Create split panes
 map <leader>v :vs<cr><C-l><cr>
@@ -407,7 +453,6 @@ nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
 if has("mac") || has("macunix")
   nmap <D-j> <M-j>
   nmap <D-k> <M-k>
@@ -424,6 +469,9 @@ imap jj <Esc>
 " Custom NERDcommenter binding
 nmap <leader><space> :call NERDComment("n","toggle")<CR>
 vmap <leader><space> :call NERDComment("x","toggle")<CR>
+
+" Display the current syntax highlighting name is under the cursor (for theming)
+map <leader>hi :call SyntaxAttr()<CR>
 
 "set omnifunc=syntaxcomplete#Complete
 
@@ -449,20 +497,29 @@ vmap <leader><space> :call NERDComment("x","toggle")<CR>
 " File Type Handling
 "--------------------------------------------------------------
 
-autocmd BufRead,BufNewFile *.es6 setfiletype javascript
+" Automatically change CWD
+"autocmd BufEnter * silent! lcd %:p:h
 " au FileType javascript call JavaScriptFold()
 autocmd BufNewFile,BufRead *.html set foldmethod=indent
-au BufRead,BufNewFile *.hbs set filetype=mustache
+autocmd BufRead,BufNewFile *.hbs set filetype=mustache
+autocmd BufRead,BufNewFile *.es6 set filetype=javascript
+autocmd BufNewFile,BufRead *.ejs set filetype=html
 autocmd BufNewFile,BufRead *.md set spell
-
-" Less/CSS/SCSS folding
 autocmd BufRead,BufNewFile *.css,*.scss,*.less setlocal foldmethod=marker foldmarker={,}
+autocmd BufNewFile,BufRead *.nc,*.ngc setlocal nospell ft=ngc syntax=ngc
 
 " Run go-fmt on Go sournce code on save.
 "autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
-" With JavaScript, if .eslintrc is available, use that, otherwise default to standard.
-autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard']
+" Use prettier-standard
+"autocmd FileType javascript set formatprg=prettier-standard
+
+" Use prettier with custom config
+autocmd FileType javascript set formatprg=prettier-with-opts
+autocmd BufWritePre *.js Neoformat
+let g:neoformat_try_formatprg = 1
+let g:neoformat_only_msg_on_error = 1
+"let g:neoformat_verbose = 1
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -471,14 +528,23 @@ autocmd BufReadPost *
      \ endif
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
+"func! DeleteTrailingWS()
+  "exe "normal mz"
+  "%s/\s\+$//ge
+  "exe "normal `z"
+"endfunc
+"autocmd BufWrite *.py :call DeleteTrailingWS()
+"autocmd BufWrite *.coffee :call DeleteTrailingWS()
+
+" Use github flavored markdown by default
+"augroup markdown
+    "au!
+    "au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+"augroup END
 
 " Instead of reverting the cursor to the last position in the buffer, we
 " set it to the first line when editing a git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+" Turn off syntax highlighting on large files
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 100000 | syntax clear | endif
