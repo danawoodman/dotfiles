@@ -267,7 +267,7 @@ inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 " UltiSnips configuration
 let g:UltiSnipsExpandTrigger        = "<tab>"
-let g:UltiSnipsJumpForwardTrigger   = "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger   = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger  = "<Plug>(ultisnips_backward)"
 let g:UltiSnipsListSnippets         = "<Plug>(ultisnips_list)"
 let g:UltiSnipsRemoveSelectModeMappings = 0
@@ -515,10 +515,11 @@ autocmd BufNewFile,BufRead *.nc,*.ngc setlocal nospell ft=ngc syntax=ngc
 "autocmd FileType javascript set formatprg=prettier-standard
 
 " Use prettier with custom config
-autocmd FileType javascript set formatprg=prettier-with-opts
-autocmd BufWritePre *.js Neoformat
-let g:neoformat_try_formatprg = 1
-let g:neoformat_only_msg_on_error = 1
+"autocmd FileType javascript set formatprg="prettier --stdin" "prettier-with-opts
+"autocmd BufWritePre *.js Neoformat
+"autocmd BufWritePre,TextChanged,InsertLeave *.js Neoformat
+"let g:neoformat_try_formatprg = 1
+"let g:neoformat_only_msg_on_error = 1
 "let g:neoformat_verbose = 1
 
 " Return to last edit position when opening files (You want this!)

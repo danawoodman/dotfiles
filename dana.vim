@@ -306,6 +306,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
   call <SID>X("jsVariableDef", s:orange, "", "")
   call <SID>X("jsTemplateBraces", s:gray, "", "")
   call <SID>X("jsObjectBraces", s:gray, "", "")
+  call <SID>X("jsBrackets", s:gray, "", "")
   "call <SID>X("jsTemplateExpression", s:yellow, "", "")
   call <SID>X("jsFuncCall", s:muted_yellow, "", "")
   call <SID>X("jsObjectFuncName", s:yellow, "", "")

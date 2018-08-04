@@ -34,5 +34,6 @@ email = dana@danawoodman.com
   smudge = git media smudge %f
 [core]
 	editor = nvim
+	excludesfile = /Users/dana/.gitignore_global
 [init]
   templatedir = ~/.git_template
