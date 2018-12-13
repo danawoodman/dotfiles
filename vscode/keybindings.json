@@ -1,0 +1,12 @@
+[
+  {
+    "key": "tab",
+    "command": "-acceptSelectedSuggestion",
+    "when": "editorTextFocus && suggestWidgetVisible"
+  },
+  {
+    "key": "tab",
+    "command": "acceptSelectedSuggestion",
+    "when": "editorTextFocus && suggestWidgetVisible && !inSnippetMode"
+  }
+]

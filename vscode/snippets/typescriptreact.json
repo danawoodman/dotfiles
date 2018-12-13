@@ -1,0 +1,79 @@
+{
+  "Arrow function": {
+    "prefix": "fu",
+    "body": ["(${1:args}) => {", "  $0", "}"]
+  },
+  "Annonymous function": {
+    "prefix": "fun",
+    "body": ["function (${1:args}) {", "  $0", "}"]
+  },
+  "Describe test block": {
+    "prefix": "desc",
+    "body": ["describe('${1:does stuff}', () => {", "  $0", "})"]
+  },
+  "Test block": {
+    "prefix": "test",
+    "body": ["test('${1:does stuff}', () => {", "  $0", "})"]
+  },
+  "Test expect": {
+    "prefix": "exp",
+    "body": ["expect(${1:foo}).toBe($0)"]
+  },
+  "Named function": {
+    "prefix": "func",
+    "body": ["function ${1:name}(${2:args}) {", "  $0", "}"]
+  },
+  "ES6 Class": {
+    "prefix": "cla",
+    "body": ["class ${1:Name} {", "  $0", "}"]
+  },
+  "Module exports": {
+    "prefix": "me",
+    "body": ["module.exports = $0"]
+  },
+  "ES6 default export": {
+    "prefix": "ed",
+    "body": ["export default $0"]
+  },
+  "Console log": {
+    "prefix": "log",
+    "body": ["console.log($0)"],
+    "description": "Console log"
+  },
+  "CommonJS require": {
+    "prefix": "req",
+    "body": ["const $1 = require('$0')"],
+    "description": "CommonJS require"
+  },
+  "ES6 Import": {
+    "prefix": "imp",
+    "body": ["import $1 from '$0'"],
+    "description": "ES6 import statement"
+  },
+  "React Class component": {
+    "prefix": "comp",
+    "body": [
+      "import React from 'react'",
+      "import t from 'prop-types'",
+      "",
+      "export type Props = {}",
+      "",
+      "type State = {}",
+      "",
+      "export default class $1 extends React.Component<Props, State> {",
+      "",
+      "\tstatic propTypes = {}",
+      "",
+      "\tstatic defaultProps = {}",
+      "",
+      "\tstate = {}",
+      "",
+      "\trender() {",
+      "\t\treturn (",
+      "\t\t\t$0",
+      "\t\t)",
+      "\t}",
+      "}"
+    ]
+  }
+}

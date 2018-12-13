@@ -1,0 +1,184 @@
+{
+  "window.zoomLevel": 1,
+  //---------------------------------------------------------------------------
+  // Editor
+  //---------------------------------------------------------------------------
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "Inconsolata, 'Droid Sans Mono', Consolas, 'Liberation Mono', Menlo, Monaco, 'Source Code Pro', 'Annonymouse Pro', 'Andale Mono', 'Space Mono', 'M+ 1m'",
+  "editor.fontSize": 17,
+  "editor.tabSize": 2,
+  "editor.letterSpacing": 1.3,
+  "editor.lineHeight": 30,
+  "editor.snippetSuggestions": "top",
+  "editor.folding": true,
+  "editor.tabCompletion": true,
+  "editor.wordBasedSuggestions": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.minimap.enabled": false,
+  "editor.foldingStrategy": "indentation",
+  //---------------------------------------------------------------------------
+  // Workbench
+  //---------------------------------------------------------------------------
+  "workbench.colorCustomizations": {
+    "editorError.border": "#ff3300",
+    "editorError.foreground": "#ff0000"
+  },
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": null,
+  //---------------------------------------------------------------------------
+  // Explorer
+  //---------------------------------------------------------------------------
+  "explorer.openEditors.visible": 0,
+  "explorer.confirmDragAndDrop": false,
+  "eslint.autoFixOnSave": true,
+  // "git.autofetch": false,
+  "files.trimTrailingWhitespace": false,
+  "[html]": {},
+  "materialTheme.fixIconsRunning": false,
+  //---------------------------------------------------------------------------
+  // Shell
+  //---------------------------------------------------------------------------
+  "shellformat.path": "/usr/local/bin/shfmt",
+  //---------------------------------------------------------------------------
+  // JavaScript
+  //---------------------------------------------------------------------------
+  "javascript.nameSuggestions": false,
+  //---------------------------------------------------------------------------
+  // HTML
+  //---------------------------------------------------------------------------
+  "html.format.enable": true,
+  "html.format.wrapLineLength": 80,
+  "files.associations": {
+    "*.jsp": "jsp",
+    "*.css": "postcss"
+  },
+  "[markdown]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.quickSuggestions": false
+  },
+  //---------------------------------------------------------------------------
+  // Emmet
+  //---------------------------------------------------------------------------
+  "emmet.includeLanguages": {
+    "javascript": "html",
+    "jsp": "html",
+    "postcss": "css"
+  },
+  "emmet.syntaxProfiles": {
+    "postcss": "css"
+  },
+  "emmet.useNewEmmet": true,
+  "emmet.showExpandedAbbreviation": "always",
+  // "prettier.singleQuote": true,
+  // "prettier.semi": true,
+  // "prettier.trailingComma": "es5",
+  //---------------------------------------------------------------------------
+  // Vim
+  //---------------------------------------------------------------------------
+  "vim.disableAnnoyingNeovimMessage": true,
+  "vim.foldfix": true,
+  "vim.leader": ",",
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<leader>", "<space>"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.action.commentLine",
+          "args": []
+        }
+      ]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<leader>", "m"],
+      "after": [],
+      "commands": [
+        {
+          "command": "dakara-foldplus.levelAtCursor",
+          "args": []
+        },
+        {
+          "command": "editor.unfoldRecursively",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["<space>"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.foldRecursively",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "<space>"],
+      "after": [],
+      "commands": [
+        {
+          "command": "editor.action.commentLine",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "f"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.quickOpen",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "w"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.files.save",
+          "args": []
+        }
+      ]
+    },
+    {
+      "before": ["<leader>", "q"],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.files.save",
+          "args": []
+        },
+        {
+          "command": "workbench.action.closeActiveEditor",
+          "args": []
+        }
+      ]
+    }
+  ],
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "vsicons.dontShowNewVersionMessage": true,
+  "terminal.integrated.fontSize": 17,
+  "github.hosts": [
+    {
+      "host": "https://github.com",
+      "username": "oauth",
+      "token": "system"
+    }
+  ],
+  "arduino.path": "/Applications",
+  "typescript.tsserver.log": "verbose",
+  "shellformat.runOnSave": true
+}
