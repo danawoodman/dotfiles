@@ -1,11 +1,11 @@
 {
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   //---------------------------------------------------------------------------
   // Editor
   //---------------------------------------------------------------------------
   "editor.formatOnSave": true,
   "editor.fontFamily": "Inconsolata, 'Droid Sans Mono', Consolas, 'Liberation Mono', Menlo, Monaco, 'Source Code Pro', 'Annonymouse Pro', 'Andale Mono', 'Space Mono', 'M+ 1m'",
-  "editor.fontSize": 17,
+  "editor.fontSize": 15,
   "editor.tabSize": 2,
   "editor.letterSpacing": 1.3,
   "editor.lineHeight": 30,
@@ -24,7 +24,7 @@
     "editorError.foreground": "#ff0000"
   },
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "Dracula",
   "workbench.iconTheme": null,
   //---------------------------------------------------------------------------
   // Explorer
