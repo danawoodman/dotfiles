@@ -3,37 +3,41 @@ name = Dana Woodman
 email = dana@danawoodman.com
 
 [color]
-  ui = auto
+ui = auto
 
 [color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
+current = yellow reverse
+local = yellow
+remote = green
 
 [color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-  whitespace = red reverse
+meta = yellow bold
+frag = magenta bold
+old = red bold
+new = green bold
+whitespace = red reverse
 
 [color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
+added = yellow
+changed = green
+untracked = cyan
 
 [credential]
-  helper = osxkeychain
+helper = osxkeychain
 
 [push]
-  default = upstream
+default = upstream
 
 [filter "media"]
-  required = true
-  clean = git media clean %f
-  smudge = git media smudge %f
+required = true
+clean = git media clean %f
+smudge = git media smudge %f
+
 [core]
-	editor = nvim
-	excludesfile = /Users/dana/.gitignore_global
-[init]
-  templatedir = ~/.git_template
+editor = vim
+
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
