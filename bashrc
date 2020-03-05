@@ -92,9 +92,9 @@ function pretty_git_log() {
 
 # GIT aliases.
 alias g='git'
-alias gh='git help'
+#alias gh='git help'
 alias ga='git add'
-alias gp='git push'
+alias gp='git push --tags && git push'
 #alias gl='git log --oneline --graph --decorate'
 alias gl=pretty_git_log
 alias gls="gl -10"
@@ -122,7 +122,8 @@ alias grb='git rebase'
 alias gsh='git show'
 alias gcp='git cherry-pick'
 alias gsub='git submodule'
-alias gsvn='git svn'
+#alias gsvn='git svn'
+alias gt='git tag'
 
 # Create aliases for listing of files.
 alias ll="ls -GFlha"
@@ -140,44 +141,44 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias -- -="cd -" # return to last directory
-alias ..-="cd .. && cd -" # backup and return to dir (good for reloading rvmrc file)
+#alias ..-="cd .. && cd -" # backup and return to dir (good for reloading rvmrc file)
 
 # Recursively delete `.DS_Store` files
-alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
+#alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 
 # Flush OSX DNS cache
 alias flush="dscacheutil -flushcache && sudo killall -HUP mDNSResponder && echo  'Flushed DNS cache.'"
 
 # Docker shortcut
-alias d="docker"
+#alias d="docker"
 
 # Docker quick start
-alias dstart=". '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
+#alias dstart=". '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
 
 # Shortcut for compose
-alias dc='docker-compose'
+#alias dc='docker-compose'
 
 # Shortcut for machine
-alias dm='docker-machine'
+#alias dm='docker-machine'
 
 # List all running containers by id.
-alias dl='docker ps -l -q'
+#alias dl='docker ps -l -q'
 
 # Remove all non-running containers.
-alias drc='docker rm $(docker ps -a -q -f "status=exited" -f "status=created")'
+#alias drc='docker rm $(docker ps -a -q -f "status=exited" -f "status=created")'
 
 # Remove all unused docker images
-alias dri='docker rmi $(docker images -f "dangling=true" -q)'
+#alias dri='docker rmi $(docker images -f "dangling=true" -q)'
 
 # Kill all docker containers
-alias dkill='docker kill $(docker ps -a -q)'
+#alias dkill='docker kill $(docker ps -a -q)'
 
 # Rails aliases
-alias be='bundle exec'
-alias r='bundle exec rails'
+#alias be='bundle exec'
+#alias r='bundle exec rails'
 
 # Prettyprint JSON
-alias prettyjson='python -m json.tool'
+#alias prettyjson='python -m json.tool'
 
 # Functions
 function md() {
@@ -291,6 +292,9 @@ export HISTSIZE=10000
 
 # Homebrew and others...
 export PATH="/usr/local/bin:$PATH"
+
+# Apple developer tools
+export PATH="/Applications/Xcode.app/Contents/Applications/Application Loader.app/Contents/Frameworks/ITunesSoftwareService.framework/Support/:$PATH"
 
 # Tell Homebrew Cask to symlink apps in the root directory
 # instead of ~/Applications
@@ -440,3 +444,65 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /Users/danawoodman/.nvm/versions/node/v11.4.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /Users/danawoodman/.nvm/versions/node/v11.4.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /Users/danawoodman/.nvm/versions/node/v11.4.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /Users/danawoodman/.nvm/versions/node/v11.4.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[ -f /Users/danawoodman/.npm/_npx/41085/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.bash ] && . /Users/danawoodman/.npm/_npx/41085/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.bash
+
+find-up () {
+    path=$(pwd)
+    while [[ "$path" != "" && ! -e "$path/$1" ]]; do
+        path=${path%/*}
+    done
+    echo "$path"
+}
+
+cdnvm(){
+    cd "$@";
+    nvm_path=$(find-up .nvmrc | tr -d '[:space:]')
+
+    # If there are no .nvmrc file, use the default nvm version
+    if [[ ! $nvm_path = *[^[:space:]]* ]]; then
+
+        declare default_version;
+        default_version=$(nvm version default);
+
+        # If there is no default version, set it to `node`
+        # This will use the latest version on your machine
+        if [[ $default_version == "N/A" ]]; then
+            nvm alias default node;
+            default_version=$(nvm version default);
+        fi
+
+        # If the current version is not the default version, set it to use the default version
+        if [[ $(nvm current) != "$default_version" ]]; then
+            nvm use default;
+        fi
+
+        elif [[ -s $nvm_path/.nvmrc && -r $nvm_path/.nvmrc ]]; then
+        declare nvm_version
+        nvm_version=$(<"$nvm_path"/.nvmrc)
+
+        declare locally_resolved_nvm_version
+        # `nvm ls` will check all locally-available versions
+        # If there are multiple matching versions, take the latest one
+        # Remove the `->` and `*` characters and spaces
+        # `locally_resolved_nvm_version` will be `N/A` if no local versions are found
+        locally_resolved_nvm_version=$(nvm ls --no-colors "$nvm_version" | tail -1 | tr -d '\->*' | tr -d '[:space:]')
+
+        # If it is not already installed, install it
+        # `nvm install` will implicitly use the newly-installed version
+        if [[ "$locally_resolved_nvm_version" == "N/A" ]]; then
+            nvm install "$nvm_version";
+        elif [[ $(nvm current) != "$locally_resolved_nvm_version" ]]; then
+            nvm use "$nvm_version";
+        fi
+    fi
+}
+alias cd='cdnvm'
