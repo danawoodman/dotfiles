@@ -4,6 +4,18 @@
   // Editor
   //---------------------------------------------------------------------------
   "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": false
+  },
   "editor.fontFamily": "Inconsolata, 'Droid Sans Mono', Consolas, 'Liberation Mono', Menlo, Monaco, 'Source Code Pro', 'Annonymouse Pro', 'Andale Mono', 'Space Mono', 'M+ 1m'",
   "editor.fontSize": 15,
   "editor.tabSize": 2,
@@ -16,6 +28,25 @@
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.minimap.enabled": false,
   "editor.foldingStrategy": "indentation",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    // "source.fixAll": true,
+    //   "source.organizeImports": true,
+  },
+  "vscode_custom_css.imports": [
+    "file:///Users/danawoodman/code/dotfiles/synthwave86.css",
+    "file:///Users/danawoodman/code/dotfiles/vscode.css"
+  ],
+  "vscode_custom_css.policy": true,
+  //---------------------------------------------------------------------------
+  // File handling
+  //---------------------------------------------------------------------------
+  "files.associations": {
+    "*.jsp": "jsp",
+    "*.css": "postcss",
+    "*.nc": "gcode",
+    // "*.svelte": "html"
+  },
   //---------------------------------------------------------------------------
   // Workbench
   //---------------------------------------------------------------------------
@@ -24,35 +55,87 @@
     "editorError.foreground": "#ff0000"
   },
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.colorTheme": "Dracula",
-  "workbench.iconTheme": null,
+  "workbench.colorTheme": "One Dark Pro",
   //---------------------------------------------------------------------------
   // Explorer
   //---------------------------------------------------------------------------
   "explorer.openEditors.visible": 0,
   "explorer.confirmDragAndDrop": false,
-  "eslint.autoFixOnSave": true,
+  "tslint.autoFixOnSave": true,
   // "git.autofetch": false,
   "files.trimTrailingWhitespace": false,
-  "[html]": {},
-  "materialTheme.fixIconsRunning": false,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // "materialTheme.fixIconsRunning": false,
   //---------------------------------------------------------------------------
   // Shell
   //---------------------------------------------------------------------------
   "shellformat.path": "/usr/local/bin/shfmt",
+  "typescript.tsserver.log": "verbose",
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[htmltag]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
   //---------------------------------------------------------------------------
-  // JavaScript
+  // Golang
   //---------------------------------------------------------------------------
-  "javascript.nameSuggestions": false,
+  "go.lintTool": "golangci-lint",
+  "go.lintFlags": [
+    "--fast"
+  ],
+  // "go.buildTags": "-tags 'linux darwin windows'",
+  "go.languageServerExperimentalFeatures": {
+    "format": true,
+    "autoComplete": true,
+    "rename": true,
+    "goToDefinition": true,
+    "hover": true,
+    "signatureHelp": true,
+    "goToTypeDefinition": true,
+    "goToImplementation": true,
+    "documentSymbols": true,
+    "workspaceSymbols": true,
+    "findReferences": true,
+    "diagnostics": true,
+    "documentLink": true
+  },
+  "go.useLanguageServer": true,
+  //---------------------------------------------------------------------------
+  // Arduino/C/C++
+  //---------------------------------------------------------------------------
+  // "C_Cpp.default.includePath": [
+  //   "/Users/danawoodman/Documents/Arduino/libraries/**"
+  // ],
   //---------------------------------------------------------------------------
   // HTML
   //---------------------------------------------------------------------------
   "html.format.enable": true,
   "html.format.wrapLineLength": 80,
-  "files.associations": {
-    "*.jsp": "jsp",
-    "*.css": "postcss"
-  },
   "[markdown]": {
     "editor.wordWrap": "wordWrapColumn",
     "editor.quickSuggestions": false
@@ -63,31 +146,40 @@
   "emmet.includeLanguages": {
     "javascript": "html",
     "jsp": "html",
-    "postcss": "css"
+    "postcss": "css",
+    "jsont": "html"
   },
   "emmet.syntaxProfiles": {
-    "postcss": "css"
+    "postcss": "css",
+    "jsont": "html"
   },
-  "emmet.useNewEmmet": true,
+  // "emmet.useNewEmmet": true,
   "emmet.showExpandedAbbreviation": "always",
-  // "prettier.singleQuote": true,
-  // "prettier.semi": true,
-  // "prettier.trailingComma": "es5",
   //---------------------------------------------------------------------------
   // Vim
   //---------------------------------------------------------------------------
-  "vim.disableAnnoyingNeovimMessage": true,
+  // "vim.debug.loggingLevel": "debug",
+  // "vim.disableAnnoyingNeovimMessage": true,
   "vim.foldfix": true,
+  "vim.hlsearch": true,
   "vim.leader": ",",
   "vim.insertModeKeyBindings": [
     {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     }
   ],
   "vim.visualModeKeyBindings": [
     {
-      "before": ["<leader>", "<space>"],
+      "before": [
+        "<leader>",
+        "<space>"
+      ],
       "after": [],
       "commands": [
         {
@@ -99,7 +191,10 @@
   ],
   "vim.normalModeKeyBindings": [
     {
-      "before": ["<leader>", "m"],
+      "before": [
+        "<leader>",
+        "m"
+      ],
       "after": [],
       "commands": [
         {
@@ -113,7 +208,9 @@
       ]
     },
     {
-      "before": ["<space>"],
+      "before": [
+        "<space>"
+      ],
       "after": [],
       "commands": [
         {
@@ -123,7 +220,10 @@
       ]
     },
     {
-      "before": ["<leader>", "<space>"],
+      "before": [
+        "<leader>",
+        "<space>"
+      ],
       "after": [],
       "commands": [
         {
@@ -133,7 +233,10 @@
       ]
     },
     {
-      "before": ["<leader>", "f"],
+      "before": [
+        "<leader>",
+        "f"
+      ],
       "after": [],
       "commands": [
         {
@@ -143,7 +246,10 @@
       ]
     },
     {
-      "before": ["<leader>", "w"],
+      "before": [
+        "<leader>",
+        "w"
+      ],
       "after": [],
       "commands": [
         {
@@ -153,7 +259,10 @@
       ]
     },
     {
-      "before": ["<leader>", "q"],
+      "before": [
+        "<leader>",
+        "q"
+      ],
       "after": [],
       "commands": [
         {
@@ -167,18 +276,26 @@
       ]
     }
   ],
-  "typescript.updateImportsOnFileMove.enabled": "never",
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "vsicons.dontShowNewVersionMessage": true,
   "terminal.integrated.fontSize": 17,
-  "github.hosts": [
-    {
-      "host": "https://github.com",
-      "username": "oauth",
-      "token": "system"
-    }
-  ],
-  "arduino.path": "/Applications",
-  "typescript.tsserver.log": "verbose",
-  "shellformat.runOnSave": true
+  // "github.hosts": [
+  //   {
+  //     "host": "https://github.com",
+  //     "username": "oauth",
+  //     "token": "system"
+  //   }
+  // ],
+  // "arduino.path": "/Applications",
+  // "shellformat.runOnSave": true,
+  "git.autofetch": true,
+  "[gcode]": {},
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust"
+  },
+  "todo-tree.highlights.enabled": true,
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "files.exclude": {
+    "node_modules": true
+  },
+  "typescript.tsserver.maxTsServerMemory": 8192,
+  "todo-tree.tree.showScanModeButton": false
 }

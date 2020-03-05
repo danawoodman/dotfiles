@@ -21,7 +21,11 @@
   },
   "Named function": {
     "prefix": "func",
-    "body": ["function ${1:name}(${2:args}) {", "  $0", "}"]
+    "body": ["function ${1:name}(${2:args}): ${3:void} {", "  $0", "}"]
+  },
+  "Named React component function": {
+    "prefix": "funcc",
+    "body": ["function ${1:name}(${2:args}): JSX.Element {", "  return ($0)", "}"]
   },
   "ES6 Class": {
     "prefix": "cla",
@@ -47,7 +51,7 @@
   },
   "ES6 Import": {
     "prefix": "imp",
-    "body": ["import $1 from '$0'"],
+    "body": ["import { $0 } from '$1'"],
     "description": "ES6 import statement"
   },
   "React Class component": {
