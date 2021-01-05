@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -65,6 +67,10 @@ SPACESHIP_CHAR_SYMBOL="●  "
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Change EOL character from %
+PROMPT_EOL_MARK=''
+SPACESHIP_DOCKER_SHOW=false
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -72,7 +78,9 @@ SPACESHIP_CHAR_SYMBOL="●  "
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  git-extras
   node
+  npm
   docker
   github
   golang
@@ -80,36 +88,108 @@ plugins=(
   jira
   nvm
   vscode
-  cloudapp
   common-aliases
+  encode64
+  extract
+  osx
+  supervisor
+  systemd
+  wd
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
+# Set environment vars
+export GOPATH="$HOME/Dropbox/code/go"
+export PATH="$GOPATH:$GOPATH/bin:$PATH"
+export PATH="$HOME/flutter/bin:$PATH"
+export PATH="$HOME/Library/Python/2.7/bin:$PATH"
+export PATH="$HOME/.nimble/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# Allow completion of hidden files
+compinit
+_comp_options+=(globdots)
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# Disable shared history
+unsetopt share_history
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# General utils
 alias cl="clear"
 alias ka='killall -kill'
+alias ll="ls -GFlha"
+
+# Git aliases
+alias grst='git reset'
+alias gpl='git pull'
+alias gbl='git branch -l'
+alias gpnv='git push --no-verify'
+alias gs='git status -sb'
+alias gls="gl -10"
+alias gst='git stash'
+alias gt='git tag'
+alias gmv='git mv'
+HASH="%C(yellow)%h%C(reset)"
+RELATIVE_TIME="%C(green)(%ar)%C(reset)"
+AUTHOR="%C(bold blue)%an%C(reset)"
+REFS="%C(red)%d%C(reset)"
+SUBJECT="%s%C(reset)"
+FORMAT="{$HASH{$RELATIVE_TIME{$AUTHOR{$REFS $SUBJECT"
+ANSI_RED='\033[31m'
+ANSI_BLUE_BOLD='\033[0;34;1m'
+ANSI_MAGENTA='\033[35m'
+ANSI_RESET='\033[0m'
+function pretty_git_log() {
+  git log --color --pretty="tformat:$FORMAT" --graph $* |
+    # Replace (2 years ago) with (2 years)
+    sed -Ee 's/(^[^<]*) ago\)/\1)/' |
+    # Replace (2 years, 5 months) with (2 years)
+    sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?\)/\1)/' |
+    # Remove parens from around the timestamp.
+    tr -d '()' |
+    # Line columns up based on { delimiter
+    column -t -s '{' |
+    # Color merge commits specially
+    sed -Ee "s/(Merge branch .* into .*$)/$(printf $ANSI_MAGENTA)\1$(printf $ANSI_RESET)/" |
+    # Page only if we need to
+    less -FXRS
+}
+alias gl=pretty_git_log
+
+# Docker aliases
+alias d="docker"
+alias dc='docker-compose'
+#alias dm='docker-machine'
+
+alias new=./code/new/new.sh
+
+# Tell dropbox to ignore the given file/directory
+alias dbi="xattr -w com.dropbox.ignored 1"
+
+unalias md
+function md() {
+  mkdir -p "$@" && cd "$@"
+}
+
+# Remove zsh annoying "rm -i" alias
+unalias rm
+setopt rm_star_silent
+setopt +o nomatch
+
+# place this after nvm initialization!
+autoload -U add-zsh-hook
+load-nvmrc() {
+  if [[ -f .nvmrc && -r .nvmrc ]]; then
+    nvm use
+  elif [[ $(nvm version) != $(nvm version default) ]]; then
+    echo "Reverting to nvm default version"
+    nvm use default
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc

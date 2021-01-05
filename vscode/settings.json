@@ -3,20 +3,8 @@
   //---------------------------------------------------------------------------
   // Editor
   //---------------------------------------------------------------------------
-  "editor.formatOnSave": true,
-  "[javascript]": {
-    "editor.formatOnSave": false
-  },
-  "[javascriptreact]": {
-    "editor.formatOnSave": false
-  },
-  "[typescript]": {
-    "editor.formatOnSave": false
-  },
-  "[typescriptreact]": {
-    "editor.formatOnSave": false
-  },
-  "editor.fontFamily": "Inconsolata, 'Droid Sans Mono', Consolas, 'Liberation Mono', Menlo, Monaco, 'Source Code Pro', 'Annonymouse Pro', 'Andale Mono', 'Space Mono', 'M+ 1m'",
+  "editor.fontFamily": "'Fira Code', Inconsolata, 'Droid Sans Mono', Consolas, 'Liberation Mono', Menlo, Monaco, 'Source Code Pro', 'Annonymouse Pro', 'Andale Mono', 'Space Mono', 'M+ 1m'",
+  "editor.fontLigatures": true,
   "editor.fontSize": 15,
   "editor.tabSize": 2,
   "editor.letterSpacing": 1.3,
@@ -29,7 +17,7 @@
   "editor.minimap.enabled": false,
   "editor.foldingStrategy": "indentation",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+    "source.fixAll.eslint": true
     // "source.fixAll": true,
     //   "source.organizeImports": true,
   },
@@ -44,8 +32,7 @@
   "files.associations": {
     "*.jsp": "jsp",
     "*.css": "postcss",
-    "*.nc": "gcode",
-    // "*.svelte": "html"
+    "*.nc": "gcode"
   },
   //---------------------------------------------------------------------------
   // Workbench
@@ -55,7 +42,6 @@
     "editorError.foreground": "#ff0000"
   },
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.colorTheme": "One Dark Pro",
   //---------------------------------------------------------------------------
   // Explorer
   //---------------------------------------------------------------------------
@@ -67,25 +53,26 @@
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  // "materialTheme.fixIconsRunning": false,
-  //---------------------------------------------------------------------------
-  // Shell
-  //---------------------------------------------------------------------------
-  "shellformat.path": "/usr/local/bin/shfmt",
-  "typescript.tsserver.log": "verbose",
+  "[nim]": {
+    "editor.formatOnSave": false
+  },
+  "[javascriptreact]": {
+    // "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[typescriptreact]": {
+    // "editor.formatOnSave": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescript]": {
+    // "editor.formatOnSave": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[svelte]": {
+    // "editor.formatOnSave": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[html]": {
@@ -94,20 +81,39 @@
   "[htmltag]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "prettier.disableLanguages": ["vue"],
+  "tailwindCSS.includeLanguages": {
+    "typescript": "javascript",
+    "typescriptreact": "javascript"
+  },
+  //---------------------------------------------------------------------------
+  // Shell
+  //---------------------------------------------------------------------------
+  "shellformat.path": "/usr/local/bin/shfmt",
+  "typescript.tsserver.log": "verbose",
+  "typescript.preferences.importModuleSpecifier": "non-relative",
   "eslint.alwaysShowStatus": true,
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact"
+    // "svelte"
   ],
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.enable": true,
+  // "eslint.autoFixOnSave": false,
   //---------------------------------------------------------------------------
   // Golang
   //---------------------------------------------------------------------------
   "go.lintTool": "golangci-lint",
-  "go.lintFlags": [
-    "--fast"
-  ],
+  "go.lintFlags": ["--fast"],
   // "go.buildTags": "-tags 'linux darwin windows'",
   "go.languageServerExperimentalFeatures": {
     "format": true,
@@ -165,21 +171,13 @@
   "vim.leader": ",",
   "vim.insertModeKeyBindings": [
     {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
     }
   ],
   "vim.visualModeKeyBindings": [
     {
-      "before": [
-        "<leader>",
-        "<space>"
-      ],
+      "before": ["<leader>", "<space>"],
       "after": [],
       "commands": [
         {
@@ -191,26 +189,17 @@
   ],
   "vim.normalModeKeyBindings": [
     {
-      "before": [
-        "<leader>",
-        "m"
-      ],
+      "before": ["<leader>", "m"],
       "after": [],
       "commands": [
         {
-          "command": "dakara-foldplus.levelAtCursor",
-          "args": []
-        },
-        {
-          "command": "editor.unfoldRecursively",
+          "command": "dakara-foldplus.cursor.exclude",
           "args": []
         }
       ]
     },
     {
-      "before": [
-        "<space>"
-      ],
+      "before": ["<space>"],
       "after": [],
       "commands": [
         {
@@ -220,10 +209,7 @@
       ]
     },
     {
-      "before": [
-        "<leader>",
-        "<space>"
-      ],
+      "before": ["<leader>", "<space>"],
       "after": [],
       "commands": [
         {
@@ -233,10 +219,7 @@
       ]
     },
     {
-      "before": [
-        "<leader>",
-        "f"
-      ],
+      "before": ["<leader>", "f"],
       "after": [],
       "commands": [
         {
@@ -246,10 +229,7 @@
       ]
     },
     {
-      "before": [
-        "<leader>",
-        "w"
-      ],
+      "before": ["<leader>", "w"],
       "after": [],
       "commands": [
         {
@@ -259,10 +239,7 @@
       ]
     },
     {
-      "before": [
-        "<leader>",
-        "q"
-      ],
+      "before": ["<leader>", "q"],
       "after": [],
       "commands": [
         {
@@ -297,5 +274,19 @@
     "node_modules": true
   },
   "typescript.tsserver.maxTsServerMemory": 8192,
-  "todo-tree.tree.showScanModeButton": false
+  "todo-tree.tree.showScanModeButton": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "dart.flutterSdkPath": "/Users/danawoodman/flutter",
+  "dart.openDevTools": "flutter",
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "workbench.colorTheme": "One Dark Pro",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.formatOnSave": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.editor.enablePreview": false
 }

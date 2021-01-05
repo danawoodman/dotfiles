@@ -21,13 +21,11 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   source $(brew --prefix)/etc/bash_completion
 fi
 
-
 #-------------------------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------------------------
 
 # Some content borrow from Paul Irish's .aliases file <https://github.com/paulirish/dotfiles/blob/master/.aliases>
-
 
 # Log output:
 #
@@ -68,7 +66,6 @@ ANSI_WHITE='\033[37m'
 ANSI_WHITE_BOLD='\033[0;37;1m'
 ANSI_RESET='\033[0m'
 
-
 # function show_git_head() {
 #   pretty_git_log -1
 #   git show -p --pretty="tformat:"
@@ -76,18 +73,18 @@ ANSI_RESET='\033[0m'
 
 function pretty_git_log() {
   git log --pretty="tformat:$FORMAT" --graph $* |
-      # Replace (2 years ago) with (2 years)
-      sed -Ee 's/(^[^<]*) ago\)/\1)/' |
-      # Replace (2 years, 5 months) with (2 years)
-      sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?\)/\1)/' |
-      # Line columns up based on } delimiter
-      column -t -s '{' |
-      # Remove parens from around the timestamp.
-      tr -d '()' |
-      # Color merge commits specially
-      sed -Ee "s/(Merge branch .* into .*$)/$(printf $ANSI_RED)\1$(printf $ANSI_RESET)/" |
-      # Page only if we need to
-      less -FXRS
+    # Replace (2 years ago) with (2 years)
+    sed -Ee 's/(^[^<]*) ago\)/\1)/' |
+    # Replace (2 years, 5 months) with (2 years)
+    sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?\)/\1)/' |
+    # Line columns up based on } delimiter
+    column -t -s '{' |
+    # Remove parens from around the timestamp.
+    tr -d '()' |
+    # Color merge commits specially
+    sed -Ee "s/(Merge branch .* into .*$)/$(printf $ANSI_RED)\1$(printf $ANSI_RESET)/" |
+    # Page only if we need to
+    less -FXRS
 }
 
 # GIT aliases.
@@ -186,9 +183,8 @@ function md() {
 }
 
 function proj() {
-    cd $(find ~/code -maxdepth 1 -type d | selecta)
+  cd $(find ~/code -maxdepth 1 -type d | selecta)
 }
-
 
 #-------------------------------------------------------------------------------
 # Bash prompt
@@ -199,13 +195,13 @@ function proj() {
 
 default_username='danawoodman'
 
-if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
-        export TERM=gnome-256color
+if [[ $COLORTERM == gnome-* && $TERM == xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+  export TERM=gnome-256color
 elif infocmp xterm-256color >/dev/null 2>&1; then
-        export TERM=xterm-256color
+  export TERM=xterm-256color
 fi
 
-if tput setaf 1 &> /dev/null; then
+if tput setaf 1 &>/dev/null; then
   tput sgr0
   if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
     RED=$(tput setaf 1)
@@ -237,9 +233,8 @@ else
   RESET="\033[m"
 fi
 
-
 # Get the ahead/behind status of the branch, if available (e.g. [ahead 3, behind 5])
-function parse_git_sync_status {
+function parse_git_sync_status() {
   git status -sb | # Get the status message that contains the ahead/behind count
     head -n1 | # Get the first line of the message
     grep -o '\[.*\]' | # Get just the ahead/behind count
@@ -247,15 +242,15 @@ function parse_git_sync_status {
     sed -E "s/behind ([0-9]+)/behind $(printf $RED)\1$(printf $RESET)/" # Highlight the behind count
 }
 
-function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
+function parse_git_dirty() {
+  [[ $(git status 2>/dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
 }
 
-function parse_git_branch {
+function parse_git_branch() {
   git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||'
 }
 
-function git_info {
+function git_info() {
   # Check if we're in a git repo
   git rev-parse --is-inside-work-tree &>/dev/null || return
 
@@ -272,13 +267,12 @@ function git_info {
 }
 
 # Only show username/host if not default
-function usernamehost {
+function usernamehost() {
   if [ $USER != $default_username ]; then echo "${RED}$USER ${RESET}at ${ORANGE}$HOSTNAME ${RESET}in "; fi
 }
 
 # Display a stylized command line prompt:
 PS1="${YELLOW}\@: \[\e]2;$PWD\[\a\]\[\e]1;\]$(basename "$(dirname "$PWD")")/\W\[\a\]${BOLD}\$(usernamehost)\[${GREEN}\]\w\$(git_info)\[${RESET}\]\n🦄 💨  "
-
 
 #-------------------------------------------------------------------------------
 # Shell settings
@@ -313,9 +307,6 @@ export PATH="/usr/local/sbin:$PATH"
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# Remember where my APP repos are for http-tier
-export APP_ROOT=/Users/dana/code/cyan
-
 # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
@@ -326,7 +317,6 @@ export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
 # Tutum username
 export TUTUM_USER='contactly'
 
-
 ###-begin-npm-completion-###
 #
 # npm command completion script
@@ -336,7 +326,7 @@ export TUTUM_USER='contactly'
 #
 
 if type complete &>/dev/null; then
-  _npm_completion () {
+  _npm_completion() {
     local words cword
     if type _get_comp_words_by_ref &>/dev/null; then
       _get_comp_words_by_ref -n = -n @ -w words -i cword
@@ -347,26 +337,26 @@ if type complete &>/dev/null; then
 
     local si="$IFS"
     IFS=$'\n' COMPREPLY=($(COMP_CWORD="$cword" \
-                           COMP_LINE="$COMP_LINE" \
-                           COMP_POINT="$COMP_POINT" \
-                           npm completion -- "${words[@]}" \
-                           2>/dev/null)) || return $?
+      COMP_LINE="$COMP_LINE" \
+      COMP_POINT="$COMP_POINT" \
+      npm completion -- "${words[@]}" \
+      2>/dev/null)) || return $?
     IFS="$si"
   }
   complete -o default -F _npm_completion npm
 elif type compdef &>/dev/null; then
   _npm_completion() {
     local si=$IFS
-    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-                 COMP_LINE=$BUFFER \
-                 COMP_POINT=0 \
-                 npm completion -- "${words[@]}" \
-                 2>/dev/null)
+    compadd -- $(COMP_CWORD=$((CURRENT - 1)) \
+      COMP_LINE=$BUFFER \
+      COMP_POINT=0 \
+      npm completion -- "${words[@]}" \
+      2>/dev/null)
     IFS=$si
   }
   compdef _npm_completion npm
 elif type compctl &>/dev/null; then
-  _npm_completion () {
+  _npm_completion() {
     local cword line point words si
     read -Ac words
     read -cn cword
@@ -375,10 +365,10 @@ elif type compctl &>/dev/null; then
     read -ln point
     si="$IFS"
     IFS=$'\n' reply=($(COMP_CWORD="$cword" \
-                       COMP_LINE="$line" \
-                       COMP_POINT="$point" \
-                       npm completion -- "${words[@]}" \
-                       2>/dev/null)) || return $?
+      COMP_LINE="$line" \
+      COMP_POINT="$point" \
+      npm completion -- "${words[@]}" \
+      2>/dev/null)) || return $?
     IFS="$si"
   }
   compctl -K _npm_completion npm
@@ -393,7 +383,7 @@ fi
 #
 
 if type complete &>/dev/null; then
-  _npm_completion () {
+  _npm_completion() {
     local words cword
     if type _get_comp_words_by_ref &>/dev/null; then
       _get_comp_words_by_ref -n = -n @ -n : -w words -i cword
@@ -404,10 +394,10 @@ if type complete &>/dev/null; then
 
     local si="$IFS"
     IFS=$'\n' COMPREPLY=($(COMP_CWORD="$cword" \
-                           COMP_LINE="$COMP_LINE" \
-                           COMP_POINT="$COMP_POINT" \
-                           npm completion -- "${words[@]}" \
-                           2>/dev/null)) || return $?
+      COMP_LINE="$COMP_LINE" \
+      COMP_POINT="$COMP_POINT" \
+      npm completion -- "${words[@]}" \
+      2>/dev/null)) || return $?
     IFS="$si"
     if type __ltrim_colon_completions &>/dev/null; then
       __ltrim_colon_completions "${words[cword]}"
@@ -417,16 +407,16 @@ if type complete &>/dev/null; then
 elif type compdef &>/dev/null; then
   _npm_completion() {
     local si=$IFS
-    compadd -- $(COMP_CWORD=$((CURRENT-1)) \
-                 COMP_LINE=$BUFFER \
-                 COMP_POINT=0 \
-                 npm completion -- "${words[@]}" \
-                 2>/dev/null)
+    compadd -- $(COMP_CWORD=$((CURRENT - 1)) \
+      COMP_LINE=$BUFFER \
+      COMP_POINT=0 \
+      npm completion -- "${words[@]}" \
+      2>/dev/null)
     IFS=$si
   }
   compdef _npm_completion npm
 elif type compctl &>/dev/null; then
-  _npm_completion () {
+  _npm_completion() {
     local cword line point words si
     read -Ac words
     read -cn cword
@@ -435,10 +425,10 @@ elif type compctl &>/dev/null; then
     read -ln point
     si="$IFS"
     IFS=$'\n' reply=($(COMP_CWORD="$cword" \
-                       COMP_LINE="$line" \
-                       COMP_POINT="$point" \
-                       npm completion -- "${words[@]}" \
-                       2>/dev/null)) || return $?
+      COMP_LINE="$line" \
+      COMP_POINT="$point" \
+      npm completion -- "${words[@]}" \
+      2>/dev/null)) || return $?
     IFS="$si"
   }
   compctl -K _npm_completion npm
@@ -455,54 +445,54 @@ fi
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
 [ -f /Users/danawoodman/.npm/_npx/41085/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.bash ] && . /Users/danawoodman/.npm/_npx/41085/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.bash
 
-find-up () {
-    path=$(pwd)
-    while [[ "$path" != "" && ! -e "$path/$1" ]]; do
-        path=${path%/*}
-    done
-    echo "$path"
+find-up() {
+  path=$(pwd)
+  while [[ "$path" != "" && ! -e "$path/$1" ]]; do
+    path=${path%/*}
+  done
+  echo "$path"
 }
 
-cdnvm(){
-    cd "$@";
-    nvm_path=$(find-up .nvmrc | tr -d '[:space:]')
+cdnvm() {
+  cd "$@"
+  nvm_path=$(find-up .nvmrc | tr -d '[:space:]')
 
-    # If there are no .nvmrc file, use the default nvm version
-    if [[ ! $nvm_path = *[^[:space:]]* ]]; then
+  # If there are no .nvmrc file, use the default nvm version
+  if [[ ! $nvm_path == *[^[:space:]]* ]]; then
 
-        declare default_version;
-        default_version=$(nvm version default);
+    declare default_version
+    default_version=$(nvm version default)
 
-        # If there is no default version, set it to `node`
-        # This will use the latest version on your machine
-        if [[ $default_version == "N/A" ]]; then
-            nvm alias default node;
-            default_version=$(nvm version default);
-        fi
-
-        # If the current version is not the default version, set it to use the default version
-        if [[ $(nvm current) != "$default_version" ]]; then
-            nvm use default;
-        fi
-
-        elif [[ -s $nvm_path/.nvmrc && -r $nvm_path/.nvmrc ]]; then
-        declare nvm_version
-        nvm_version=$(<"$nvm_path"/.nvmrc)
-
-        declare locally_resolved_nvm_version
-        # `nvm ls` will check all locally-available versions
-        # If there are multiple matching versions, take the latest one
-        # Remove the `->` and `*` characters and spaces
-        # `locally_resolved_nvm_version` will be `N/A` if no local versions are found
-        locally_resolved_nvm_version=$(nvm ls --no-colors "$nvm_version" | tail -1 | tr -d '\->*' | tr -d '[:space:]')
-
-        # If it is not already installed, install it
-        # `nvm install` will implicitly use the newly-installed version
-        if [[ "$locally_resolved_nvm_version" == "N/A" ]]; then
-            nvm install "$nvm_version";
-        elif [[ $(nvm current) != "$locally_resolved_nvm_version" ]]; then
-            nvm use "$nvm_version";
-        fi
+    # If there is no default version, set it to `node`
+    # This will use the latest version on your machine
+    if [[ $default_version == "N/A" ]]; then
+      nvm alias default node
+      default_version=$(nvm version default)
     fi
+
+    # If the current version is not the default version, set it to use the default version
+    if [[ $(nvm current) != "$default_version" ]]; then
+      nvm use default
+    fi
+
+  elif [[ -s $nvm_path/.nvmrc && -r $nvm_path/.nvmrc ]]; then
+    declare nvm_version
+    nvm_version=$(<"$nvm_path"/.nvmrc)
+
+    declare locally_resolved_nvm_version
+    # `nvm ls` will check all locally-available versions
+    # If there are multiple matching versions, take the latest one
+    # Remove the `->` and `*` characters and spaces
+    # `locally_resolved_nvm_version` will be `N/A` if no local versions are found
+    locally_resolved_nvm_version=$(nvm ls --no-colors "$nvm_version" | tail -1 | tr -d '\->*' | tr -d '[:space:]')
+
+    # If it is not already installed, install it
+    # `nvm install` will implicitly use the newly-installed version
+    if [[ "$locally_resolved_nvm_version" == "N/A" ]]; then
+      nvm install "$nvm_version"
+    elif [[ $(nvm current) != "$locally_resolved_nvm_version" ]]; then
+      nvm use "$nvm_version"
+    fi
+  fi
 }
 alias cd='cdnvm'

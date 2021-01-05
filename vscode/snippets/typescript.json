@@ -11,6 +11,30 @@
     "prefix": "desc",
     "body": ["describe('${1:does stuff}', () => {", "  $0", "})"]
   },
+  "it block": {
+    "prefix": "it",
+    "body": ["it('${1:does stuff}', async () => {", "  $0", "})"]
+  },
+  "it only block": {
+    "prefix": "ito",
+    "body": ["it.only('${1:does stuff}', () => {", "  $0", "})"]
+  },
+  "before block": {
+    "prefix": "before",
+    "body": ["before(async () => {", "  $0", "})"]
+  },
+  "before each block": {
+    "prefix": "be",
+    "body": ["beforeEach(async () => {", "  $0", "})"]
+  },
+  "after block": {
+    "prefix": "after",
+    "body": ["after(async () => {", "  $0", "})"]
+  },
+  "after each block": {
+    "prefix": "be",
+    "body": ["afterEach(async () => {", "  $0", "})"]
+  },
   "Test block": {
     "prefix": "test",
     "body": ["test('${1:does stuff}', async () => {", "  $0", "})"]
@@ -19,6 +43,27 @@
     "prefix": "exp",
     "body": ["expect(${1:foo}).toBe($0)"]
   },
+  "pending test block": {
+    "prefix": "xtest",
+    "body": [
+      "test.skip('${1:should do stuff}', async () => {",
+      "  expect(true).toBe(false)$0",
+      "})"
+    ]
+  },
+  "Test suite": {
+    "prefix": "suite",
+    "body": [
+      "import { ${1:Foo} } from \".\"",
+      "",
+      "describe(\"${2:$1}\", () => {",
+      "  test(\"should ${3:do stuff}\", async () => {",
+      "    expect(true).toBe(false)$0",
+      "  })",
+      "})"
+    ]
+  },
+
   "Named function": {
     "prefix": "func",
     "body": ["function ${1:name}(${2:args}) {", "  $0", "}"]
@@ -45,10 +90,19 @@
     "body": ["const $1 = require('$0')"],
     "description": "CommonJS require"
   },
+  "Default Import": {
+    "prefix": "im",
+    "body": ["import $1 from '$0'"],
+    "description": "Default import statement"
+  },
   "ES6 Import": {
     "prefix": "imp",
-    "body": ["import $1 from '$0'"],
+    "body": ["import { $0 } from '$1'"],
     "description": "ES6 import statement"
+  },
+  "exported interface": {
+    "prefix": "ei",
+    "body": ["export interface ${1:MyInterface} {", "  $0", "}"]
   },
   "React component": {
     "prefix": "comp",

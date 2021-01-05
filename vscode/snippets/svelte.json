@@ -1,0 +1,10 @@
+{
+  "Typescript script": {
+    "prefix": "scriptt",
+    "body": ["<script lang=\"ts\">", "  $0", "</script>"]
+  },
+  "PostCSS style": {
+    "prefix": "style",
+    "body": ["<style lang=\"postcss\">", "  $0", "</style>"]
+  }
+}

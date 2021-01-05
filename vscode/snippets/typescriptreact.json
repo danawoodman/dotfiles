@@ -7,15 +7,31 @@
     "prefix": "fun",
     "body": ["function (${1:args}) {", "  $0", "}"]
   },
-  "Describe test block": {
+  "describe test block": {
     "prefix": "desc",
-    "body": ["describe('${1:does stuff}', () => {", "  $0", "})"]
+    "body": ["describe('${1:some scenario}', () => {", "  $0", "})"]
   },
-  "Test block": {
+  "before block": {
+    "prefix": "before",
+    "body": ["before(async () => {", "  $0", "})"]
+  },
+  "before each block": {
+    "prefix": "be",
+    "body": ["beforeEach(async () => {", "  $0", "})"]
+  },
+  "test block": {
     "prefix": "test",
-    "body": ["test('${1:does stuff}', () => {", "  $0", "})"]
+    "body": ["test('${1:should do stuff}', async () => {", "  $0", "})"]
   },
-  "Test expect": {
+  "pending test block": {
+    "prefix": "xtest",
+    "body": [
+      "test.skip('${1:should do stuff}', async () => {",
+      "  expect(true).toBe(false)$0",
+      "})"
+    ]
+  },
+  "test expect": {
     "prefix": "exp",
     "body": ["expect(${1:foo}).toBe($0)"]
   },
@@ -25,7 +41,11 @@
   },
   "Named React component function": {
     "prefix": "funcc",
-    "body": ["function ${1:name}(${2:args}): JSX.Element {", "  return ($0)", "}"]
+    "body": [
+      "function ${1:name}(${2:args}): JSX.Element {",
+      "  return ($0)",
+      "}"
+    ]
   },
   "ES6 Class": {
     "prefix": "cla",
@@ -49,35 +69,47 @@
     "body": ["const $1 = require('$0')"],
     "description": "CommonJS require"
   },
+  "Default Import": {
+    "prefix": "im",
+    "body": ["import $1 from '$0'"],
+    "description": "Default import statement"
+  },
   "ES6 Import": {
     "prefix": "imp",
-    "body": ["import { $0 } from '$1'"],
+    "body": ["import { $1 } from '$0'"],
     "description": "ES6 import statement"
   },
-  "React Class component": {
+  "React component file": {
     "prefix": "comp",
     "body": [
       "import React from 'react'",
-      "import t from 'prop-types'",
       "",
-      "export type Props = {}",
+      "export interface $1Props {}",
       "",
-      "type State = {}",
-      "",
-      "export default class $1 extends React.Component<Props, State> {",
-      "",
-      "\tstatic propTypes = {}",
-      "",
-      "\tstatic defaultProps = {}",
-      "",
-      "\tstate = {}",
-      "",
-      "\trender() {",
-      "\t\treturn (",
-      "\t\t\t$0",
-      "\t\t)",
-      "\t}",
+      "export default function ${1:name}(${2:args}): JSX.Element {",
+      "  return ($0)",
       "}"
     ]
+  },
+  "Import classnames lib": {
+    "prefix": "cn",
+    "body": [
+      "import classnames from \"classnames\"",
+      "const classes = classnames($0)"
+    ]
+  },
+  "exported interface": {
+    "prefix": "ei",
+    "body": ["export interface ${1:MyInterface} {", "  $0", "}"]
+  },
+  "useState": {
+    "prefix": "us",
+    "body": [
+      "const [${1:loading}, set${2:Loading}] = React.useState<${3:boolean}>(${4:false})"
+    ]
+  },
+  "useRef": {
+    "prefix": "ur",
+    "body": ["const ${1:ref} = React.useRef<${2:HTMLDivElement}>(${3:null})"]
   }
 }
