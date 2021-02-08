@@ -288,5 +288,17 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.editor.enablePreview": false
+  "workbench.editor.enablePreview": true,
+  "jest.restartJestOnSnapshotUpdate": true,
+  "jest.showCoverageOnLoad": true,
+  "rust.mode": "rls",
+  "rust-client.channel": "stable",
+  "rust.rustup": {
+    "toolchain": "stable-x86_64-apple-darwin"
+  },
+  "rust-client.rustupPath": "$HOME/.cargo/bin/rustup",
+  "search.exclude": {
+    "package-lock.json": true,
+    "yarn.lock": true
+  }
 }
