@@ -130,7 +130,7 @@ alias gpl='git pull'
 alias gbl='git branch -l'
 alias gpnv='git push --no-verify'
 alias gs='git status -sb'
-alias gls="gl -10"
+alias gls="gl -20"
 alias gst='git stash'
 alias gt='git tag'
 alias gmv='git mv'
@@ -193,3 +193,9 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
+
+###-tns-completion-start-###
+if [ -f /Users/danawoodman/.tnsrc ]; then 
+    source /Users/danawoodman/.tnsrc 
+fi
+###-tns-completion-end-###
