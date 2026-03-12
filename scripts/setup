@@ -2,7 +2,7 @@
 
 # Setup macOS config
 echo "Setting up macOS config..."
-source ./macos
+source ./scripts/macos
 
 # Install brew packages from the Brewfile
 echo "Installing brew packages..."
@@ -18,4 +18,4 @@ curl -sS https://starship.rs/install.sh | sh
 
 # Symlink dotfiles using stow
 echo "Symlinking dotfiles..."
-source ./update
+source ./scripts/update
