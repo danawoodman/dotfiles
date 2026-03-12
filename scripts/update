@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Update brew packages
+brew bundle --file=Brewfile
+
 # Symlink dotfiles using stow
 stow .
 
