@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Setup macOS config
-./macos
+source ./macos
 
 # Install brew packages from the Brewfile
 brew bundle install --file=Brewfile
@@ -13,4 +13,4 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 curl -sS https://starship.rs/install.sh | sh
 
 # Symlink dotfiles using stow
-./update
+source ./update
