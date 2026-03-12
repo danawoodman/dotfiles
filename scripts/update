@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+# Symlink dotfiles using stow
+stow .
