@@ -4,4 +4,4 @@
 --ignore=README.md
 --ignore=Brewfile
 --ignore=scripts
---ignore=.zshrc
+--ignore=zsh
