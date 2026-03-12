@@ -4,3 +4,5 @@
 --ignore=README.*
 --ignore=Brewfile
 --ignore=scripts/*
+--ignore=zsh
+--ignore=zshrc

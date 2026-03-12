@@ -2,3 +2,6 @@
 
 # Symlink dotfiles using stow
 stow .
+
+# Stow packages that target ~ instead of ~/.config
+stow --target="$HOME" zsh
