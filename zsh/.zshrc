@@ -29,7 +29,6 @@ unsetopt share_history
 # Allow completion of hidden files
 compinit
 _comp_options+=(globdots)
-topt +o nomatch
 
 #--------------------------------------------------------------
 # Env / tooling setup
@@ -186,4 +185,4 @@ function md() {
 
 # Remove zsh annoying "rm -i" alias
 setopt rm_star_silent
-se
+setopt +o nomatch
