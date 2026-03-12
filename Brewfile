@@ -1,149 +1,254 @@
-# Install by running `brew tap Homebrew/bundle && brew bundle`
-# Learn more here: https://github.com/Homebrew/homebrew-bundle
-
-# Git repos
-tap 'caskroom/cask'
-tap 'homebrew/completions'
-
-# OSX Applications and binaries
-cask 'alfred'
-cask 'atom'
-cask 'appzapper'
-cask 'balsamiq-mockups'
-cask 'bartender'
-cask 'burn'
-cask 'chronomate'
-#cask 'clear'
-cask 'cloud'
-cask 'cyberduck'
-cask 'github-desktop'
-cask 'dropbox'
-cask 'duet'
-cask 'fantastical'
-cask 'flexiglass'
-cask 'flux'
-cask 'google-chrome'
-cask 'handbrake'
-cask 'iterm2'
-cask 'lastpass'
-cask 'little-snitch'
-cask 'littleipsum'
-cask 'mailbox'
-#cask 'mattercontrol'
-cask 'minecraft'
-cask 'noun-project'
-cask 'omnigraffle'
-cask 'openscad'
-cask 'pandora'
-#cask 'pixelmator'
-cask 'psequel'
-cask 'rdm'
-cask 'rescuetime'
-cask 'robomongo'
-cask 'seil'
-cask 'sequel-pro'
-#cask 'slack'
-cask 'spotify'
-cask 'sqwiggle'
-cask 'transmission'
-cask 'virtualbox'
-cask 'vlc'
-cask 'xquartz'
-
-# Libraries and packages
-brew 'ansible'
-brew 'apple-gcc42'
-brew 'autoconf'
-brew 'autoenv'
-brew 'automake'
-brew 'bash-completion'
-brew 'bazaar'
-brew 'berkeley-db'
-brew 'boost'
-brew 'brew-cask'
-brew 'byacc'
-brew 'cairo'
-brew 'cloc'
-brew 'cmake'
-brew 'colordiff'
-brew 'couchdb'
-brew 'cscope'
-brew 'ctags'
-brew 'dos2unix'
-brew 'editorconfig'
-brew 'erlang'
-brew 'flow'
-brew 'fontconfig'
-brew 'freetype'
-brew 'gd'
-brew 'gdbm'
-brew 'gengetopt'
-brew 'gettext'
-brew 'gist'
-brew 'git'
-brew 'glib'
-brew 'gmp'
-brew 'go'
-brew 'graphicsmagick'
-brew 'hub'
-brew 'icu4c'
-brew 'imagemagick'
-brew 'imagesnap'
-brew 'irssi'
-brew 'jpeg'
-brew 'jpeg-turbo'
-brew 'json-c'
-brew 'leiningen'
-brew 'libdnet'
-brew 'libevent'
-brew 'libffi'
-brew 'libgpg-error'
-brew 'libiconv'
-brew 'libksba'
-brew 'libpng'
-brew 'libtiff'
-brew 'libtool'
-brew 'libunistring'
-brew 'libxml2'
-brew 'libxslt'
-brew 'libyaml'
-brew 'macvim'
-brew 'mercurial'
-brew 'mongodb'
-brew 'mysql'
-brew 'nasm'
-brew 'neovim'
-brew 'nmap'
-brew 'node'
-brew 'nspr'
-brew 'nvm'
-brew 'openssl'
-brew 'openssl098'
-brew 'optipng'
-brew 'ossp-uuid'
-brew 'p7zip'
-brew 'pandoc'
-brew 'pcre'
-brew 'phantomjs'
-brew 'pkg-config'
-brew 'postgresql'
-brew 'python'
-brew 'python3'
-brew 'qt'
-brew 'readline'
-brew 'redis'
-brew 'ruby'
-brew 'selecta'
-brew 'spidermonkey'
-brew 'sqlite'
-brew 'swaks'
-brew 'the_silver_searcher'
-brew 'tidy'
-brew 'tig'
-brew 'tlassemble'
-brew 'tmux'
-brew 'unixodbc'
-brew 'webalizer'
-brew 'wget'
-brew 'wrk'
-brew 'xz'
+# tap "azure/functions"
+# tap "hashicorp/tap"
+tap "homebrew/bundle"
+tap "homebrew/cask-versions"
+# tap "microsoft/git"
+# tap "nats-io/nats-tools"
+# tap "ngrok/ngrok"
+# tap "steipete/tap"
+# tap "tinygo-org/tools"
+# tap "tursodatabase/tap"
+# tap "twilio/brew"
+# brew "act"
+# brew "age"
+# brew "giflib"
+# brew "libpng"
+# brew "zstd"
+# brew "jpeg-xl"
+# brew "aom"
+# brew "glib"
+# brew "pixman"
+# brew "cairo"
+# brew "harfbuzz"
+# brew "openjdk"
+# brew "apktool"
+# brew "openssl@3"
+# brew "automake"
+# brew "libyaml"
+# brew "asdf"
+# brew "python@3.11"
+# brew "azure-cli"
+# brew "bison"
+# brew "bore-cli"
+# brew "caddy"
+# brew "chruby"
+brew "cloc"
+brew "cmake"
+# brew "ruby"
+# brew "cocoapods"
+# brew "libssh2"
+brew "direnv"
+# brew "entr"
+# brew "erlang"
+# brew "libavif"
+# brew "esphome"
+brew "fd"
+# brew "unbound"
+# brew "gnutls"
+# brew "leptonica"
+# brew "libass"
+# brew "libbluray"
+# brew "pango"
+# brew "srt"
+# brew "tesseract"
+# brew "ffmpeg"
+# brew "firefoxpwa"
+# brew "flyctl"
+brew "fnm"
+brew "fzf"
+brew "gawk"
+# brew "isl"
+brew "gcc"
+# brew "gdbm"
+brew "gh"
+# brew "rebar3"
+# brew "gleam"
+# brew "libassuan"
+# brew "gnupg"
+# brew "go-task"
+# brew "golang-migrate"
+# brew "netpbm"
+# brew "librsvg"
+# brew "graphviz"
+# brew "pkgconf"
+# brew "guile"
+# brew "hcloud"
+# brew "helix"
+brew "httpie"
+brew "hub"
+# brew "imlib2"
+# brew "jd"
+# brew "jpeg", link: true
+brew "jq"
+brew "libev"
+brew "libffi"
+brew "libzip"
+# brew "mockery"
+# brew "mosquitto"
+# brew "mplayer"
+brew "neovim"
+# brew "nim"
+# brew "nixfmt"
+# brew "nixpacks"
+brew "nmap"
+# brew "opam"
+brew "openssl"
+# brew "openvino"
+# brew "parallel"
+# brew "poppler"
+# brew "pdfgrep"
+# brew "php"
+# brew "postgresql@14"
+# brew "protobuf"
+# brew "python-setuptools"
+# brew "python@3.10"
+# brew "qemu"
+# brew "rbenv"
+brew "rename"
+brew "ripgrep"
+# brew "ruby-install"
+# brew "rust"
+# brew "sqlc"
+brew "stow"
+brew "trash", link: true
+brew "tree"
+# brew "upx"
+# brew "vapor"
+brew "wget"
+# brew "zoxide"
+# brew "azure/functions/azure-functions-core-tools"
+# brew "azure/functions/azure-functions-core-tools@4"
+# brew "hashicorp/tap/terraform"
+# brew "nats-io/nats-tools/nats"
+# brew "steipete/tap/gogcli"
+# brew "tinygo-org/tools/tinygo"
+# brew "tursodatabase/tap/turso"
+# cask "alacritty"
+cask "git-credential-manager"
+# cask "insomnia"
+# cask "metasploit"
+# cask "ngrok"
+# cask "swiftformat-for-xcode"
+# vscode "a-h.templ"
+# vscode "adrianwilczynski.alpine-js-intellisense"
+# vscode "anthropic.claude-code"
+# vscode "anysphere.cursorpyright"
+# vscode "anysphere.pyright"
+# vscode "apollographql.vscode-apollo"
+vscode "astro-build.astro-vscode"
+# vscode "asvetliakov.vscode-neovim"
+# vscode "azurite.azurite"
+# vscode "bierner.lit-html"
+# vscode "biomejs.biome"
+vscode "bradlc.vscode-tailwindcss"
+vscode "cardinal90.multi-cursor-case-preserve"
+vscode "christian-kohler.npm-intellisense"
+vscode "christian-kohler.path-intellisense"
+vscode "dakara.dakara-foldplus"
+vscode "dbaeumer.vscode-eslint"
+# vscode "deerawan.vscode-dash"
+# vscode "denoland.vscode-deno"
+# vscode "devsense.composer-php-vscode"
+# vscode "devsense.intelli-php-vscode"
+# vscode "devsense.phptools-vscode"
+# vscode "devsense.profiler-php-vscode"
+# vscode "digitalbrainstem.javascript-ejs-support"
+# vscode "eamodio.gitlens"
+vscode "editorconfig.editorconfig"
+vscode "emeraldwalk.runonsave"
+vscode "esbenp.prettier-vscode"
+# vscode "esphome.esphome-vscode"
+# vscode "fivethree.vscode-svelte-snippets"
+vscode "formulahendry.auto-close-tag"
+vscode "formulahendry.auto-rename-tag"
+vscode "formulahendry.code-runner"
+vscode "foxundermoon.shell-format"
+vscode "github.github-vscode-theme"
+# vscode "github.vscode-pull-request-github"
+# vscode "gleam.gleam"
+# vscode "golang.go"
+vscode "graphql.vscode-graphql-syntax"
+vscode "gruntfuggly.todo-tree"
+# vscode "ionic.ionic"
+# vscode "itsmeadarsh.vsc-handlebars-ext"
+# vscode "jinliming2.vscode-go-template"
+vscode "jnoortheen.nix-ide"
+vscode "kdcro101.typescript-code-navigator"
+# vscode "kosz78.nim"
+vscode "mechatroner.rainbow-csv"
+vscode "meganrogge.template-string-converter"
+vscode "mikeburgh.xml-format"
+vscode "mikestead.dotenv"
+# vscode "ml.nc-gcode"
+vscode "moalamri.inline-fold"
+vscode "mquandalle.graphql"
+# vscode "ms-azuretools.vscode-azurefunctions"
+# vscode "ms-azuretools.vscode-azureresourcegroups"
+# vscode "ms-azuretools.vscode-docker"
+# vscode "ms-dotnettools.csdevkit"
+# vscode "ms-dotnettools.csharp"
+# vscode "ms-dotnettools.vscode-dotnet-runtime"
+# vscode "ms-dotnettools.vscodeintellicode-csharp"
+# vscode "ms-mssql.data-workspace-vscode"
+# vscode "ms-mssql.mssql"
+# vscode "ms-mssql.sql-bindings-vscode"
+# vscode "ms-mssql.sql-database-projects-vscode"
+# vscode "ms-python.debugpy"
+# vscode "ms-python.isort"
+# vscode "ms-python.python"
+# vscode "ms-python.vscode-pylance"
+# vscode "ms-toolsai.jupyter"
+# vscode "ms-toolsai.jupyter-keymap"
+# vscode "ms-toolsai.jupyter-renderers"
+# vscode "ms-toolsai.vscode-jupyter-cell-tags"
+# vscode "ms-toolsai.vscode-jupyter-slideshow"
+# vscode "ms-vscode.azure-account"
+# vscode "ms-vscode.cpptools"
+# vscode "ms-vscode.live-server"
+# vscode "ms-vscode.makefile-tools"
+# vscode "ms-vscode.typescript-javascript-grammar"
+# vscode "ms-vscode.vscode-serial-monitor"
+# vscode "neverik.go-critic"
+# vscode "ocamllabs.ocaml-platform"
+vscode "otovo-oss.htmx-tags"
+# vscode "pivaszbs.svelte-autoimport"
+vscode "pmneo.tsimporter"
+# vscode "rangav.vscode-thunder-client"
+vscode "redhat.vscode-xml"
+vscode "ricard.postcss"
+# vscode "rust-lang.rust-analyzer"
+# vscode "scala-lang.scala"
+# vscode "serayuzgur.crates"
+# vscode "statelyai.stately-vscode"
+# vscode "stkb.rewrap"
+vscode "streetsidesoftware.code-spell-checker"
+# vscode "stringham.move-ts"
+vscode "stylelint.vscode-stylelint"
+# vscode "svelte.svelte-vscode"
+vscode "tamasfe.even-better-toml"
+# vscode "tyriar.lorem-ipsum"
+# vscode "vlanguage.vscode-vlang"
+# vscode "vosca.vscode-v-analyzer"
+# vscode "vsciot-vscode.vscode-arduino"
+vscode "vscode-icons-team.vscode-icons"
+vscode "vscodevim.vim"
+vscode "vunguyentuan.vscode-css-variables"
+vscode "wayou.vscode-todo-highlight"
+# vscode "withfig.fig"
+vscode "yoavbls.pretty-ts-errors"
+# vscode "zhuangtongfa.material-theme"
+# vscode "ziglang.vscode-zig"
+# go "github.com/danawoodman/cng/cmd/cng"
+# go "github.com/spf13/cobra-cli"
+# go "github.com/golangci/golangci-lint/cmd/golangci-lint"
+# go "golang.org/x/tools/cmd/gonew"
+# go "golang.org/x/tools/gopls"
+# go "github.com/danawoodman/gtc"
+# go "github.com/danawoodman/netscan"
+# go "github.com/a-h/templ/cmd/templ"
+# go "github.com/danawoodman/tub"
+# go "github.com/syumai/workers/cmd/workers-assets-gen"
+# cargo "cargo-edit"
+# cargo "cargo-generate"
+# cargo "cargo-watch"
+# cargo "tauri-bundler"

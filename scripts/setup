@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+# Setup macOS config
+./macos
+
+# Install brew packages from the Brewfile
+brew bundle install --file=Brewfile
+
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install starship
+curl -sS https://starship.rs/install.sh | sh
+
+# Symlink dotfiles using stow
+./update
