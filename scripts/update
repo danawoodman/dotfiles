@@ -4,4 +4,4 @@
 stow .
 
 # Stow packages that target ~ instead of ~/.config
-stow --target="$HOME" .zshrc
+stow --target="$HOME" zsh
