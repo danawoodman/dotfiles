@@ -55,11 +55,6 @@ eval "$(direnv hook zsh)"
 # Aliases
 #--------------------------------------------------------------
 
-# Unalias built-in oh-my-zsh aliases
-unalias gog
-unalias md
-unalias rm
-
 alias c="cd"
 
 # Docker aliases
@@ -178,6 +173,11 @@ alias hb="hub browse"
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 alias brew="arch -arm64 brew"
+
+# Unalias built-in oh-my-zsh aliases
+# unalias gog
+# unalias md
+# unalias rm
 
 function md() {
 	mkdir -p "$@" && cd "$@"
