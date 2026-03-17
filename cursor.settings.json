@@ -161,7 +161,7 @@
   "editor.detectIndentation": false,
   "editor.folding": true,
   "editor.foldingStrategy": "indentation",
-  "editor.fontFamily": "'Fira Code', Inconsolata, 'Droid Sans Mono', Consolas, 'Liberation Mono', Menlo, Monaco, 'Source Code Pro', 'Annonymouse Pro', 'Andale Mono', 'Space Mono', 'M+ 1m'",
+  "editor.fontFamily": "'FiraCode Nerd Font', Inconsolata, 'Droid Sans Mono', Consolas, 'Liberation Mono', Menlo, Monaco, 'Source Code Pro', 'Annonymouse Pro', 'Andale Mono', 'Space Mono', 'M+ 1m'",
   "editor.fontLigatures": true,
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
