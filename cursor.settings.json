@@ -462,7 +462,7 @@
   "workbench.experimental.enableNewProfilesUI": true,
   "workbench.iconTheme": "vscode-icons",
   "workbench.panel.defaultLocation": "left",
-  "workbench.preferredDarkColorTheme": "One Dark Pro",
+  "workbench.preferredDarkColorTheme": "One Dark Pro Night Flat",
   "workbench.preferredLightColorTheme": "GitHub Light Default",
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": false,
