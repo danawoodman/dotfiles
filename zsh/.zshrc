@@ -55,7 +55,7 @@ eval "$(direnv hook zsh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # mise completions
-echo 'eval "$(mise activate zsh)"' >> ~/.zshrc
+echo 'eval "$(mise activate zsh)"'
 
 #--------------------------------------------------------------
 # Aliases
@@ -128,7 +128,7 @@ alias w="bunx wrangler"
 alias cl="clear"
 alias ka='killall'
 alias ls="eza"
-alias l="eza -l --color=always --icons=always"
+alias l="eza -la --color=always --icons=always"
 # alias l="ls -GFlha"
 alias ll="l"
 
