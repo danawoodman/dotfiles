@@ -123,7 +123,9 @@ alias w="bunx wrangler"
 alias cl="clear"
 alias ka='killall'
 # alias ka='killall -kill'
-alias l="ls -GFlha"
+alias ls="eza"
+alias l="eza -l --color=always --icons=always"
+# alias l="ls -GFlha"
 alias ll="l"
 
 # Git aliases
