@@ -10,9 +10,9 @@ osascript -e 'tell application "System Preferences" to quit'
 # Disable context menu when pressing and holding a key
 defaults write -g ApplePressAndHoldEnabled -bool false
 
-# Set keyboard repeat to its fastest setting
-defaults write NSGlobalDomain KeyRepeat -int 0
-defaults write NSGlobalDomain InitialKeyRepeat -int 12
+# Set keyboard repeat (KeyRepeat: 0=fastest, 6=slowest; InitialKeyRepeat: delay before repeat)
+defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Enable tap to click on trackpad
 defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
