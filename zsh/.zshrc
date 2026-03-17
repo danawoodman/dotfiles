@@ -55,7 +55,7 @@ eval "$(direnv hook zsh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # mise completions
-echo 'eval "$(mise activate zsh)"'
+eval "$(mise activate zsh)"
 
 #--------------------------------------------------------------
 # Aliases
