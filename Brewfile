@@ -36,6 +36,7 @@ brew "cmake"
 # brew "cocoapods"
 # brew "libssh2"
 brew "direnv"
+brew "eza"
 # brew "entr"
 # brew "erlang"
 # brew "libavif"
@@ -143,7 +144,7 @@ vscode "bradlc.vscode-tailwindcss"
 vscode "cardinal90.multi-cursor-case-preserve"
 vscode "christian-kohler.npm-intellisense"
 vscode "christian-kohler.path-intellisense"
-vscode "dakara.dakara-foldplus" # TODO: failed
+# vscode "dakara.dakara-foldplus" # TODO: failed
 vscode "dbaeumer.vscode-eslint"
 # vscode "deerawan.vscode-dash"
 # vscode "denoland.vscode-deno"
@@ -176,11 +177,11 @@ vscode "jnoortheen.nix-ide"
 # vscode "kosz78.nim"
 vscode "mechatroner.rainbow-csv"
 vscode "meganrogge.template-string-converter"
-vscode "mikeburgh.xml-format" # TODO: failed
+# vscode "mikeburgh.xml-format" # TODO: failed
 vscode "mikestead.dotenv"
 # vscode "ml.nc-gcode"
 vscode "moalamri.inline-fold"
-vscode "mquandalle.graphql" # TODO: failed
+# vscode "mquandalle.graphql" # TODO: failed
 # vscode "ms-azuretools.vscode-azurefunctions"
 # vscode "ms-azuretools.vscode-azureresourcegroups"
 # vscode "ms-azuretools.vscode-docker"
@@ -209,12 +210,12 @@ vscode "mquandalle.graphql" # TODO: failed
 # vscode "ms-vscode.vscode-serial-monitor"
 # vscode "neverik.go-critic"
 # vscode "ocamllabs.ocaml-platform"
-vscode "otovo-oss.htmx-tags" # TODO: failed
+# vscode "otovo-oss.htmx-tags" # TODO: failed
 # vscode "pivaszbs.svelte-autoimport"
 # vscode "pmneo.tsimporter"
 # vscode "rangav.vscode-thunder-client"
 vscode "redhat.vscode-xml"
-vscode "ricard.postcss"
+# vscode "ricard.postcss" # TODO: failed
 # vscode "rust-lang.rust-analyzer"
 # vscode "scala-lang.scala"
 # vscode "serayuzgur.crates"
