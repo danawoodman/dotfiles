@@ -191,11 +191,3 @@ function md() {
 # Remove zsh annoying "rm -i" alias
 setopt rm_star_silent
 setopt +o nomatch
-eval "$(mise activate zsh)"
-eval "$(mise activate zsh)"
-eval "$(mise activate zsh)"
-eval "$(mise activate zsh)"
-eval "$(mise activate zsh)"
-eval "$(mise activate zsh)"
-eval "$(mise activate zsh)"
-eval "$(mise activate zsh)"
