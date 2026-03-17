@@ -51,6 +51,12 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # direnv
 eval "$(direnv hook zsh)"
 
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# mise completions
+echo 'eval "$(mise activate zsh)"' >> ~/.zshrc
+
 #--------------------------------------------------------------
 # Aliases
 #--------------------------------------------------------------
@@ -60,7 +66,6 @@ alias c="cd"
 # Docker aliases
 alias d="docker"
 alias dc='docker-compose'
-#alias dm='docker-machine'
 
 # Tell dropbox to ignore the given file/directory
 alias dbi="xattr -w com.dropbox.ignored 1"
@@ -122,7 +127,6 @@ alias w="bunx wrangler"
 # General utils
 alias cl="clear"
 alias ka='killall'
-# alias ka='killall -kill'
 alias ls="eza"
 alias l="eza -l --color=always --icons=always"
 # alias l="ls -GFlha"
@@ -173,7 +177,6 @@ alias gw="g worktree"
 alias hb="hub browse"
 
 # Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
 alias brew="arch -arm64 brew"
 
 # Unalias built-in oh-my-zsh aliases
@@ -188,3 +191,11 @@ function md() {
 # Remove zsh annoying "rm -i" alias
 setopt rm_star_silent
 setopt +o nomatch
+eval "$(mise activate zsh)"
+eval "$(mise activate zsh)"
+eval "$(mise activate zsh)"
+eval "$(mise activate zsh)"
+eval "$(mise activate zsh)"
+eval "$(mise activate zsh)"
+eval "$(mise activate zsh)"
+eval "$(mise activate zsh)"
