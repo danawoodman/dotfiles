@@ -23,4 +23,7 @@ source ~/.zshrc
 ```sh
 # Update the dotfiles
 ./scripts/update
+
+# Reload the zsh config
+source ~/.zshrc
 ```
