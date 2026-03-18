@@ -1,19 +1,4 @@
 [
-  // {
-  //   "key": "tab",
-  //   "command": "-acceptSelectedSuggestion",
-  //   "when": "editorTextFocus && suggestWidgetVisible"
-  // },
-  // {
-  //   "key": "tab",
-  //   "command": "acceptSelectedSuggestion",
-  //   "when": "editorTextFocus && suggestWidgetVisible && !inSnippetMode"
-  // },
-  // {
-  //   "key": "tab",
-  //   "command": "editor.action.acceptCursorTabSuggestion",
-  //   "when": "cpp.shouldAcceptTab && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
-  // },
   {
     "key": "shift+cmd+\\",
     "command": "-editor.action.jumpToBracket",
@@ -156,5 +141,25 @@
       "text": "\u001b\r"
     },
     "when": "terminalFocus"
+  },
+  {
+    "key": "shift+cmd+]",
+    "command": "composer.selectNextComposer",
+    "when": "agentsPaneFocused && cursor.agentIdeUnification.enabled && !editorTextFocus || composerFocused && cursor.agentIdeUnification.enabled && !editorTextFocus"
+  },
+  {
+    "key": "alt+cmd+right",
+    "command": "-composer.selectNextComposer",
+    "when": "agentsPaneFocused && cursor.agentIdeUnification.enabled && !editorTextFocus || composerFocused && cursor.agentIdeUnification.enabled && !editorTextFocus"
+  },
+  {
+    "key": "shift+cmd+[",
+    "command": "composer.selectPreviousComposer",
+    "when": "agentsPaneFocused && cursor.agentIdeUnification.enabled && !editorTextFocus || composerFocused && cursor.agentIdeUnification.enabled && !editorTextFocus"
+  },
+  {
+    "key": "alt+cmd+left",
+    "command": "-composer.selectPreviousComposer",
+    "when": "agentsPaneFocused && cursor.agentIdeUnification.enabled && !editorTextFocus || composerFocused && cursor.agentIdeUnification.enabled && !editorTextFocus"
   }
 ]
