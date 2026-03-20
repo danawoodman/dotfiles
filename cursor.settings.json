@@ -362,7 +362,7 @@
   "vim.normalModeKeyBindings": [
     {
       "before": [",", "m"],
-      "commands": ["dakara-foldplus.cursor.exclude"]
+      "commands": ["editor.foldAll", "editor.unfoldRecursively"]
     },
     {
       "before": [",", ","],
