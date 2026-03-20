@@ -362,7 +362,7 @@
   "vim.normalModeKeyBindings": [
     {
       "before": [",", "m"],
-      "commands": ["editor.foldAll", "editor.unfoldRecursively"]
+      "commands": ["danawoodman.fold.allExceptCursorLine"]
     },
     {
       "before": [",", ","],
