@@ -129,7 +129,7 @@ alias w="bunx wrangler"
 alias cl="clear"
 alias ka='killall'
 alias ls="eza"
-alias l="eza -la --color=always --icons=always"
+alias l="eza -la --color=always"
 # alias l="ls -GFlha"
 alias ll="l"
 
