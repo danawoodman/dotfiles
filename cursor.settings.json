@@ -142,7 +142,7 @@
   "azureFunctions.showProjectWarning": false,
   "cSpell.enabled": true,
   "code-runner.executorMap": {
-    "typescript": "npx tsx"
+    "typescript": "bun run"
   },
   "code-runner.runInTerminal": true,
   "css.validate": false,
@@ -447,6 +447,7 @@
   "vsicons.dontShowNewVersionMessage": true,
   "window.autoDetectColorScheme": true,
   "window.commandCenter": true,
+  "window.systemColorTheme": "auto",
   "workbench.colorCustomizations": {
     "editorError.border": "#ff3300",
     "editorError.foreground": "#ff0000"
@@ -464,7 +465,9 @@
   "workbench.panel.defaultLocation": "left",
   "workbench.preferredDarkColorTheme": "One Dark Pro Night Flat",
   "workbench.preferredLightColorTheme": "GitHub Light Default",
+  "workbench.secondarySideBar.defaultVisibility": "visible",
   "workbench.startupEditor": "none",
-  "workbench.statusBar.visible": false,
-  "zig.initialSetupDone": true
+  "zig.initialSetupDone": true,
+  "claudeCode.preferredLocation": "panel",
+  "workbench.statusBar.visible": false
 }
