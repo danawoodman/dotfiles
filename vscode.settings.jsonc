@@ -318,6 +318,7 @@
   "prettier.enableDebugLogs": true,
   "redhat.telemetry.enabled": false,
   "rewrap.autoWrap.enabled": true,
+  "scm.defaultViewMode": "tree",
   "scm.showIncomingChanges": "never",
   "scm.showOutgoingChanges": "never",
   "scss.validate": false,
