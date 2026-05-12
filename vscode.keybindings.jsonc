@@ -2,24 +2,36 @@
   {
     "key": "alt+cmd+/",
     "command": "editor.action.blockComment",
-    "when": "editorTextFocus && !editorReadonly"
+    "when": "editorTextFocus && !editorReadonly",
+  },
+  { "key": "alt+cmd+b", "command": "-workbench.action.toggleAuxiliaryBar" },
+  {
+    "key": "alt+k",
+    "command": "-claude-vscode.insertAtMention",
+    "when": "editorTextFocus",
   },
   { "key": "cmd+i", "command": "composerMode.agent" },
   {
+    "key": "cmd+k",
+    "command": "claude-vscode.insertAtMention",
+    "when": "editorTextFocus",
+  },
+  {
     "key": "cmd+k alt+cmd+s",
     "command": "-git.stageSelectedRanges",
-    "when": "isInDiffEditor && !operationInProgress"
+    "when": "isInDiffEditor && !operationInProgress",
   },
   { "key": "cmd+k z", "command": "-workbench.action.toggleZenMode" },
+  { "key": "cmd+l", "command": "workbench.action.toggleAuxiliaryBar" },
   {
     "key": "cmd+r",
     "command": "editor.action.rename",
-    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly",
   },
   {
     "key": "cmd+r",
     "command": "-workbench.action.reloadWindow",
-    "when": "isDevelopment"
+    "when": "isDevelopment",
   },
   { "key": "ctrl+alt+down", "command": "workbench.action.positionPanelBottom" },
   { "key": "ctrl+alt+left", "command": "workbench.action.positionPanelLeft" },
@@ -27,39 +39,39 @@
   {
     "key": "ctrl+shift+g",
     "command": "-workbench.view.scm",
-    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'",
   },
   {
     "key": "ctrl+shift+g",
     "command": "-workbench.view.scm",
-    "when": "workbench.scm.active"
+    "when": "workbench.scm.active",
   },
   { "key": "ctrl+shift+p", "command": "git.push" },
   {
     "key": "ctrl+shift+tab",
     "command": "workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus"
+    "when": "terminalFocus",
   },
   { "key": "ctrl+shift+z", "command": "workbench.action.toggleZenMode" },
   {
     "key": "ctrl+tab",
     "command": "workbench.action.terminal.focusNext",
-    "when": "terminalFocus"
+    "when": "terminalFocus",
   },
   {
     "key": "f2",
     "command": "-editor.action.rename",
-    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly"
+    "when": "editorHasRenameProvider && editorTextFocus && !editorReadonly",
   },
   {
     "key": "shift+alt+a",
     "command": "-editor.action.blockComment",
-    "when": "editorTextFocus && !editorReadonly"
+    "when": "editorTextFocus && !editorReadonly",
   },
   {
     "key": "shift+cmd+\\",
     "command": "-editor.action.jumpToBracket",
-    "when": "editorTextFocus"
+    "when": "editorTextFocus",
   },
   { "key": "shift+cmd+\\", "command": "workbench.action.splitEditorDown" },
   { "key": "shift+cmd+=", "command": "-workbench.action.zoomIn" },
@@ -67,42 +79,52 @@
   {
     "key": "shift+cmd+b",
     "command": "workbench.view.scm",
-    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'"
+    "when": "workbench.scm.active && !gitlens:disabled && config.gitlens.keymap == 'chorded'",
   },
   {
     "key": "shift+cmd+b",
     "command": "workbench.view.scm",
-    "when": "workbench.scm.active"
+    "when": "workbench.scm.active",
   },
   {
     "key": "shift+cmd+c",
     "command": "-workbench.action.terminal.openNativeConsole",
-    "when": "!terminalFocus"
+    "when": "!terminalFocus",
   },
   {
     "key": "shift+cmd+c",
     "command": "git.stageSelectedRanges",
-    "when": "isInDiffEditor && !operationInProgress"
+    "when": "isInDiffEditor && !operationInProgress",
   },
   {
     "key": "shift+cmd+e",
     "command": "-aichat.fixerrormessage",
-    "when": "(arbitrary function)"
+    "when": "(arbitrary function)",
   },
   {
     "key": "shift+cmd+[",
     "command": "-workbench.action.terminal.focusPrevious",
-    "when": "terminalFocus && terminalProcessSupported"
+    "when": "terminalFocus && terminalProcessSupported",
   },
   {
     "key": "shift+cmd+]",
     "command": "-workbench.action.terminal.focusNext",
-    "when": "terminalFocus && terminalProcessSupported"
+    "when": "terminalFocus && terminalProcessSupported",
   },
   {
     "key": "shift+enter",
     "command": "workbench.action.terminal.sendSequence",
     "args": { "text": "\u001b\r" },
-    "when": "terminalFocus"
-  }
+    "when": "terminalFocus",
+  },
+  {
+    "key": "tab",
+    "command": "-acceptSelectedSuggestion",
+    "when": "editorTextFocus && suggestWidgetVisible",
+  },
+  {
+    "key": "tab",
+    "command": "acceptSelectedSuggestion",
+    "when": "editorTextFocus && suggestWidgetVisible && !inSnippetMode",
+  },
 ]
