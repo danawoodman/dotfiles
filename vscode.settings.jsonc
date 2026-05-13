@@ -237,6 +237,7 @@
     "*.jsp": "jsp",
     "*.nc": "gcode",
     "*.service": "ini",
+    "*.svg": "xml",
     "*.svx": "markdown",
     "*.timer": "ini",
     "*.tmpl": "html",
@@ -492,4 +493,7 @@
   "workbench.secondarySideBar.defaultVisibility": "visible",
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": false,
+  "zenMode.hideActivityBar": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": false,
 }
