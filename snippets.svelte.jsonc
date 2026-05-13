@@ -1,0 +1,41 @@
+{
+  "arrow function": {
+    "prefix": "fu",
+    "body": ["($1) => $0"],
+  },
+  "Typescript script": {
+    "prefix": "scriptt",
+    "body": ["<script lang=\"ts\">", "  $0", "</script>"],
+  },
+  "PostCSS style": {
+    "prefix": "style",
+    "body": ["<style lang=\"postcss\">", "  $0", "</style>"],
+  },
+  "snippet": {
+    "prefix": "snip",
+    "body": ["{#snippet ${1:name}($2)}", "  $0", "{/snippet}"],
+  },
+  "render": {
+    "prefix": "rend",
+    "body": ["{@render ${1:name}($2)}"],
+  },
+  "SvelteKit module": {
+    "prefix": "module",
+    "body": [
+      "<script context=\"module\">",
+      "  import type { LoadEvent, LoadOutput } from \"@sveltejs/kit\";",
+      "",
+      "  export async function load({",
+      "    params,",
+      "    fetch,",
+      "    session,",
+      "    stuff,",
+      "  }: LoadEvent): Promise<LoadOutput> {",
+      "    return {",
+      "      props: {},",
+      "    };",
+      "  }",
+      "</script>",
+    ],
+  },
+}

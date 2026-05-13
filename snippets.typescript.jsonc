@@ -1,0 +1,171 @@
+{
+  "arrow function": {
+    "prefix": "fu",
+    "body": ["(${1:args}) => {", "  $0", "}"],
+  },
+  "annonymous function": {
+    "prefix": "fun",
+    "body": ["function (${1:${2:args}: ${3:string}}) {", "  $0", "}"],
+  },
+  "named function": {
+    "prefix": "func",
+    "body": ["function ${1:name}($2) {", "  $0", "}"],
+  },
+  "for of loop": {
+    "prefix": ["fof"],
+    "body": ["for (const ${2:item} of ${1:items}) {", "  $0", "}"],
+  },
+  "async named function": {
+    "prefix": "afunc",
+    "body": ["async function ${1:name}($2) {", "  $0", "}"],
+  },
+  "Describe test block": {
+    "prefix": "desc",
+    "body": ["describe('${1:does stuff}', () => {", "  $0", "})"],
+  },
+  "It block": {
+    "prefix": "it",
+    "body": ["it('${1:does stuff}', async () => {", "  $0", "})"],
+  },
+  "It only block": {
+    "prefix": "ito",
+    "body": ["it.only('${1:does stuff}', () => {", "  $0", "})"],
+  },
+  "before block": {
+    "prefix": "before",
+    "body": ["before(() => {", "  $0", "})"],
+  },
+  "before each block": {
+    "prefix": "be",
+    "body": ["beforeEach(() => {", "  $0", "})"],
+  },
+  "after block": {
+    "prefix": "after",
+    "body": ["after(() => {", "  $0", "})"],
+  },
+  "after each block": {
+    "prefix": "ae",
+    "body": ["afterEach(() => {", "  $0", "})"],
+  },
+  "Test block": {
+    "prefix": "test",
+    "body": ["test('${1:does stuff}', async () => {", "  $0", "})"],
+  },
+  "Test expect": {
+    "prefix": "exp",
+    "body": ["expect(${1:foo}).toBe($0)"],
+  },
+  "Vitest test suite": {
+    "prefix": "vt",
+    "body": [
+      "import { describe, expect, it } from 'vitest'",
+      "",
+      "describe('does stuff', () => {",
+      "	it.skip('does stuff', async () => {",
+      "		expect(true).toBe(false)",
+      "		$0",
+      "	})",
+      "})",
+    ],
+  },
+  "ES6 Class": {
+    "prefix": "cla",
+    "body": ["class ${1:Name} {", "  $0", "}"],
+  },
+  "Module exports": {
+    "prefix": "me",
+    "body": ["module.exports = $0"],
+  },
+  "ES6 default export": {
+    "prefix": "ed",
+    "body": ["export default $0"],
+  },
+  "Console log": {
+    "prefix": "log",
+    "body": ["console.log($0);"],
+    "description": "Console log",
+  },
+  "CommonJS require": {
+    "prefix": "req",
+    "body": ["const $1 = require('$0')"],
+    "description": "CommonJS require",
+  },
+  "Default Import": {
+    "prefix": "im",
+    "body": ["import $1 from \"${2:$1}\";"],
+    "description": "Default import statement",
+  },
+  "ES6 Import": {
+    "prefix": "imp",
+    "body": ["import { $2 } from \"$1\";"],
+    "description": "ES6 import statement",
+  },
+  "exported interface": {
+    "prefix": "ei",
+    "body": ["export interface ${1:MyInterface} {", "  $0", "}"],
+  },
+  // "React component": {
+  //   "prefix": "comp",
+  //   "body": [
+  //     "import PropTypes from 'prop-types'",
+  //     "import React from 'react'",
+  //     "",
+  //     "function $1({ $2 }) {",
+  //     "\treturn (",
+  //     "\t\t$0",
+  //     "\t)",
+  //     "}",
+  //     "",
+  //     "$1.defaultProps = {",
+  //     "}",
+  //     "",
+  //     "$1.propTypes = {",
+  //     "}",
+  //     "",
+  //     "export default $1"
+  //   ]
+  // },
+  "SvelteKit server request handler": {
+    "prefix": "handler",
+    "body": [
+      "import type { RequestEvent } from './\\$types'",
+      "import { json } from \"@sveltejs/kit\"",
+      "",
+      "export async function ${1:GET}(event: RequestEvent) {",
+      "  return json($0);",
+      "}",
+    ],
+  },
+  "SvelteKit page.server load handler": {
+    "prefix": "sload",
+    "body": [
+      "import type { PageServerLoadEvent } from './\\$types'",
+      "",
+      "export async function ${1:load}(event: PageServerLoadEvent) {",
+      "  return { hello: \"world\" }",
+      "}",
+    ],
+  },
+  "SvelteKit page load handler": {
+    "prefix": "load",
+    "body": [
+      "import type { PageLoadEvent } from './\\$types'",
+      "",
+      "export async function ${1:load}(event: PageLoadEvent) {",
+      "  return { hello: \"world\" }",
+      "}",
+    ],
+  },
+  "SvelteKit actions": {
+    "prefix": "actions",
+    "body": [
+      "import type { Actions } from './\\$types'",
+      "",
+      "export const actions: Actions = {",
+      "  async default(event) {",
+      "    return { ${0:success: true} }",
+      "  }",
+      "}",
+    ],
+  },
+}
