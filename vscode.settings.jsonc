@@ -146,7 +146,7 @@
   "arduino.useArduinoCli": true,
   "azureFunctions.showProjectWarning": false,
   "C_Cpp.clang_format_fallbackStyle": "Google",
-  "chat.disableAIFeatures": true,
+  "chat.viewSessions.orientation": "stacked",
   "code-runner.executorMap": {
     "typescript": "bun run",
   },
@@ -198,6 +198,7 @@
     "jsont": "html",
     "jsp": "html",
     "postcss": "css",
+    "svelte": "html",
     "templ": "html",
   },
   "emmet.showExpandedAbbreviation": "always",
@@ -472,6 +473,7 @@
   "vsicons.dontShowNewVersionMessage": true,
   "window.autoDetectColorScheme": true,
   "window.commandCenter": true,
+  "window.dialogStyle": "custom",
   "window.systemColorTheme": "auto",
   "workbench.colorCustomizations": {
     "editorError.border": "#ff3300",
