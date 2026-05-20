@@ -146,6 +146,14 @@
   "arduino.useArduinoCli": true,
   "azureFunctions.showProjectWarning": false,
   "C_Cpp.clang_format_fallbackStyle": "Google",
+  "chat.tools.urls.autoApprove": {
+    "https://code.visualstudio.com": true,
+    "https://github.com/microsoft/vscode/wiki/*": true,
+    "https://github.com": {
+      "approveRequest": false,
+      "approveResponse": true,
+    },
+  },
   "chat.viewSessions.orientation": "stacked",
   "code-runner.executorMap": {
     "typescript": "bun run",
@@ -495,6 +503,7 @@
   "workbench.secondarySideBar.defaultVisibility": "visible",
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": false,
+  "zenMode.fullScreen": false,
   "zenMode.hideActivityBar": false,
   "zenMode.hideLineNumbers": false,
   "zenMode.hideStatusBar": false,
