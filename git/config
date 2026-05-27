@@ -32,8 +32,7 @@ changed = green
 untracked = cyan
 
 [credential]
-helper = osxkeychain
-# helper = /usr/local/share/gcm-core/git-credential-manager
+helper = /usr/local/share/gcm-core/git-credential-manager
 
 [push]
 default = upstream
@@ -44,7 +43,7 @@ clean = git media clean %f
 smudge = git media smudge %f
 
 [core]
-editor = cursor
+editor = vscode
 ignorecase = true
 
 [filter "lfs"]
