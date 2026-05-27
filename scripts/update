@@ -1,10 +1,17 @@
 #!/bin/zsh
 
+echo "Running Brew..."
+
 # Update brew packages
 brew bundle --file=Brewfile
+
+echo "Running stow to update symlinks..."
 
 # Symlink dotfiles using stow
 stow .
 
 # Stow packages that target ~ instead of ~/.config
 stow --target="$HOME" zsh
+stow --target="$HOME" oh-my-zsh
+
+echo "Done!"
