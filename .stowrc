@@ -1,8 +1,10 @@
 --target=~/.config
---ignore=.stowrc
---ignore=DS_Store
---ignore=README.md
---ignore=Brewfile
---ignore=scripts
---ignore=zsh
---ignore=zshrc
+--ignore=^\.stowrc$
+--ignore=^\.vscode$
+--ignore=^\.DS_Store$
+--ignore=^README\.md$
+--ignore=^Brewfile$
+--ignore=^scripts$
+--ignore=^zsh$
+--ignore=^zshrc$
+--ignore=^oh-my-zsh$
