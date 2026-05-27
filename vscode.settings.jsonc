@@ -488,6 +488,7 @@
     "editorError.foreground": "#ff0000",
   },
   "workbench.colorTheme": "One Dark Pro",
+  "workbench.editor.useModal": false,
   "workbench.editor.centeredLayoutAutoResize": false,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.empty.hint": "hidden",
