@@ -8,3 +8,4 @@
 --ignore=^zsh$
 --ignore=^zshrc$
 --ignore=^oh-my-zsh$
+--ignore=^git$

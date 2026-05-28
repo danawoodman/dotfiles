@@ -13,5 +13,6 @@ stow .
 # Stow packages that target ~ instead of ~/.config
 stow --target="$HOME" zsh
 stow --target="$HOME" oh-my-zsh
+stow --target="$HOME" git
 
 echo "Done!"
