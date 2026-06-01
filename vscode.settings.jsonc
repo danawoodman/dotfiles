@@ -153,6 +153,10 @@
       "approveRequest": false,
       "approveResponse": true,
     },
+    "https://httpwg.org": {
+      "approveRequest": false,
+      "approveResponse": true,
+    },
   },
   "chat.viewSessions.orientation": "stacked",
   "code-runner.executorMap": {
