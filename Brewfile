@@ -4,12 +4,8 @@
 
 tap "azure/functions"
 tap "hashicorp/tap"
-tap "homebrew/bundle"
-tap "homebrew/cask-versions"
-# tap "microsoft/git"
 tap "nats-io/nats-tools"
 tap "ngrok/ngrok"
-tap "openclaw/tap"
 tap "steipete/tap"
 tap "tinygo-org/tools"
 tap "tursodatabase/tap"
