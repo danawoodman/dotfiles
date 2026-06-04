@@ -43,6 +43,7 @@ brew "ripgrep"
 brew "stow"
 brew "trash", link: true
 brew "tree"
+brew "tree-sitter-cli"
 brew "wget"
 
 #------------------------------------------------
