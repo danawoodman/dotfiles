@@ -507,7 +507,7 @@
   "workbench.settings.editor": "json",
   "workbench.settings.openInPreviewMode": false,
   "workbench.startupEditor": "none",
-  "workbench.statusBar.visible": false,
+  "workbench.statusBar.visible": true,
   "zenMode.fullScreen": false,
   "zenMode.hideActivityBar": false,
   "zenMode.hideLineNumbers": false,
