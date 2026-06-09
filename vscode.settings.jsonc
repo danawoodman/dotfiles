@@ -241,6 +241,7 @@
   },
   "explorer.openEditors.visible": 1,
   // To improve performance
+  "extensions.allowOpenInModalEditor": false,
   "extensions.experimental.affinity": { "vscodevim.vim": 1 },
   "extensions.ignoreRecommendations": true,
   "files.associations": {
@@ -265,14 +266,11 @@
   "github.copilot.enable": {
     "*": true,
     "plaintext": false,
-    "markdown": true,
-    "scminput": false,
-    "yaml": true,
+    "markdown": false,
   },
   "gitlens.advanced.messages": {
     "suppressRebaseSwitchToTextWarning": true,
   },
-  "gitlens.ai.experimental.openai.model": "gpt-4-1106-preview",
   "gitlens.plusFeatures.enabled": false,
   "gitlens.views.workspaces.showIncomingActivity": true,
   "gitlens.virtualRepositories.enabled": false,
@@ -492,7 +490,7 @@
     "editorError.foreground": "#ff0000",
   },
   "workbench.colorTheme": "One Dark Pro",
-  "workbench.editor.useModal": false,
+  "workbench.editor.useModal": "off",
   "workbench.editor.centeredLayoutAutoResize": false,
   "workbench.editor.closeOnFileDelete": true,
   "workbench.editor.empty.hint": "hidden",
@@ -506,6 +504,8 @@
   "workbench.preferredDarkColorTheme": "One Dark Pro Night Flat",
   "workbench.preferredLightColorTheme": "GitHub Light Default",
   "workbench.secondarySideBar.defaultVisibility": "visible",
+  "workbench.settings.editor": "json",
+  "workbench.settings.openInPreviewMode": false,
   "workbench.startupEditor": "none",
   "workbench.statusBar.visible": false,
   "zenMode.fullScreen": false,
