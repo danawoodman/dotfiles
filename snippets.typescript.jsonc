@@ -61,10 +61,10 @@
       "import { describe, expect, it } from 'vitest'",
       "",
       "describe('does stuff', () => {",
-      "	it.skip('does stuff', async () => {",
-      "		expect(true).toBe(false)",
-      "		$0",
-      "	})",
+      "  it.skip('does stuff', async () => {",
+      "    expect(true).toBe(false)",
+      "    $0",
+      "  })",
       "})",
     ],
   },
@@ -104,27 +104,16 @@
     "prefix": "ei",
     "body": ["export interface ${1:MyInterface} {", "  $0", "}"],
   },
-  // "React component": {
-  //   "prefix": "comp",
-  //   "body": [
-  //     "import PropTypes from 'prop-types'",
-  //     "import React from 'react'",
-  //     "",
-  //     "function $1({ $2 }) {",
-  //     "\treturn (",
-  //     "\t\t$0",
-  //     "\t)",
-  //     "}",
-  //     "",
-  //     "$1.defaultProps = {",
-  //     "}",
-  //     "",
-  //     "$1.propTypes = {",
-  //     "}",
-  //     "",
-  //     "export default $1"
-  //   ]
-  // },
+  "trycatch": {
+    "prefix": "try",
+    "body": [
+      "try {",
+      "  $0",
+      "} catch (error: unknown) {",
+      "  console.error(error);",
+      "}",
+    ],
+  },
   "SvelteKit server request handler": {
     "prefix": "handler",
     "body": [
