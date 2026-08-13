@@ -7,7 +7,6 @@ plugins=(
 	git-extras
 	github
 	golang
-	vscode
 	common-aliases
 	encode64
 	extract
