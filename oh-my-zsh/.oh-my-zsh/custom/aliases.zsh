@@ -9,8 +9,6 @@ alias dc='docker-compose'
 # Tell dropbox to ignore the given file/directory
 alias dbi="xattr -w com.dropbox.ignored 1"
 
-alias code="vsc"
-
 # npm
 alias n="npm"
 alias ni="n i"
