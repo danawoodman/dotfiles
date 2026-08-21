@@ -52,3 +52,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # mise completions
 eval "$(/opt/homebrew/bin/mise activate zsh --shims)"
+
+# opencode
+export PATH=/Users/danawoodman/.opencode/bin:$PATH
