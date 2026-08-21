@@ -27,37 +27,6 @@ alias no="n outdated"
 # always approve installing deps with npx
 alias npx="npx -y"
 
-# yarn
-# alias y="yarn"
-# alias yi="y install"
-# alias yu="y un"
-# alias yug="yu -g"
-# alias yid="yi -D"
-# alias yig="yi -g"
-# alias yr="y run"
-# alias yb="y build"
-# alias yd="y dev"
-# alias ys="y start"
-# alias yt="y test"
-# alias ycr="y create"
-# alias yo="y outdated"
-
-# pnpm
-# alias p="pnpm"
-# alias pi="p i"
-# alias pf="p --filter"
-# alias pu="p rm"
-# alias pug="pu -g"
-# alias pid="pi -D"
-# alias pig="pi -g"
-# alias pr="p run"
-# alias pb="pr build"
-# alias pd="pr dev"
-# alias ps="p start"
-# alias pt="p test"
-# alias pcr="p create"
-# alias po="p outdated"
-
 # Bun
 alias b="bun"
 alias bi="b i"
@@ -88,7 +57,7 @@ alias mwt="mtw"
 
 # vim
 alias vi="nvim"
-alias vim="nvim"
+alias vim="vi"
 
 # clear out build junk
 alias wipe="trash **/node_modules **/.svelte-kit/ **/.turbo/ **/build/ bun.lockb bun.lock package-lock.json"
@@ -101,7 +70,7 @@ alias ka='killall'
 # alias ka='killall -kill'
 alias ls="eza"
 alias l="eza -la --color=always"
-alias ll="ls -GFlha"
+alias ll="l"
 
 # Git aliases
 HASH="%C(yellow)%h%C(reset)"
@@ -146,6 +115,10 @@ alias gw="g worktree"
 
 # Github
 alias hb="hub browse"
+
+# VSCode
+alias code="codium"
+alias vsc="code"
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
