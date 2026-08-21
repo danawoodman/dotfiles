@@ -17,7 +17,6 @@ tap "twilio/brew"
 
 brew "cloc"
 brew "cmake"
-brew "direnv"
 brew "eza"
 brew "fd"
 brew "fnm"
@@ -44,6 +43,7 @@ brew "stow"
 brew "trash", link: true
 brew "tree"
 brew "tree-sitter-cli"
+brew "vscodium"
 brew "wget"
 
 #------------------------------------------------
