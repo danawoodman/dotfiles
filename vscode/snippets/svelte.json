@@ -1,23 +1,23 @@
 {
   "arrow function": {
     "prefix": "fu",
-    "body": ["($1) => $0"],
+    "body": ["($1) => $0"]
   },
   "Typescript script": {
     "prefix": "scriptt",
-    "body": ["<script lang=\"ts\">", "  $0", "</script>"],
+    "body": ["<script lang=\"ts\">", "  $0", "</script>"]
   },
   "PostCSS style": {
     "prefix": "style",
-    "body": ["<style lang=\"postcss\">", "  $0", "</style>"],
+    "body": ["<style lang=\"postcss\">", "  $0", "</style>"]
   },
   "snippet": {
     "prefix": "snip",
-    "body": ["{#snippet ${1:name}($2)}", "  $0", "{/snippet}"],
+    "body": ["{#snippet ${1:name}($2)}", "  $0", "{/snippet}"]
   },
   "render": {
     "prefix": "rend",
-    "body": ["{@render ${1:name}($2)}"],
+    "body": ["{@render ${1:name}($2)}"]
   },
   "SvelteKit module": {
     "prefix": "module",
@@ -35,7 +35,7 @@
       "      props: {},",
       "    };",
       "  }",
-      "</script>",
-    ],
-  },
+      "</script>"
+    ]
+  }
 }
