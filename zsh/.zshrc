@@ -55,3 +55,6 @@ eval "$(/opt/homebrew/bin/mise activate zsh --shims)"
 
 # opencode
 export PATH="$HOME/.opencode/bin:$PATH"
+
+# Added by cua-driver-rs installer — see https://github.com/trycua/cua
+export PATH="$HOME/.local/bin:$PATH"
