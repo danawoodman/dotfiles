@@ -2,6 +2,9 @@
 
 echo "Running Brew..."
 
+# setup nix
+curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
+
 # Update brew packages
 brew bundle --file=Brewfile
 
