@@ -10,6 +10,7 @@ tap "steipete/tap"
 tap "tinygo-org/tools"
 tap "tursodatabase/tap"
 tap "twilio/brew"
+tap "anomalyco/tap"
 
 #------------------------------------------------
 # BREW
@@ -35,6 +36,7 @@ brew "llama.cpp"
 brew "mise"
 brew "neovim"
 brew "nmap"
+brew "opencode-v2"
 brew "openssl"
 brew "pygments"
 brew "rename"
