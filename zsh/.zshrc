@@ -54,4 +54,4 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(/opt/homebrew/bin/mise activate zsh --shims)"
 
 # opencode
-export PATH=/Users/danawoodman/.opencode/bin:$PATH
+export PATH="$HOME/.opencode/bin:$PATH"
