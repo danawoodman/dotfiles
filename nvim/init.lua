@@ -888,6 +888,18 @@ do
     -- Shows a signature help window while you type arguments for a function
     signature = { enabled = true },
   }
+
+  -- Advertise blink.cmp's expanded completion capabilities to every LSP server.
+  -- Without this, servers aren't told the client supports lazily-resolved
+  -- `additionalTextEdits`, so features like Svelte's auto-import on
+  -- `<ComponentName` completion never appear.
+  --
+  -- This is registered as a global (`*`) LSP config default so it merges into
+  -- all servers configured in the LSP section above. It lives here (not in the
+  -- LSP block) because blink.cmp is only loaded further down in the file.
+  vim.lsp.config('*', {
+    capabilities = require('blink.cmp').get_lsp_capabilities(),
+  })
 end
 
 -- ============================================================
