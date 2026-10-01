@@ -50,5 +50,5 @@ required = true
 [pager]
 branch = false
 [credential]
-	helper =
-	helper = /usr/local/share/gcm-core/git-credential-manager
+helper =
+helper = /usr/local/share/gcm-core/git-credential-manager
